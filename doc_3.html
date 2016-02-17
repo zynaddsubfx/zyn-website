@@ -1,0 +1,209 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.79 [en] (X11; U; Linux 2.4.7-10 i686) [Netscape]">
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EE" vlink="#551A8B" alink="#FF0000">
+<b><u><font size=+2><a href="index.html">Index page</a></font></u></b>
+<center><b><font size=+2>Controllers and other midi messages</font></b></center>
+
+<p>I assume that you are familiar with Midi controllers and NRPNs. The
+GM controllers received by ZynAddSubFX are:
+<p>&nbsp;1)&nbsp; Pitch bend
+<br>&nbsp;2)&nbsp; Modullation wheel (Controller number <b>1</b>)
+<br>&nbsp;3)&nbsp; Volume (no. <b>7</b>)
+<br>&nbsp;4)&nbsp; Pan (no. <b>10</b>)
+<br>&nbsp;5)&nbsp; Expression (no. <b>11</b>)
+<br>&nbsp;6)&nbsp; Sustain (no. <b>64</b>)
+<br>&nbsp;7) Portamento On/Off (no. <b>65</b>)
+<br>&nbsp;8)&nbsp; Filter Q (no. <b>71</b>)
+<br>&nbsp;9)&nbsp; Filter cutoff (no. <b>74</b>)
+<br>10) All sound off (no. <b>120</b>)
+<br>11) Reset all controlers (no. <b>121</b>)
+<br>12) All notes off (no. <b>123</b>)
+<br>
+<hr WIDTH="100%">
+<p>ZynAddSubFx has controllers that are not defined in GM.
+<p>&nbsp;1) Bandwidth (Sound control 6) (no. <b>75</b>)
+<br>&nbsp;&nbsp; This increases or decreases the <a href="doc_0.html">bandwidth</a>
+of instruments. The default parameter is <b>64.</b>
+<p>&nbsp;2) Modulation amplitude (Sound control 7) (no. <b>76</b>)
+<br>&nbsp;&nbsp; This decreases the amplitude of modulators on ADsynth.
+The default parameter is <b>127</b>.
+<p>&nbsp;3) Resonance Center Frequency (Sound control 8) (no. <b>77</b>)
+<br>&nbsp;&nbsp;&nbsp; This changes the center frequency of the resonance.
+<p>&nbsp;4) Resonance Bandwidth (Sound control 9) (no. <b>78</b>)
+<br>&nbsp;&nbsp;&nbsp; This changes the bandwidth of the resonance.
+<br>
+<hr WIDTH="100%">
+<p><b>NRPN (Non Registered Parameters Number)</b>
+<p>They can control all system and insertion effect parameters.For example,
+you may change the reverb time when plaing to keyboard or flanger's lfo
+frequency. You can disable the NRPN receiving by unselecting the "NRPN"
+checkbox from the main window (near "Master Keyshift" counter).
+<br>The controls can be sent on any midi channel (the midi channels numbers
+are ignored).
+<br>The parameters are:
+<br>&nbsp;- <b>NRPN coarse</b> (99 or 0x63)sets the system/insertion effects
+(<b>4</b> for system effects or <b>8</b> for insertion effects)
+<br>&nbsp;- <b>NRPN fine</b> (98 or 0x62)sets the number of the effect
+(first effect is 0)
+<br>&nbsp;- <b>Data entry coarse </b>(6) sets the paremeter number of effect
+to change(see below)
+<br>&nbsp;- <b>Data entry fine</b> (26) sets the parameter of the effect
+<br>You have to send NRPN coarse/fine before sending Data entry coarse/fine.
+If the effect/parameter doesn't exists or is set to none, then the NRPN
+is ignored.
+<p>Example(all values in this example are hex):
+<br>&nbsp;&nbsp;&nbsp; B0 63 <b>08</b> // Select the insertion effects
+<br>&nbsp;&nbsp;&nbsp; B0 62 <b>01</b> // Select the second effect (remember:
+the first is 00 and not 01)
+<br>&nbsp;&nbsp;&nbsp; B0 06 <b>00</b> // Select the effect parameter <b>00</b>
+<br>&nbsp;&nbsp;&nbsp; B0 26 <b>7F</b> // Change the parameter of effect
+to the value 7F (127)
+<p>Warning: Changing of some of the effect parameters produces clicks when
+sounds passes thru theese effects. I advise you to change only when the
+sound volume that passes thru the effect to be very low (or silence). Some
+parameters produce clicks when are changed very fast.
+<p>Here are the effects parameter number (for Data entry coarse). The parameters
+that produces clicks are written in <font color="#FF0000">red</font> color.
+The parameter that produces clicks only when they are changed fast are
+written in<font color="#FFCC00"> </font><font color="#990000">brown</font>
+color.
+<br>Most parameters has the range from 0 to 127. When parameters have another
+range, it is written as <b>[low..high]</b>.
+<p><b><font size=+2>Reverb</font></b>
+<blockquote><font color="#990000">00 - Volume or Dry/Wet</font>
+<br><font color="#990000">01 - Pan</font>
+<br>02 - Reverb Time
+<br><font color="#990000">03 - Initial Delay</font>
+<br>04 - Initial Delay Feedback
+<br><font color="#999999">05, 06 - reserved</font>
+<br>07 - Low Pass
+<br>08 - High Pass
+<br>09 - High Frequency Damping <b>[64..127]</b> 64=no damping
+<br><font color="#FF0000">10 - Reverb Type <b>[0..1]</b> 0 - Random, 1
+- Freeverb</font>
+<br><font color="#FF0000">11 - Room Size</font></blockquote>
+<b><font size=+2>Echo</font></b>
+<blockquote><font color="#990000">00 - Volume or Dry/Wet</font>
+<br><font color="#990000">01 - Pan</font>
+<br><font color="#FF0000">02 - Delay</font>
+<br><font color="#FF0000">03 - Delay betweel left and right</font>
+<br>0<font color="#990000">4 - Left/Right Crossing</font>
+<br>05 - Feedback
+<br>06 - High Frequency Damp</blockquote>
+
+<p><br><b><font size=+2>Chorus</font></b>
+<blockquote><font color="#990000">00 - Volume or Dry/Wet</font>
+<br><font color="#990000">01 - Pan</font>
+<br>02 - LFO Frequency
+<br>03 - LFO Randomness
+<br>04 - LFO Type <b>[0..1]</b>
+<br><font color="#330000">05 - LFO Stereo Difference</font>
+<br>06 - LFO Depth
+<br>07 - Delay
+<br>08 - Feedback
+<br><font color="#990000">09 - Left/Right Crossing</font>
+<br><font color="#999999">10 - reserved</font>
+<br><font color="#FF0000">11 - Mode <b>[0..1]</b> (0=add, 1=substract)</font></blockquote>
+<b><font size=+2>Phaser</font></b>
+<blockquote><font color="#990000">00 - Volume or Dry/Wet</font>
+<br><font color="#990000">01 - Pan</font>
+<br>02 - LFO Frequency
+<br>03 - LFO Randomness
+<br>04 - LFO Type<b> [0..1]</b>
+<br>05 - LFO Stereo Difference
+<br>06 - LFO Depth
+<br>07 - Feedback
+<br><font color="#FF0000">08 - Number of stages <b>[0..11]</b></font>
+<br><font color="#990000">09 - Let/Right Crossing</font>
+<br><font color="#FF0000">10 - Mode <b>[0..1]</b> (0=add, 1=substract)</font>
+<br>11 - Phase</blockquote>
+<b><font size=+2>AlienWah</font></b>
+<blockquote><font color="#990000">00 - Volume or Dry/Wet</font>
+<br><font color="#990000">01 - Pan</font>
+<br>02 - LFO Frequency
+<br>03 - LFO Randomness
+<br>04 - LFO Type<b> [0..1]</b>
+<br>05 - LFO Stereo Difference
+<br>06 - LFO Depth
+<br>07 - Feedback
+<br><font color="#FF0000">08 - Delay <b>[0..100]</b></font>
+<br><font color="#990000">09 - Left/Right Crossing</font>
+<br>10 - Phase</blockquote>
+<b><font size=+2>Distorsion</font></b>
+<blockquote><font color="#990000">00 - Volume or Dry/Wet</font>
+<br><font color="#990000">01 - Pan</font>
+<br><font color="#330000">02 - Left/Right Crossing</font>
+<br><font color="#990000">03 - Drive</font>
+<br><font color="#990000">04 - Level</font>
+<br><font color="#CC0000">05 - Type <b>[0..11]</b></font>
+<br><font color="#FF0000">06 - Invert the signal (negate) <b>[0..1]</b></font>
+<br><font color="#330000">07 - Low Pass</font>
+<br><font color="#330000">08 - High Pass</font>
+<br><font color="#FF0000">09 - Mode <b>[0.1]</b> (0=mono,1=stereo)</font></blockquote>
+<b><font size=+2>EQ</font></b>
+<blockquote><font color="#990000">00 - Gain</font>
+<p><font color="#330000">All other settings of the EQ are shown in a different
+way. The<b> N </b>represent the band ("B." setting in the UI) and the first
+band is 0 (and not 1), like is shown in the UI. Change the "N" with the
+band you like. If you want to change a band that doesn't exist, the NRPN
+will be ignored.</font>
+<br><font color="#FF0000">10+N*5 - Change the mode of the filter <b>[0..9]</b></font>
+<br><font color="#330000">11+N*5 - Band's filter frequency</font>
+<br><font color="#330000">12+N*5 - Band's filter gain</font>
+<br><font color="#330000">13+N*5 - Band's filter Q (bandwith or resonance)</font>
+<br><font color="#999999">14+N*5 - reserved</font>
+<p><font color="#330000">Example of eq setting:</font>
+<br><font color="#330000">Changing the gain of band's filter for the second
+(2-nd) band.</font>
+<br><font color="#330000">Because the bands are counted from 0, the second
+band is 1 => N=1.&nbsp; The formula is 12+N*5 => 12+1*5=17, so the number
+of effect parameter (for Data entry coarse) is 17.</font></blockquote>
+
+<hr WIDTH="100%">
+<br><b><font size=+2>Controllers settings window</font></b>
+<p>You can change the how much the controlles changes the sounds or you
+can disable/enable some controllers.
+<br><img SRC="images/ui11.png" NOSAVE height=156 width=413>
+<p>PanDpth -panning depth
+<br>ModWh - modullation wheel depth
+<br>BwDpth - Band width depth
+<br>FltQ - Filter Q (ressonance) depth
+<br>FltCut - Filter Cutoff frequency depth
+<br>Expr - enable/disable expression
+<br>Vol - enable/disable receiving volume controller
+<br>FMamp - enable/disable receiving Modulation Amplitude controller (76)
+<br>Sustain - enable/disable sustain pedal
+<br>PWheelB.Rng (cents) - Pitch Wheel Bend Range (cents; 100 cents=1 halftone)
+<p>Portamento - Portamento controls
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Rcv. - if the part
+receives portamento On/Off (65) controller
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - time - the duration
+of the portamento
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - thresh - the threshold
+of the portamento. It represents the minimum or the maximum of halftones
+(or hundried cents) in order to do the portamento. The difference is computed
+between the last note and current note. The threshold refers to the frequencies
+and not to MIDI notes (you should consider this if you use microtonal scales)..
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - th.type - the threshold
+type. Checked means that the portamento is done only the difference of
+frequencies is above the threshold ("thresh"); not checked is for below
+the threshold.
+<br>Resonance - CFdpth - resonance center controller depth
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- BWdpth - resonance bandwidth controller depth
+<p>
+<hr WIDTH="100%">
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+</body>
+</html>

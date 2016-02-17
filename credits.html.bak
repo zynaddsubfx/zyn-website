@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+  <head>
+    <meta http-equiv="content-type" content=
+    "text/html; charset=us-ascii">
+    <link type="text/css" href="main.css" rel="stylesheet">
+    <title>ZynAddSubFX</title>
+  </head>
+  <body><center>
+    <div align="left" id="content">
+      <center>
+        <table id="header">
+          <tr><td>
+              <img src="images/logo.jpg" height="147" width="756" alt="ZynAddSubFX">
+          </td></tr>
+          <tr><td id="nav">
+              <a href="/">About</a> |
+              <a href="/news.html">News</a> |
+              <a href="/download.html">Download</a> |
+              <a href="/support.html">Support</a> |
+              <a href="/contribute.html">How to contribute</a> |
+              <a href="/development.html">Developer Resources</a> |
+	      <a href="http://sourceforge.net/projects/zynaddsubfx/">Project page</a> |
+              <a href="/credits.html">Credits</a></td></tr>
+        </table>
+      </center>
+
+
+    <h2>Nasca Octavian Paul:</h2>
+    <p>I am 29 (Jun. 2010) years old and I live in Romania. I am  interested in computers, music, etc. I graduated the
+    studies at Mathematics-Computer Science university from my town,
+    Tg. Mures.</p>
+    <p>I started to program in 1992. About that year I
+    started to be interested in music. The problem was that the
+    keyboard that I wanted was much too expensive for me. This made me
+    start studding how I can use the computer as synthesizer.
+    So, I had written my first synthesizer. I won the third prize for
+    it at programming national contest for it. After that, I have
+    written a new synth "Paul's Sound's Designer", and put it on the
+    net at <a href=
+    "http://www.harmony-central.com/Software/Dos/">www.harmony-central.com</a>
+    . The sounds made by it were very good; many ideas from it I used
+    in ZynAddSubFX as ADsynth. After that I started to write
+    another synth based on filtering harmonics from white noise, but
+    I didn't finished it. Anyway the ideas from it I called SUBsynth
+    and I implemented in ZynAddSubFX. All these programs were written
+    for DOS, because the computer I had was an 486.</p>
+    <p>In March 2002 I started to write ZynAddSubFX.
+    I hope that this program will help many people to make music.</p>
+
+    <p>Website:&nbsp; <a href="http://www.paulnasca.com">http://www.paulnasca.com</a><br></p>
+    
+    <h2>Mark McCurry:</h2>
+    <p>I am a GNU/Linux user from the USA that likes to program in my free time.
+    After I found ZynAddSubFX, it seemed like a good and very interesting
+    program that could be updated.
+    In January 2009 I began creating patches for some issues with the CVS head.
+    Later in Feburary I joined the project.
+    From then forward I have tried to help improve ZynAddSubFX.
+    I am currently trying to document, test, simplify, and expand the internal
+    of this softsynth.</p>
+    
+    <p>For those who had seen this website previously I am responsible for the
+    alterations to it.</p>
+    <!--For those who are curious the page is still around at oldindex.html-->
+    <p>e_mail:&nbsp; <b><u>fundament<!--Ha a comment, take that HTML parsers-->al AT users D0t sourceforge D0t net</u></b><br></p>
+
+    <h2>Harald Hvaal:</h2>
+    <p>Hello, I'm a Norwegian linux user sharing the hobbies of the two people
+	above. I'm the most recent newcomer to zynaddsubfx development. I joined this
+	project a little while after discovering ZynAddSubFX; my first impression was
+	that it's the greatest synth around, but didn't quite do it right with the user
+	interface. For this reason I decided to pitch in with my experience in Qt
+	development, and I am currently working on a whole new user interface for zyn
+	that works nicely with the other new yet-to-be-announced features coming.</p>
+
+    <p>e_mail:&nbsp; <b><u>harald.hva<!--Ha a comment, take that HTML parsers-->al AT gmail D0t com</u></b><br></p>
+    
+    
+    <h2>Other Contributers</h2>
+    <p>
+    <ol>
+    <li>Robert Bristow-Johnson:<ul>
+    <li>Most of the analog filters are
+    implementations of the formulas written in his
+    <a href="http://www.musicdsp.org/files/Audio-EQ-Cookbook.txt">
+      "Cookbook formulae for audio EQ biquad filter coefficients"</a></li></ul></li>
+
+    <li>Jezar at Dreampoint:
+      <ul><li>For the Freeverb that was written and published in
+          public domain, which was used in the tunings of
+          Freeverb within the Reverb effect.</li></ul></li>
+    <li>Gerald Folcher
+      <ul><li>legato mode</li>
+          <li>mono note improvements</li>
+    </ul></li>
+    <li>Lars Luthman
+      <ul><li>zombie fix</li>
+          <li>JACK MIDI</li>
+          <li>LASH support</li>
+    </ul></li>
+    <li>Daniel Clemente
+      <ul><li>fixing X11 repeated key press bug</li></ul></li>
+    <li>Emmanuel Saracco
+      <ul><li>JACK output fix</li></ul></li>
+    <li>Achim Settelmeier
+      <ul><li>QUERTZ keyboard layout for virtual keyboard</li></ul></li>
+    <li>Jérémie Andréi
+      <ul><li>AZERTY keyboard layout</li>
+          <li>Array index fix       </li>
+          <li>OSS failsafe          </li></ul></li>
+    <li>Alexis Ballier
+      <ul><li>const char* <-> string mismatch</li>
+          <li>NULLMidi prototype fix</li></ul></li>
+    <li>Tobias Doerffel
+      <ul><li>static-instance variables fix</li>
+          <li>missing include fix</li></ul></li>
+    <li>James Morris <ul><li>Memory leaks in FLTK GUI</li></ul></li>
+    <li>Stephen Parry <ul><li>DSSI rebuild</li></ul></li>
+    <li>Ryan Billing <ul><li>APhaser</li></ul></li>
+    <li>Hans Petter Selasky
+    <ul><li>OSS Midi</li>
+    <li>FreeBSD support</li>
+    <li>Bank UI bug patch</li></ul></li>
+    <li>Damien Goutte-Gattat<ul><li>Bank select midi support</li></ul></li>
+    <li>Lieven Moors<ul><li>Spike/Circle waveform</li></ul></li>
+    <li>Olaf Schulz<ul><li>MIDI Aftertouch Support</li></ul></li>
+    <li>Jonathan Liles<ul><li>Non Session Support</li>
+                          <li>NTK Support</li></ul></li>
+    <li>Johannes Lorenz<ul><li>Effect Documentation</li></ul></li>
+    <li>Ilario Glasgo <ul> <li>Italian Translation of docs</li></ul></li>
+    </ol>
+
+
+    <a href="http://sourceforge.net"><img src=
+      "http://sourceforge.net/sflogo.php?group_id=62934&amp;type=13"
+    alt="SourceForge Logo" border="0" height="31" width="88"></a>
+  </div></center>
+  </body>
+</html>
+

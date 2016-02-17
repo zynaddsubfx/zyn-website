@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+  <head>
+    <meta http-equiv="content-type" content=
+    "text/html; charset=us-ascii">
+    <link type="text/css" href="main.css" rel="stylesheet">
+    <title>ZynAddSubFX</title>
+  </head>
+
+  <body><center>
+  <div align="left" id="content">
+    <center>
+      <table id="header">
+        <tr><td>
+            <img src="images/logo.jpg" height="147" width=
+            "756" alt="ZynAddSubFX"></td></tr>
+        <tr><td id="nav">
+            <a href="/">About</a> |
+            <a href="/news.html">News</a> |
+            <a href="/download.html">Download</a> |
+            <a href="/support.html">Support</a> |
+            <a href="/contribute.html">How to contribute</a> |
+            <a href="/development.html">Developer Resources</a> |
+	    <a href="http://sourceforge.net/projects/zynaddsubfx/">Project page</a> |
+            <a href="/credits.html">Credits</a></td></tr>
+      </table>
+    </center>
+  <h2>Introduction</h2>
+  <p>The purpose of this document is a work in progress to decide upon coding
+  standards for the ZynAddSubFX codebase. <b>(This information is pretty stale and needs to be updated.
+  If you're interested in helping update the website content please stop by the irc channel ##zynaddsubfx on freenode)</b></p>
+  <h2>The Code</h2>
+  <p>For quickly checking out the current git repository:</p>
+  <p><i>git clone git://git.code.sf.net/p/zynaddsubfx/code zynaddsubfx</i></p>
+  <p>The master branch contains what will become the next release. </p>
+  <p>You can also <a href="http://zynaddsubfx.git.sourceforge.net/git/gitweb.cgi?p=zynaddsubfx">browse the code directly with gitweb</a></p>
+  <h2>The Tools</h2>
+  <p>The tools that are currently standard with ZynAddSubFX:
+    <ul>
+      <li>FLTK 1.x.x - For the GUI</li>
+      <li>Asciidoc - For user level documentation</li>
+      <li>Doxygen - For code level documentation</li>
+      <li>mxml - For saving the data for instruments/settings</li>
+      <li>FFTW - For the needed mathematics that cmath does not provide</li>
+    </ul>
+  </p>
+  <h2><a href="coding-conventions.html">The Style</a></h2>
+  <p>In order to keep the code organized and more tidy a uniform style is
+  declared:</p>
+  <h3>Whitespace</h3>
+  <p>The standing convention is four spaces per indentation and NO TABs</p>
+  <h3>Doxygen</h3>
+  <p>Doxygen should be used within the header files to document the classes
+    in ZynAddSubFX.  The Java style of comments will be used for documenting
+    classes. ie. :</p>
+  <code>
+    /**<br/>
+    &nbsp;*The Function that creates all of those bars<br/>
+    &nbsp;*<br/>
+    &nbsp;*This function creates the bars used by the something<br/>
+    &nbsp;*objects after processing them with the given data.<br/>
+    &nbsp;*@param name the name of the resulting bar<br/>
+    &nbsp;*@param time the time before bar's expiration<br/>
+    &nbsp;*@return An Iron bar with the given name and time<br/>
+    &nbsp;*/<br/>
+    Bar getBar(const string &amp;name,const timeClass &amp;time);
+  </code>
+  <p>When the documentation is updated, it should be made available online
+  at <a href="dox">this</a> location using the Doxyfile provided in the cvs
+  checkout</p>
+  <h3>const</h3>
+  <p>const can be used to clarify if a variable should remain constant for the
+  life of an object. const can also be used in conjunction with `&amp;' to
+  avoid unnecessary copying in function</p>
+  <h3>Ordering</h3>
+  <p>Methods should be defined in the same order that they are defined in the
+  header files.</p>
+
+  <a href="http://sourceforge.net"><img src=
+  "http://sourceforge.net/sflogo.php?group_id=62934&amp;type=13"
+  alt="SourceForge Logo" border="0" height="31" width=
+  "88"></a>
+  </div></center>
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72903778-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+</body>
+</html>
+

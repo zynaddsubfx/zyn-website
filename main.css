@@ -1,0 +1,30 @@
+
+#content {
+  background-color: #FFFFFF;
+  width:80%;
+  text-align: left;
+  padding:20px;
+  border-style: solid;
+}
+#header {
+  border-style: solid;
+}
+h2{
+  color:#17488A;
+}
+p{
+text-indent: 20px;
+}
+#nav{
+text-align: center; 
+background-color: #DFDFDF;
+}
+body{
+background-color: #5591A0;
+text-align: center;
+color:#000000;
+}
+
+a:link {color: #0000EE;}
+a:visited {color: #551A8B;}
+a:active {color: #EE0000;}

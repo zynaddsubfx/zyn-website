@@ -1,0 +1,59 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.79 [en] (X11; U; Linux 2.4.7-10 i686) [Netscape]">
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EE" vlink="#551A8B" alink="#FF0000">
+<b><font size=+3><a href="index.html">Index Page</a></font></b>
+<center>
+<p><font size=+3><b>ZynAddSubFX</b> components</font></center>
+
+<p><font color="#990000"><font size=+2><b>Important:</b> All indexes of
+Midi Channels, Parts, Effects starts from 0, so, for example, the first
+Part is 0.</font></font>
+<p>Below is a picture that represents the&nbsp; components of ZynAddSubFX
+synthesizer.
+<br><img SRC="images/diagram1_small.jpg" NOSAVE> <a href="images/diagram1.png">click
+here for bigger version</a>
+<p><font size=+1>ZynAddSubFX components:</font>
+<blockquote>1) Parts - they receive the note messages from Midi Channels.
+You may assign a part to any channel. A part can store only one instrument.
+"Add.S" represents ADsynth and "Sub.S" is SUBsynth.
+<br>2) Insertion Effect - theese effect applies only to one part; you can
+any number of insertion effects for one part, but the number of theese
+cannot be bigger NUM_INS_EFX.
+<br>3) Part Mixer - it mixes all parts
+<br>4) System Effects - They applies to all parts, you can set how much
+signal is routed through a system effect.
+<br>5) Master mixer - It mixes all outputs of Parts Mixer and System Effects.</blockquote>
+
+<hr WIDTH="100%">
+<center><font size=+3><b>ZynAddSubFX</b> components for a <b>single note</b></font></center>
+
+<p>&nbsp;&nbsp;&nbsp; The ideea of this synthesis model is from another
+synthesizer wrote by me years ago, relased on the Internet and named "Paul's
+Sound Designer". Of course this model is more advanced than the "Paul's
+Sound Designer" (adding SUBsynth, more LFO's/Envelopes, etc.) but the ideea
+is the same.
+<br>&nbsp;&nbsp;&nbsp; The picture represents the synthesizer module component.
+The continous lines are the signal routing, and the dotted lines are frequency
+controlling signals (they controls the frequency of something). The dashed
+lines controls the bandwidths of bandpass filters. "Env" are the envelopes,
+"LFO" the Low Frequency Oscillators, "BPF" are band pass filters, "bw"
+are the band width of BPF.
+<br>If you use instrument kits, the "note out" represents the kit's item
+out.
+<p><img SRC="images/diagram3_small.jpg" NOSAVE> <a href="images/diagram3.png">click
+here for bigger version</a>
+<br>&nbsp;
+<p><img SRC="images/diagram2_small.jpg" NOSAVE> <a href="images/diagram2.png">click
+here for bigger version</a>
+<br>&nbsp;
+<br>&nbsp;
+<p><b><font size=+1><a href="diagrams.tar.bz2">Click here to download the
+source code of the diagrams for Dia 0.90</a></font></b>
+<br>&nbsp;
+<br>&nbsp;
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>ZynAddSubFX LFO</title>
+</head>
+<body>
+<h1 style="text-align: center;">Envelopes</h1>
+<br>
+<h2>Introduction</h2>
+&nbsp;&nbsp;&nbsp; Envelopes controls how the amplitude, the frequency
+or the filter changes over time.<br>
+<h3 style="margin-left: 40px;">Amplitude Envelopes</h3>
+<div style="margin-left: 40px;">Theese envelopes controls the amplitude
+of the sound. In ZynAddSubFX, amplitude envelopes can be linear or
+logarithmic. In the next image, it is shown the differences between
+theese envelopes.<br>
+&nbsp;&nbsp;&nbsp; <img alt="Amplitude envelopes" src="envelope1.png"
+ style="width: 386px; height: 299px;"><br>
+</div>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; The amplitude envelope is divided into:<br>
+<ul>
+  <li><span style="font-weight: bold;">Attack</span> - begins at the
+Note On. The volume starts from 0 to the maximum. In ZynAddSubFX, the
+attack is always linear.<br>
+  </li>
+  <li><span style="font-weight: bold;">Decay</span> - the volume drops
+from the maximum value to a level called "Sustain level"<br>
+  </li>
+  <li><span style="font-weight: bold;">Sustain</span> - the volume
+remains constant until the key is depressed (Note Off). After this, the
+last stage take place.<br>
+  </li>
+  <li><span style="font-weight: bold;">Release</span> - the volume
+drops to zero<br>
+  </li>
+</ul>
+<h4 style="margin-left: 40px;"><br>
+</h4>
+<h3 style="margin-left: 40px;">Frequency Envelopes</h3>
+<div style="margin-left: 40px;">Theese envelopes controls the frequency
+(more exactely, the pitch) of the oscillators. The folowing picture
+draws the stages of theese envelopes.<br>
+&nbsp;&nbsp;&nbsp; <img alt="Frequency envelopes" src="envelope2.png"
+ style="width: 394px; height: 105px;"><br>
+The dotted line represents the real pitch of the sound without the
+envelope.<br>
+The frequency envelopes are divided into 3 stages:<br>
+</div>
+<ul>
+  <li><span style="font-weight: bold;">Attack</span> - begins at the
+Note On. The frequency starts from a certain value and glides to the
+real frequency of the note.<br>
+  </li>
+  <li><span style="font-weight: bold;">Sustain</span> - the frequency
+is the same on over the sustain period<br>
+  </li>
+  <li><span style="font-weight: bold;">Release</span> - this stage
+begins on Note Off and glides the frequency of the note to a certain
+value&nbsp;<span style="font-weight: bold;"></span></li>
+  <span style="font-weight: bold;"></span><br>
+</ul>
+<h3 style="margin-left: 40px;">Filter Envelopes</h3>
+<div style="margin-left: 40px;"></div>
+<div style="margin-left: 40px;">Theese envelopes controls the cuttoff
+frequency of the filters and are divided into:<br>
+&nbsp;&nbsp;&nbsp; <img alt="Filter envelopes" src="envelope3.png"
+ style="width: 388px; height: 110px;"><br>
+<ul>
+  <li><span style="font-weight: bold;">Attack</span> - begins at the
+Note On. The cuttof frequency starts from a certain value and glides to
+another value<br>
+  </li>
+  <li><span style="font-weight: bold;">Decay</span> - the cuttof
+frequency continues to glide to the real cuttof frequency value of the
+filter (dotted line)<br>
+  </li>
+  <li><span style="font-weight: bold;">Sustain</span> - the cuttof
+frequency is the same on over the sustain period (dotted line)<br>
+  </li>
+  <li><span style="font-weight: bold;">Release</span> - this stage
+begins on Note Off and glides the filter cuttof frequency of the note
+to a certain value&nbsp;</li>
+</ul>
+<br>
+</div>
+<h3>Freemode envelopes</h3>
+&nbsp;&nbsp;&nbsp; For all envelope there is a mode that allows the
+user to set an arbitrary number of stages and control points. This mode
+is called <span style="font-style: italic;">Freemode<span
+ style="font-style: italic;">.<span style="font-style: italic;"><br>
+&nbsp;&nbsp;&nbsp; <img alt="Free mode envelopes" src="envelope4.png"
+ style="width: 382px; height: 101px; font-style: italic;"><br
+ style="font-style: italic;">
+</span></span></span>&nbsp;&nbsp;&nbsp; Only stage that always remains
+defined is the Sustain, where the envelopes freezes until a Note Off
+event.<span style="font-style: italic;"><span
+ style="font-style: italic;"><span style="font-style: italic;"><br>
+</span></span></span>
+<div style="margin-left: 40px;">
+<ul>
+  <span style="font-weight: bold;"></span>
+</ul>
+</div>
+<h2>User interface</h2>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; All the envelope types has some common
+controls:<br>
+<ul>
+  <li><span style="font-family: monospace;"><span
+ style="font-weight: bold;">E</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- Shows a window that you can view the real envelope shape or convert
+to free mode to edit it</span></li>
+  <li><span style="font-family: monospace;"><span
+ style="font-weight: bold;">Stretch</span> - How the envelope is
+stretched according the note. On the higher notes the envelopes are
+shorter than lower notes. In the leftmost value, the stretch is zero.
+The rightmost use a stretch of 200%; this means that the envelope is
+stretched about 4 times/octave.</span></li>
+  <li><span style="font-family: monospace;"><span
+ style="font-weight: bold;">frcR</span>&nbsp;&nbsp;&nbsp; - Forced
+release. This means that if this option is turned on, the release will
+go to the final value, even if the sustain stage is not reached.
+Usually, this must be set.</span></li>
+</ul>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; The parameters for Amplitude Envelopes
+for ZynAddSubFX are:<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <img alt="Amplitude envelope"
+ src="uienvelope1.jpg" style="width: 302px; height: 101px;"><br>
+<ul style="font-family: monospace;">
+  <li><span style="font-weight: bold;">A.dt</span>&nbsp; - Attack
+duration</li>
+  <li><span style="font-weight: bold;">D.dt</span>&nbsp; - Decay
+duration</li>
+  <li><span style="font-weight: bold;">S.Val</span> - Sustain value</li>
+  <li><span style="font-weight: bold;">R.dt</span>&nbsp; - Release time</li>
+  <li><span style="font-weight: bold;">L</span>&nbsp;&nbsp;&nbsp;&nbsp;
+- If this option is set, the envelope is linear, otherwise, it will be
+logarithmic<br>
+  </li>
+</ul>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; For Frequency Envelopes the interface
+has the folowing parameters:<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; <img alt="Frequency envelopes"
+ src="uienvelope2.jpg" style="width: 299px; height: 96px;"><br>
+<ul style="font-family: monospace;">
+  <li><span style="font-weight: bold;">A.val</span> - Attack value<br>
+    <span style="font-weight: bold;"></span></li>
+  <li><span style="font-weight: bold;">A.dt</span>&nbsp; - Attack
+duration</li>
+  <li><span style="font-weight: bold;">R.dt</span>&nbsp; - Release time</li>
+  <li><span style="font-weight: bold;"></span><span
+ style="font-weight: bold;">R.val</span> - Release value<br>
+  </li>
+</ul>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; Filter Envelopes has the parameters:<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; <img alt="Filter Envelopes"
+ src="uienvelope3.jpg" style="width: 408px; height: 101px;"><br>
+<ul style="font-family: monospace;">
+  <li><span style="font-weight: bold;">A.val</span> - Attack value</li>
+  <li><span style="font-weight: bold;">A.dt</span>&nbsp; - Attack
+duration</li>
+  <li><span style="font-weight: bold;">D.val</span><span
+ style="font-style: italic;"> </span>- Decay value</li>
+  <li><span style="font-weight: bold;">D.dt&nbsp;</span> - Decay time<br>
+  </li>
+  <li><span style="font-weight: bold;">R.dt</span>&nbsp; - Release time</li>
+  <li><span style="font-weight: bold;"></span><span
+ style="font-weight: bold;">R.val</span> - Release value<br>
+  </li>
+</ul>
+<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; The Freemode envelopes has a separate
+window to set the parameters and controls:<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; <img alt="Freemode envelopes"
+ src="uienvelope0.jpg" style="width: 583px; height: 208px;"><br>
+&nbsp; &nbsp;&nbsp; <br>
+<ul style="font-family: monospace;">
+  <li><span style="font-weight: bold;">Control points</span> - You can
+move the points using the mouse.In the right on the windows, it is
+shown the total duration of the envelope. If the mouse button will be
+pressed on a control point, it will be shown the duration of the stage
+where the point is. <br>
+    <span style="font-weight: bold;"></span></li>
+  <li><span style="font-weight: bold;">FreeMode</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- this button activates or deactivates the freemode mode. <br>
+  </li>
+  <li><span style="font-weight: bold;">Add Point</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- Adds the point next to the current selected point. You can select a
+point by clicking on it.<br>
+  </li>
+  <li><span style="font-weight: bold;">Delete point</span>&nbsp;&nbsp;
+- Removes the point from the envelope.</li>
+  <li><span style="font-weight: bold;">Sust.</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- Set the sustain point. It is shown using the yellow line.</li>
+  <li><span style="font-weight: bold;">Str.</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- Envelope stretch</li>
+</ul>
+<br>
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <br>
+<br>
+<br>
+</body>
+</html>

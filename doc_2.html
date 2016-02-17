@@ -1,0 +1,717 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.79 [en] (X11; U; Linux 2.4.7-10 i686) [Netscape]">
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EE" vlink="#551A8B" alink="#FF0000">
+<b><font size=+3><a href="index.html">Index Page</a></font></b>
+<center>
+<p><font size=+3><b>ZynAddSubFX</b> user interface and more..</font></center>
+
+<p>The synthesizer has three types of parameters:
+<blockquote>- M<b>aster settings/parameters&nbsp;</b> contains all parameters
+(including effects, instruments)
+<br>- <b>Instrument parameters&nbsp;</b> contains ADnote/SUBnote parameters
+for a part
+<br>- <b>Scale settings</b> contains the settings of scales(yep! it is
+microtonal synth) and few other parameters related to tunings</blockquote>
+
+<p><br>&nbsp;&nbsp;&nbsp; <a href="#w0a">0a) Envelopes</a>
+<br>&nbsp;&nbsp;&nbsp; <a href="#w0b">0b) Filters (Formant)</a>
+<br>&nbsp;&nbsp;&nbsp; <a href="#w1">1) The Main Window</a>
+<br>&nbsp;&nbsp;&nbsp; <a href="#w2">2) The Scale Settings</a>
+<br>&nbsp;&nbsp;&nbsp; <a href="#w3">3) ADsynth/ADnote settings</a>
+<br>&nbsp;&nbsp;&nbsp; <a href="#w4">4) ADsynth voice parameters</a>
+<br>&nbsp;&nbsp;&nbsp; <a href="#w5">5) ADsynth Oscillator Editor</a>
+<br>&nbsp;&nbsp;&nbsp; <a href="#w6">6) Voice List</a>
+<br>&nbsp;&nbsp;&nbsp; <a href="#w7">7) SUBsynth(SUBnote) Parameters</a>
+<br>&nbsp;&nbsp;&nbsp; <a href="#w8">8) Effects</a>
+<br>&nbsp;&nbsp;&nbsp; <a href="#w9">9) Resonance</a>
+<br>&nbsp;&nbsp;&nbsp; <a href="#w10">10) Instrument banks</a>
+<br>&nbsp;&nbsp;&nbsp; <a href="#w11">11) Virtual keyboard</a>
+<br>&nbsp;&nbsp;&nbsp; <a href="#w12">12) Configuration window (settings)</a>
+<br>&nbsp;&nbsp;&nbsp; <a href="#w13">13) Instrument kit window</a>
+<br>&nbsp;&nbsp;&nbsp; <a href="#w14">14) Panel window(mixer)</a>
+<br>&nbsp;
+<br>&nbsp;
+<p>&nbsp;&nbsp;&nbsp; <a href="#extprg">External programs</a>
+<br>&nbsp;
+<p><a NAME="w0a"></a>0a) Envelope window
+<br>The envelopes are parts that controls a parameter(frequencies) from
+the sounds.
+<br><img SRC="images/uip00.png" NOSAVE height=206 width=583>
+<blockquote>- <b>Freemode </b>- Enable the Envelope's Free Mode. If the
+envelope has the freemode enabled, it alows you to edit directly the envelope's
+graph. Select a point from the graph and move it. Notice that ONLY THE
+LINE BEFORE THE ENVELOPE'S CURRENTLY EDITED POINT changes it's duration.
+If a point is being dragged, the text from right, shows you the duration
+of the line before it. Otherwise, the text shows the envelope's total duration.
+<br>If the envelope hasn't the freemode enabled, it doesn't allow to move
+the points; the envelope window is usefull to see what happens if you chant
+the ADSR settings.
+<br>- <b>Add Point </b>- add a point after the current point
+<br>- <b>Delete Point</b> - delete the current point
+<br>- <b>Sust</b> - set the sustain point. If the point is 0, the sustain
+is disabled
+<br>- <b>Str</b>.- Envelope Stretch
+<br>- <b>L</b> - if the envelope is Amplitude Envelope, it makes the envelope
+Linear, otherwise, it's logarithmic (dB)
+<br>- <b>frcR</b> - forces the release. When the key is released, the envelope's
+position jumps directly to the point after the release point. If the release
+is disabled, on the key release,&nbsp; the evelope position jumps to the
+last point.</blockquote>
+
+<hr WIDTH="100%">
+<br><a NAME="w0b"></a>0b)Filter Window (formant)
+<p>&nbsp;&nbsp;&nbsp; This window let's you to change most of the formant
+filter's parameters.
+<br><img SRC="images/uip01.png" NOSAVE height=231 width=718>
+<blockquote>- <b>Num.Formants</b> - how many formants are used
+<br>- <b>Fr.Sl.</b> - formant slowness - this parameters prevents too fast
+morphing between vowels
+<br>- <b>Vw.Cl. </b>- wovel "clearness" - how much the vowels are kept
+"clear"; ie. how much the "mixed" vowels are avoided
+<br>- <b>C.f.</b> - the center frequency of the graph
+<br>- <b>Oct</b>.- how many octaves are in the graph
+<p>- Vowels parameters
+<blockquote>- <b>Vowel no</b> - the number of the current vowel
+<br>- <b>Formant</b> - the current formant
+<br>- <b>freq</b> - the frequency of the current formant
+<br>- <b>Q</b> - the Q (bandwidth) of the current formant
+<br>- <b>amp </b>- amplitude of the current formant</blockquote>
+- Sequence Parameters
+<br>The sequence represents what vowel is choosed to sound according to
+the input from the filter envelopes and LFOs.
+<blockquote>- <b>Seq Size</b> - how many vowels are in the sequence
+<br>- <b>S.Pos</b> - the curent position of the sequence
+<br>- <b>Vowel</b> - the vowel from the current position
+<br>- <b>Strtch</b> - how the sequence is stretch
+<br>- <b>Neg Input</b> - if the sequence is reversed</blockquote>
+</blockquote>
+
+<hr WIDTH="100%">
+<p><a NAME="w1"></a>1) The Main Window
+<br><img SRC="images/ui01.png" NOSAVE height=491 width=408>
+<br>&nbsp;
+<blockquote>- <b>Record </b>- Choose a file for recording to. After you'll
+choose a file, the "Rec" button will be activated, and you can press it
+to start recording. Press "Stop" button to stop recording and close the
+file or "Pause" to stop recording, but without closing the file (this allows
+you press again "Rec" button, to continue the recording). Please do not
+switch windows/tasks while recording, because you may ecounter audio dropouts.
+The file recorded is WAV file and the recording starts only when a midi
+note on message is received.
+<br>- <b>M.Vol</b> - Master Volume
+<br>- <b>Master Key Shift</b> - is the keyshift(transpose) that applies
+to all parts
+<br>- <b>F.Det</b> - global fine detune (-64..63 cents)
+<br>- <b>R.D. </b>- reset the global fine detune to 0
+<br>- <b>Panel window </b>- Shows the mixer panel window
+<br>- <b>Scales</b> - Scale Settings
+<br>- <b>Panic</b>! - stops imediately any sounds, including the effects
+<br>- <b>Vk </b>- shows the virtual keyboard
+<br>- <b>System Effects/ Insertion Effects</b> - Effects settings
+<br>- <b>Part</b> - show and set current part.
+<blockquote>- <b>Enabled</b> - This enable the part. If the Part is disabled
+it doesn't take the CPU time.
+<br>- <b>Volume</b> - Part Volume
+<br>- <b>Vel.Sns</b> and <b>Vel. Off</b>. - Velocity Sensing and Offset
+<br>- <b>PartFX</b> - Open the part's (instrument) own effects window
+<br>- <b>the name of the instrument</b>: - click left button to open the
+<a href="#w10">Bank
+window</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- click right button to change the name of the current instrument
+<br>- <b>KeyShift</b> - Keyshift of the part.
+<br>- <b>Chn.Rcv</b>. - From what Midi channel receives the midi messages
+<br>- <b>AllNotesOff</b> - turn all part's notes off
+<br>- <b>Note</b> <b>On</b> - if the part receives Note on messages. Please
+take attention that it is different than Enabled setting, because it takes
+CPU time, and the unfinished notes continues to play if you'll disable
+it.
+<br>- <b>ADsyn</b>/<b>SUBsyn</b> - activate or deactivate ADsynth/SUBsynth
+<br>- <b>ADs edit/SUBs edit</b> - edit ADsynth/SUBsynth parameters
+<br>- <b>Instr.kit items edit</b> - open the instrument's kit's items window
+(used for layered instruments/drum kits)
+<br>- <b>To Sys Efx.</b> set how much of the part output is routed to System
+effects
+<br>If you change tha current part, all part's instrument windows will
+be closed
+<br>- <b>Min.k</b> and <b>Max.k</b> controls the minimum/maximum NoteOn
+for the Part
+<br>-<b> m/R/M</b> - set the last presed note to the minimum(m)/maximum(M)
+or reset min/max defaults(R)
+<br>- <b>Poly</b> - set the mode (polyhonic/monophonic)
+<br>- <b>Portamento</b> - Enable the portamento (you can set its duration
+and other parameters by opening Controllers window)
+<br>- <b>K.lmt </b>- limit the number of keys that plays same time (first
+note priority), 0 is unlimited</blockquote>
+- The <b>VU-Meter</b>&nbsp; - click on it to reset it</blockquote>
+
+<hr WIDTH="100%">
+<br><a NAME="w2"></a>2) The Scale Settings
+<p><img SRC="images/ui02.png" NOSAVE height=478 width=413>
+<p>This controls the microtonal capabilities of the <b>ZynAddSubFX </b>and
+some other settings related to tunning<b>.</b>
+<blockquote><b>- Enable Microtonal</b> - if you'll disable this the synth
+will use Equal Temperament 12 notes/octave. Otherwise you can input any
+scale you desire.
+<br>- <b>"A" freq&nbsp;</b> - set the frequency of the "A" key. The standard
+is 440.0 Hz
+<br>- <b>"A" note</b> - set the midi note number of the "A" key
+<br>- <b>Invert keys<i> - </i></b>If you'll enable this, the keyboard will
+be turned upside-down. It was to cute ideea to not implement it.
+<br>- <b>Center</b> - set the center of inversion of keys. If the center
+is 60, the note 59 will become 61, 58 will become 62, 61 will become 59
+and so on.
+<br>- <b>Name</b> - the name of the scale
+<br>- <b>Comment</b> - Comments or description of the scale
+<br>- <b>Shift</b> - shift the scale. If the scale is tuned to A you can
+easily tune it to another key.
+<br>- <b>Tunnings -</b> here you can input your scale by entering all tunnings
+for one octave.
+<br>You can enter the tunnings in two ways:
+<blockquote>- as a the number of cents (1200 cents=1 octave) as a float
+number like "100.0", "123.234"
+<br>- as a proportion like "2/1" which represents one octave, "3/2" a perfect
+fifth, "5734/6561".
+<br>"2/1" is equal to "1200.0" cents.</blockquote>
+The last entry represents one octave. All other notes are deduced from
+theese settings.
+<p>- <b>Keyboard Mapping</b> - you can set the midi keyboard to scale degree
+mapping. This is used if the scale has more or less than 12 notes/octave.
+<blockquote>- You can enable the mapping by pressing "<b>ON</b>" chekbox
+<br>- The midi keys below "<b>First note</b>" and above "<b>Last note</b>"
+are ignored
+<br>- <b>Middle note</b> represents the note where formal octave starts
+<br>- <b>The input</b> - you enter the mappings here:
+<blockquote>- numbers, represent the order(degree) entered on Tunings Input
+(first is 0). This must be less than the number of notes/octave. If you
+want that a key to not to be mapped, you enter "x" instead of a number.</blockquote>
+</blockquote>
+- "<b>Import .SCL file</b>" and "<b>Import .kbm file</b>" imports <a href="http://www.xs4all.nl/~huygensf/scala">Scala</a>
+files. Scala is a powerful software for experimentation with musical tunings
+(just intonation scales, microtonal,...etc.). From it's home page you can
+download more than 2800 scales which you can import directly in ZynAddSubFX.</blockquote>
+
+<hr WIDTH="100%">
+<br><a NAME="w3"></a>3) ADsynth/ADnote settings
+<br>This is the most complex and most advanced/sophisticated part of the
+synthesizer.
+<br>&nbsp;
+<p>You can edit the parameters that's applies to all voices of ADsynth.
+<p><img SRC="images/ui03.png" NOSAVE height=431 width=543>
+<blockquote><b>Vol</b>. - is the volume of ADsynth
+<br><b>Pan</b>. - Panning, leftmost is random
+<br><b>V.Sns</b>. - Velocity Sensing
+<br><b>Stereo Enabled</b> - If it turned off all voices will have the panning
+disabled
+<p><b>P.Str.</b> - Punch effect strength
+<br><b>P.t.</b> - Punch effect duration (from 0.1 ms to 100 ms on A note-
+440Hz)
+<br><b>P.Stc.</b> - Punch effect stretch according to frequency. On lower
+notes the punch effect lasts longer.
+<br><b>P.Vel.</b> - Punch effect velocity sensing
+<p><b>CenterFreq</b>. - Filter Center Frequency
+<br><b>Category </b>- Filter category: Analog/Formant
+<br><b>Q</b> - is the ressonance or bandwidth. Some filter types ignores
+this.
+<br><b>St.</b> -&nbsp; how many additional times the filter will be applied
+(in order to do very steep rollof - eg. 48 dB/octave)
+<br><b>V.Sns.</b>A. - the amplitude of the velocity sensing
+<br><b>freq.tr </b>- filter frequency tracking
+<p><b>Detune</b>. - is the detune of all voices
+<br><b>C</b>.<b>detune</b> - is the coarse detune of all voices
+<br><b>Oct</b>. - Octave Shift
+<br><b>Type</b> - you can set how "Detune" and "C.detune" behaivour
+<p><b>Show Voice Parameters</b> - shows the parameters of current voice
+<br><b>Show Voice List</b> - shows a list of some important parameters
+of all voices
+<br><b>Close</b> - close the window</blockquote>
+
+<hr WIDTH="100%">
+<br><a NAME="w4"></a>4) ADsynth voice parameters
+<br><img SRC="images/ui04.png" NOSAVE height=586 width=773>
+<br>&nbsp;
+<blockquote><b>On</b> - turn voice On/Off
+<br><b>Delay</b> - delay before the voice starts
+<br><b>R.</b> - Enable/Disable the resonance to the voice
+<br><b>Vol</b> - Voice Volume
+<br><b>Minus</b> - if the voice's volume is negative
+<br><b>V.Sns</b>. - Velocity Sensing
+<br><b>Enable</b> - enable LFOs or envelopes
+<p><b>Bypass</b> <b>Global</b> <b>Filter</b> - If the voice signal bypasses
+the global filter
+<br><b>Category </b>- Filter category: Analog/Formant/SVF
+<br><b>CenterFreq</b> - filter center frequency
+<br><b>Q</b> - Ressonance or bandwidth
+<br><b>St.</b> -&nbsp; how many additional times the filter will be applied
+(in order to do very steep rollof - eg. 48 dB/octave)
+<br><b>freq.tr </b>- filter frequency tracking
+<p><b>Detune</b>. - is the detune of the voice
+<br><b>C.detune </b>- is the coarse detune of the voice
+<br><b>Oct</b>. - Octave Shift
+<br><b>Type</b> - you can set how "Detune" and "C.detune" behaivour; 0
+is for default (used in ADnote Global Parameters)
+<br><b>440Hz </b>- make the basefrequency fixed to 440Hz (you can adjust
+it with detune settings)
+<p><b>Phase</b> - Phase of the oscillator
+<br><b>Sound/Noise</b> choise - select the mode of the oscillator (Sound/White
+noise)
+<br><b>Ext. Oscil.</b> - Uses the oscillator of another voice. -1 is for
+internal oscillator.&nbsp; The parameters must be lower than the voice
+index, you can't use the oscillator from a voice with a bigger index (you
+can't use the oscillator of voice 8 for voice 4). This is very used because
+if you'll use many voices with same oscillator settings, you can use only
+one oscillator and put other voices to use this; if you'll change a parameter
+of the oscillator, all voices will update this.
+<p><b>Type</b>. - select the type of the modullator (Off, Morph, Ring Modullation,
+Phase Modullation,etc.)
+<br><b>Ext</b>. <b>Mod</b> - use another voice as modullator instead of
+internal voice's modullator. You can make a modullation "stack". The voice's
+modullator is disabled.
+<br><b>F.Damp</b> - how the modullator intensity is lowered according to
+lower/higher note frequencies.
+<br><b>Ext</b>. - Uses the modulator's oscillator of another voice. It
+behaves like "Ext. Oscil" except it works on modullator. Please notice
+the difference between this parameter and Ext. Mod.
+<p><b>Copy/Paste</b> - Copy/paste to/from the clipboard
+<br>&nbsp;</blockquote>
+
+<hr WIDTH="100%">
+<br><a NAME="w5"></a>5) ADsynth Oscillator Editor
+<p><img SRC="images/ui05.png" NOSAVE height=613 width=758>
+<p>This allow you to make unlimited number of oscillators.
+<blockquote><b>Mag. Type</b> - set how magnitudes from the user interface
+behaves (Linear/ -40dB/...)
+<br><b>rnd</b> - Set the randomness of the oscillator output. There are
+2 types of randomnesses, first is group randomness(the oscillator starts
+at random position) is from -64(max) to -1 (min) and each harmonic (the
+oscillator is phased distosioned) is from 1(min) to 63 (max).&nbsp; 0 is
+no randomness. You should use this parameter for making warm sounds like
+analogue synthesizers.
+<br><b>Base</b> <b>function</b> - Set what function use as base function.
+You can use any of base function as harmonics.
+<br><b>Par</b>. - change the parameter of the base function.
+<br><b>Use as base</b> - convert the oscillator ouput to a base function.
+If you'll change the Base function or it's parameter, you'll erase the
+converted base function.
+<br><b>Clr</b>. - clear the settings and make the oscil to be equal to
+base function. If this is cleared you can pus "Use as base" button to make
+multiple conversions to base functions.
+<br><b>W.sh</b>. - Wave shaping function that applies to oscillator. It
+has one parameter that fune tune the waveshaping function.
+<br><b>Filter</b> - Set the type of the harmonic filter
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - the knob in the
+right sets the filter parameter (frequency)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>preF </b>- set
+the order of doing the filter and waveshaper (unchecked to filtering after
+waveshaping, checked to waveshape after filtering)
+<br><b>Sp. Adj</b> - Adust the spectrum of the waveform
+<br><b>RMS normalize </b>- enables the RMS normalisation method (recomanded);
+this keeps the same loudeness regardless the harmonic content
+<p>Below are the hamonics and their phases. You can use them to add to
+oscillator harmonics that has the waveform of the base function. Increasing
+the number of harmonics has vitually no effect on CPU usage.
+<br>Right click to set a harmonic/phase to a the default value.
+<br><b>Clear</b> - clears the harmonics settings.</blockquote>
+
+<hr WIDTH="100%">
+<br><a NAME="w6"></a>6) Voice List
+<p><img SRC="images/ui06.png" NOSAVE height=288 width=658>
+<p>With this you can set most important parameters of the voices.
+<blockquote><b>Vol</b>. - set the Volume of the voice
+<br><b>Pan</b> - Panning
+<br><b>Detune</b> - Fine detune of voices
+<br><b>Vib. Depth</b> - the depth of Frequency LFO. It is very used because
+with the detune settings you can make very good sounding instruments.
+<br><b>R.</b> - enable/disable the resonance effect to a voice</blockquote>
+
+<p><br>
+<hr WIDTH="100%">
+<br><a NAME="w7"></a>7) SUBsynth(SUBnote) Parameters
+<p><img SRC="images/ui07.png" NOSAVE height=418 width=743>
+<br>&nbsp;
+<blockquote><b>Vol</b>. - The volume of SUBsynth
+<br><b>Pan</b>. - Panning
+<br><b>V</b>.<b>Sns</b>. - Velocity Sensing
+<p><b>Band</b> <b>Width</b> - the bandwidth of each harmonic
+<br><b>B</b>.<b>WidthScale</b> - how the bandwidth of each harmonic is
+increased according to the frequency. The default (0) increase the bandwidth
+lineary acorrding to the frequency.
+<p><b>Detune</b>. - is the fine detune
+<br><b>Category </b>- Filter category: Analog/Formant/SVF
+<br><b>C</b>.<b>detune</b> - is the coarse detune
+<br><b>Oct</b>. - Octave Shift
+<br><b>Type</b> - you can set how "Detune" and "C.detune" behaivour
+<br><b>440Hz </b>- make the basefrequency fixed to 440Hz (you can adjust
+it with detune settings)
+<p>The harmonics settings controls the harmonic intensities/relative bandwidth.
+Up is to increase the relative bandwidth.
+<br>Please notice that if you increase the number of harmonics, the CPU
+usage increases. Right click to set the parameters to default values.
+<p><b>Stereo</b> - make the instrument stereo. The CPU usage goes up about
+2 times.
+<p><b>Filter</b> <b>stages</b> - How many times apply the filter to white
+noise. This parameter affect the CPU usage.
+<br><b>freq.tr </b>- filter frequency tracking
+<br><b>Mag</b>. Type - What represents the magnitudes settings (Lineat/dBs)
+<br><b>Start</b> - How to start the filters.
+<br><b>Clear</b> - Clear the hermonics settings</blockquote>
+
+<hr WIDTH="100%">
+<br><a NAME="w8"></a>8) Effects
+<br>&nbsp;&nbsp;&nbsp;&nbsp; There are 2 types of effects: system effects
+and insertions effects. The system effects applies to all parts and allows
+to set the amount of effect that applies on each parts. Also it is possible
+to send the system effect's output to other system effect. In the user
+interface this is shown as "source->destination". eg. "0->1" means how
+much of the system effect 0 is sent to system effect 1.
+<br><img SRC="images/ui12.png" NOSAVE height=276 width=128>
+<p>The insertion effects applies to one part or to master out. You may
+use more than one insertion effects for one part or master out. If you'll
+do so the effect with smaller indexes will apply first(eg. first will be
+applied the insertion effect no.0, than no.1, ...). If the part selected
+for insertion effect is "-1" than, the effect will be disabled; if the
+part will be "-2" the effect will be applied to Master Out.
+<br><img SRC="images/ui08.png" NOSAVE height=672 width=379>
+<p>Effects parameters:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>Vol</b> - effect volume
+(how much of the effect is sent to audio output)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>D/W </b>- Dry/Wet&nbsp;
+mix. "Dry" means unprocessed signal and "wet" means processed signal.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>Pan</b> - effect panning
+<p><b><font size=+1>Reverb</font></b>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Time - </b>Duration
+of late reverb
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>I.del</b> - Initial
+delay
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>I.delfb&nbsp;</b> -
+Initial delay feedback (not recomanded to use to low initial delays)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>LPF, HPF </b>- LowPass
+and HighPass filters
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>Damp </b>- how high
+frequencies are damped during the reverberation
+<p><b><font size=+1>Echo</font></b>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Delay </b>- The delay
+of echo
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>LRdl. -</b> The delay
+between left/right channels
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>LRc.&nbsp;</b> - the
+"crossing" between left/right channels
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>Fb. - </b>feedback
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>Damp </b>- how high
+frequencies are damped
+<p><b><font size=+1>Chorus</font></b>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Freq.</b> - LFO frequency
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>Rnd</b>. - LFO randomness
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>LFO</b> <b>type</b>
+- set the LFO shape
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>St.df.</b> - the phase
+difference between LFO for left/right channels
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>Dpth </b>- LFO depth
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>Delay</b> - delay for
+chorus, if you'll use low delays and LFO depths, will result a <b>flange</b>
+effect
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>Fb. </b>- Feedback
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>L/R</b> - how the left/right
+channels are routed to output, leftmost=left to left and right to right,
+middle=left+right to mono, and rightmost=left to right, and right to left
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>Substract</b> - the
+output is inversed
+<p><b><font size=+1>Phaser</font></b>
+<br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Freq.</b> - LFO frequency
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>Rnd</b>. - LFO randomness
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>LFO</b> <b>type</b>
+- set the LFO shape
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>St.df.</b> - the phase
+difference between LFO for left/right channels
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>Dpth </b>- LFO depth
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>Stages</b> - how many
+times the phase is shifted
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>Fb. </b>- Feedback
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>L/R</b> - how the left/right
+channels are routed to output, leftmost=left to left and right to right,
+middle=left+right to mono, and rightmost=left to right, and right to left
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>Substract</b> - the
+output is inversed
+<p><b><font size=+1>AlienWah</font></b>
+<br>&nbsp;&nbsp;&nbsp; AlienWah is a nice effect done by me. It ressembles
+a bit with vocal morpher or wahwah, but is more strange. That's why I called
+"alienwah". The effect is a feedback delay with complex numbers.
+<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Freq.</b> - LFO frequency
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>Rnd</b>. - LFO randomness
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>LFO</b> <b>type</b>
+- set the LFO shape
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>St.df.</b> - the phase
+difference between LFO for left/right channels
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>Dpth </b>- LFO depth
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>Delay</b> - how big
+is the delay before the feedback.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>Fb. </b>- Feedback
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>L/R</b> - how the left/right
+channels are routed to output, leftmost=left to left and right to right,
+middle=left+right to mono, and rightmost=left to right, and right to left
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>Substract</b> - the
+output is inversed
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>Phase</b> - the phase
+of alienwah
+<p><b><font size=+1>Distorsion</font></b>
+<br>&nbsp;&nbsp;&nbsp;&nbsp; <b>- Drive</b> - set the amount of distorsion
+<br>&nbsp;&nbsp;&nbsp;&nbsp; <b>- Level</b> - amplify or reduces the signal
+after distorsion
+<br>&nbsp;&nbsp;&nbsp;&nbsp; <b>- Type </b>- sets what function does the
+distorsion (like arctangent, sine)
+<br>&nbsp;&nbsp;&nbsp;&nbsp; <b>- Neg. </b>- negates the amplitude (invert
+the signal)
+<br>&nbsp;&nbsp;&nbsp;&nbsp; <b>- LPF</b> - Low Pass Filter
+<br>&nbsp;&nbsp;&nbsp;&nbsp; <b>- HPF</b> - High Pass Filter
+<br>&nbsp;&nbsp;&nbsp;&nbsp; <b>- St.</b> - sets the distorsion mode (stereo
+or mono, checked is stereo)
+<p><b><font size=+1>EQ</font></b>
+<br>&nbsp;&nbsp; EQ is a parametric equalizer. On the equalizer graph there
+are 3 white vertical bars for 100Hz, 1kHz, 10kHz.
+<br><b>&nbsp;&nbsp;&nbsp; - Gain</b> - Amplifies or reduce the signal that
+passes thru EQ.
+<br>&nbsp;&nbsp;&nbsp; <b>- B. </b>- Set the current frequency band (or
+filter)
+<p>&nbsp;&nbsp;&nbsp; For each band:
+<br>&nbsp;&nbsp;&nbsp; <b>- T.</b> - Set the type of the filter
+<br>&nbsp;&nbsp;&nbsp;<b> - Freq </b>- the frequency of the filter
+<br>&nbsp;&nbsp;&nbsp; <b>- Gain </b>- the gain of the filter
+<br>&nbsp;&nbsp;&nbsp;<b> - Q</b> - the Q (resonance, or bandwidth) of
+the filter
+<br><b>&nbsp;&nbsp;&nbsp; - St.</b> -&nbsp; how many additional times the
+filter will be applied (in order to do very steep rollof - eg. 48 dB/octave)
+<br>&nbsp;
+<p>
+<hr WIDTH="100%">
+<br><a NAME="w9"></a>9) Resonance
+<p>The resonance effect acts as a "ressonance box" or a filter with arbitrary
+frequency response. This produces very realistic sounds.
+<p><img SRC="images/ui09.png" NOSAVE height=331 width=788>
+<p>Resonance parameters:
+<br>&nbsp;&nbsp;&nbsp; - <b>the graph</b> lets you to draw it in "freehand"
+mode
+<br>&nbsp;&nbsp;&nbsp; - <b>Enable</b> - Turn the Resonance on.
+<br>&nbsp;&nbsp;&nbsp; - <b>Max</b> - How strong is the resonance: lower
+values has little effect. Use the roller below to set it.
+<br>&nbsp;&nbsp;&nbsp; -<b> C.f</b> - the center frequency of the graph
+<br>&nbsp;&nbsp;&nbsp; - <b>Oct</b>. - How many octaves the graph represents
+<br>&nbsp;&nbsp;&nbsp; - <b>Amplification</b> - how the output signel is
+amplified
+<br>&nbsp;&nbsp;&nbsp; - <b>Zero</b> - clears the graph
+<br>&nbsp;&nbsp;&nbsp; - <b>Smooth</b> - smooth the graph
+<br>&nbsp;&nbsp;&nbsp; - <b>P.1st</b> - don't allow to the fist harmonic
+(fundamental freq.) to be damped
+<br>&nbsp;&nbsp;&nbsp; - <b>InterpP</b> - interpolate the peaks. This alows
+you to make very easy resonance functions. First, clear the graph using
+the "Zero" buton. Press the left button on some graph's posistions. Press
+the "InterpP" button. It will interpolate automatically between the positions
+that you pointed (or drawn). Also you can clear a part of the graph by
+dragging with the right mouse button. In fact, the "interpP" button interpolates
+between non-zero values. If you press the "InterpP" with right mouse button,
+the interpolation will be linear, and if you will use the left button,
+the interpolation will be smooth.
+<br>&nbsp;&nbsp;&nbsp; - <b>RND1,RND2,RND3</b> - makes random resonance
+functions
+<br>&nbsp;&nbsp;&nbsp; - <b>Close</b> - closes the window
+<p>The cursor location is shown below the graph (the frequency - kHz and
+amplitude - dB).
+<p>
+<hr WIDTH="100%">
+<p><a NAME="w10"></a>10) Instrument banks
+<p>The instruments can be stored in banks. Theese are loaded/saved automatically
+by the program, you don't have to worry about saving the banks before the
+program exits. On the program starts, the last used bank is loaded. A single
+bank can store up to 128 instruments.
+<p><img SRC="images/ui10.png" NOSAVE height=460 width=782>
+<p>&nbsp;&nbsp;&nbsp; - the bank has 3 modes:
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- <b>READ</b> - the instrument is loaded from the bank to the current part.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- <b>WRITE</b> - the instrument is written to bank
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- <b>CLEAR</b> - the instrument from the bank is cleared (removed)
+<br>&nbsp;&nbsp;&nbsp; - pressing <b>left mousebutton</b> on a slot reads/writes/clears
+the instrument from/to it (according to the current mode)
+<br>&nbsp;&nbsp;&nbsp; - pressing <b>right mousebutton</b> on a slot changes
+it's name
+<br>&nbsp;&nbsp;&nbsp; - "<b>Load/Use Bank from file...</b>" loads a bank
+from the file and makes it current bank
+<br>&nbsp;&nbsp;&nbsp; - "<b>Save Bank...</b>" save the bank to a file
+and makes the saved file&nbsp; current bank. It is usefull only when you
+want to copy a bank to a file. Please notice that the current bank is automatically
+saved when the program exits or when the bank is changed and you don't
+have to save the changes of a bank.
+<br>&nbsp;&nbsp;&nbsp; - "<b>New Bank...</b>" Makes a new bank.
+<br>&nbsp;&nbsp;&nbsp; - <b>auto close </b>- Close the window after the
+instrument was loaded
+<br>&nbsp;&nbsp;&nbsp; - <b>Close</b> - closes the window
+<br>If the bankfile is readonly, it is shown as "<b>LOCKED</b>" and the
+changing it is not allowed. If you still want to make changes to it, click
+on "Save Bank..." to save a copy and do the changes on that copy.
+<p>
+<hr WIDTH="100%">
+<br><a NAME="w11"></a>11) Virtual Keyboard
+<p>The virtual keyboard lets you to play notes using the keyboard/mouse.
+There is no midi requirement.
+<br><img SRC="images/ui13.png" NOSAVE height=156 width=658>
+<br>&nbsp;&nbsp;&nbsp; Using the keyboard: the keyboard is splitted in
+two "octaves"(in fact is more than 1 octave). It may happens that the keys
+will not trigger any noteon. This is because another widget than the keyboard
+itself is selected. In order to continue playing using the keyboard, click
+with the mouse on some keys from the virtual keyboard.
+<br>&nbsp;&nbsp;&nbsp; Using the mouse: you can use the mouse too, to play
+. If you press the shift key while pressing the mouse button, the keys
+will be not relased when the mouse button is released.
+<br>&nbsp;&nbsp;&nbsp; If you press the "Panic" button from the ZynAddSubFX
+main window, all keys will be released.
+<p><b>Functions:</b>
+<br>&nbsp;&nbsp;&nbsp; <b>Ch</b>. - set the midi channel
+<br>&nbsp;&nbsp;&nbsp; <b>Vel</b> - set the noteon velocities
+<br>&nbsp;&nbsp;&nbsp; <b>Oct</b> - transpose all the virtual keyboard
+<br>&nbsp;&nbsp;&nbsp;<b> "qwer..." </b>Oct - transpose the upper keys
+("qwert"); the range of theese keys is from C-4 to A-5 (replace the '5'
+with the octave)
+<br>&nbsp;&nbsp;&nbsp;<b> "zxcvb..."</b> Oct - transpose the lower keys
+("zxcvb"); the range of theese keys is from C-3 to E-4 (replace the '4'
+with the octave)
+<br>&nbsp;&nbsp;&nbsp; <b>Controller</b> - set what controller to be changed
+according to <b>Cval</b>
+<br>&nbsp;&nbsp;&nbsp;<b> Cval </b>- change the controller value (please
+notice that the <b>Cval</b> might not reflect what is the ZynAddSubFX internal
+value of the controller; this happens when you change the controller)
+<br>&nbsp;&nbsp;<b>&nbsp; Pwh </b>- Pitch Wheel, press the "<b>R</b>" button
+to reset it
+<p>&nbsp;&nbsp;&nbsp; <b>Close </b>- closes the window
+<br>
+<hr WIDTH="100%">
+<br><a NAME="w12"></a>12) Configuration window (settings)
+<p>Using this window, you can configure some important settings of ZynAddSubFX.
+<br><img SRC="images/ui14.png" NOSAVE height=436 width=253>
+<center>
+<p><b>Note: All theese settings take effect only after the ZynAddSubFX
+is restarted.</b></center>
+
+<p><b>Sample Rate </b>- set the quality of the sound, higher is better,
+but it consumes more CPU time. You can set from a list, or if you want
+a samplerate that is not on the list, select "Custom" and change the value
+from the right. Default is 44100.
+<br><b>Buffer Size</b> - set the granularity of the sound. Default is 256
+samples. To find out the internal delay in milliseconds, divide the Buffer
+Size value, by Sample Rate and multiply the result by 1000 (eg: 256/44100*1000=5.8
+ms)
+<br><b>OscilSize</b> - set the number of the points of the ADsynth oscillator.
+The bigger is better, but it takes more CPU time on start of any note.
+Default is 512.
+<br><b>Swap Stereo</b> - if the pan positions are reversed, check or uncheck
+this button
+<p>Some of the folowing settings might be ignored. For example the "OSS
+Sequencer Device" is ignored, if the ALSA is used for midi in (set on the
+compile time), or Linux settings on Windows systems.
+<p><b>Linux</b> -<b> OSS Wave Out Device</b> - set the audioout device
+(soundcard). Default is "/dev/dsp"
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>OSS Sequencer
+Device</b> - set the sequencer (midi in) device. Default is "/dev/sequencer"
+<br><b>Windows </b>-<b> Midi In Dev </b>- set the midi in device
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- <b>WaveOutDev </b>- unused, yet
+<br>&nbsp;
+<p>
+<hr WIDTH="100%">
+<br><a NAME="w13"></a>13) Instrument kits
+<p><img SRC="images/ui15.png" NOSAVE height=396 width=558>
+<p>With this you can make drum kits, layered instruments, or you can combine
+more instruments into one.
+<br>&nbsp;&nbsp;&nbsp;<b> Kit Mode </b>- enable the kit mode
+<br>&nbsp;&nbsp;&nbsp; <b>Protect the kit </b>- when loading a instrument,
+only the item 0 will be changed, other items will be leaved in place. This
+alows you to combine more instruments. If you want to add more instruments
+to the kit, you have to copy the item 0 to another item, because the item
+0 will be replaced. If you load master settings or if you clear the instrumet/master
+setting, the kit is cleared
+<br>&nbsp;&nbsp;&nbsp; <b>Swap/Copy</b> - swaps two items or copy a item
+to other item.
+<br>&nbsp;&nbsp;&nbsp; Kit's items are used to make complex instrument.
+The item 0 is a special type: it cannot be disabled (but it can be muted),
+to edit it you have to use "ADs edit" or "SUBs edit" from the part window.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>No</b> - number of the
+item
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b> M&nbsp;</b> - mute an
+item of the kit
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>Min.k </b>- minimum key
+of the kit's item
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b> m/R/M</b> - set the last
+played note to the minimum(m)/maximum(M) or reset min/max defaults(R)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b> Max.k </b>- maximum key
+of the kit's item
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>ADsynth</b> - enable
+and edit ADsynth module of the kit's item
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b> SUBsynth</b> - enable
+and edit SUBsynth module of the kit's item
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>FX.</b> - choose the
+Part Effect (PartFX) to process this item (-1 means that is unprocessed).
+<p>
+<hr WIDTH="100%">
+<br><a NAME="w14"></a>14) Panel Window
+<br>Panel Window let's you to edit some important's part parameters (instrument/volume/panning/etc..)
+and it acts like a mixer. Also, this window shows vu-meters for each part.
+<br>To change a instrument, click on the instrument's name box (see the
+red arrow from the part 9). Sometimes, if you edit part's parameters into
+the main window, you need to refresh the panel by pressing the Refresh
+button..
+<p><img SRC="images/ui16.png" NOSAVE height=661 width=640>
+<p>Parameters and buttons
+<br>&nbsp;&nbsp;&nbsp; Enable/Disable the part - the checkboxes enables/disable
+the part
+<br>&nbsp;&nbsp;&nbsp; Instrument name - click on this box to change the
+instrument
+<br>&nbsp;&nbsp;&nbsp; The volume bar and the panning dialbutton- you can
+change the volume and the pan of the part
+<br>&nbsp;&nbsp;&nbsp; The counter below the panning dialbutton is the
+midi channel that is assigned to the part.
+<br>&nbsp;&nbsp;&nbsp; Edit - make the part current part.
+<p>
+<hr WIDTH="100%">
+<center>
+<p><a NAME="extprg"></a><b><font size=+3>External Programs</font></b></center>
+
+<p>External Programs are distributed with ZynAddSubFX, but there are not
+a part of it, because they can be used with any other synthesizer (or midi
+device). Both uses ALSA and they must be connected with <i>acconect</i>
+or <i>alsa-patch-bay</i>.
+<p><b><font size=+1>1) Spliter</font></b>
+<p><img SRC="images/ep01.png" NOSAVE height=100 width=383>
+<p>This program helps you to play to 2 instruments same time, by splitting
+a midi channel to other midi channels.
+<p><b>Input Channel</b> - The channel which is being splitted.
+<br><b>Split Note</b> - The notes below it are send to <b>Output Channel
+1</b>, and the notes above it are sent to <b>Output Channel 2.</b>
+<br><b>Tr.1(oct) </b>and <b>Tr.2(oct)</b> - transpose in octaves of output
+channel 1 and 2
+<p><b><font size=+1>2) Controller</font></b>
+<br><img SRC="images/ep02.png" NOSAVE height=436 width=348>
+<p>With this program you can control up to 6 controllers/NRPNs same time
+with the mouse.
+<br>The program was written for mouses with 3 buttons, so "But.1 X" means
+X movement (left-right) of buton 1 (left ) of the mouse. Right mouse button
+is "But.3" and middle "But.2".
+<br>"Val.1" and "Val.2" represents the leftmost/rightmost or up/down values
+(depends on X/Y movement).
+<br>&nbsp;
+<p>
+<hr WIDTH="100%">
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+<blockquote>&nbsp;</blockquote>
+
+<br>&nbsp;
+<br>&nbsp;
+<br>&nbsp;
+</body>
+</html>

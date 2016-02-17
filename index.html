@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+  <head>
+    <meta http-equiv="content-type" content=
+    "text/html; charset=us-ascii">
+    <link type="text/css" href="main.css" rel="stylesheet">
+    <title>ZynAddSubFX</title>
+  </head>
+
+  <body><center><div align="left" id="content">
+    <center>
+      <table id="header">
+        <tr><td>
+            <img src="images/logo.jpg" height="147" width="756" 
+             alt="ZynAddSubFX">
+        </td></tr>
+        <tr><td id="nav">
+            <a href="/">About</a> |
+            <a href="/news.html">News</a> |
+            <a href="/download.html">Download</a> |
+            <a href="/support.html">Support</a> |
+            <a href="/contribute.html">How to contribute</a> |
+            <a href="/development.html">Developer Resources</a> |
+            <a href="http://sourceforge.net/projects/zynaddsubfx/">Project page</a> |
+            <a href="/credits.html">Credits</a></td></tr>
+      </table>
+    </center>
+
+    <h2>Introduction</h2>
+    <p>
+    <b>ZynAddSubFX</b> is a fully featured open source software synthesizer
+    capable of making a countless number of instruments, from some common
+    heard from expensive hardware to interesting sounds that you'll
+    boost to an amazing universe of sounds.</p>
+
+    <h2>Screenshots</h2>
+  <a href="images/screenshot05.png"><img src=
+  "images/screenshot05.png" alt="1" border="1"
+  height="200"></a><a href=
+  "images/screenshot06.png"><img src=
+  "images/screenshot06.png" alt="2" border="1"
+  height="200"></a><a href=
+  "images/screenshot07.png"><img src=
+  "images/screenshot07.png" alt="3" border="1"
+  height="200"></a><a href=
+  "images/screenshot08.png"><img src=
+  "images/screenshot08.png" alt="3" border="1"
+  height="200"></a>
+
+    <h2>Features of ZynAddSubFX:</h2>
+    <ul>
+      <li><b>Realtime</b> synth</li>
+      <li><b>Polyphonic</b> synth <i>(allows playing more than one note at
+        once)</i></li>
+      <li><b>Multitimbral</b> synth <i>(allows playing more than one
+        instrument at once)</i></li>
+      <li><b>Microtonal</b> capabilities with any scale, up to 128 
+        notes per octave, and key mapping</li>
+
+  <li>Three synthesizer engines:
+    <ol type="1"><li><b>ADD synth</b> is
+        a complex engine which makes sounds by adding a number of voices.
+        Each one has filters, envelopes, LFOs, morphing, modulation (Ring
+        Modulation, Phase Modulation... the modulators can have any
+        shape), resonance, etc. Each voice includes a very powerful
+        waveform generator with up to 128 sine/non-sine harmonics. You can
+        use Fourier synthesis or if you don't like it you can
+        wave-shaping/filtering of functions. This engine includes
+        anti-aliasing.</li>
+        <li><b>SUB synth</b> is a
+        simple engine which makes sounds through subtraction of
+        harmonics from white noise</li>
+        <li><b>PAD synth</b> is an engine that makes very beautiful pads and other
+        instruments. (these instruments can be exported for use with
+        other programs too)</li></ol></li>
+  <li>Legato, Poly, and Mono modes</li>
+  <li>Instruments can be organized in kits, which allows you to make
+    drum kits or layered(mixed) instruments; this makes possible to
+    use more than one instrument for a single part. It is possible to
+    choose what items from the kit should be processed by the Part's
+    effects.</li>
+  <li><b>Effects</b>:
+    <ul><li>Reverb, Echo, Chorus/Flange, Phaser, AlienWah (it's a kind of
+      vocal morpher), Distortion(Wave-shaping), EQ, DynamicFilter</li>
+      <li>Flexible effect routing via <b>System Effects</b>, <b>Insertion Effects</b>,
+        and <b>Instrument Effects</b>.
+      </li></ul></li>
+  <li>Filters up to
+  <b>60dB/octave</b> (or more..); filters can be <b>analogic</b>
+    (LPF,HPF, BPF,etc.), <b>formant</b>(advanced formant
+    filters) and state variable (SVF)</li>
+  <li>Envelopes can have
+    ADSR (or ASR, etc..) modes or can be free modes (with any
+    shape)</li>
+  <li>Many settings have a
+    "<b>randomness</b>" option, which you can make instruments that
+    every time produces a subtle different sound; this produces a
+    very pleasant effect (like analogue synths or natural instruments
+    that can't produces exactly same sound twice). Because of this,
+    even if it is digital synthesis, it sounds "warm". Listen the ogg
+    vorbis demos from this page to hear this effect.</li>
+  <!--<li>The specifications
+    can be easily changed, so (for example) if you want to change the
+    number of voices or parts to a higher value or to allow a higher
+    number of effects at the same time, there is necessary to change
+    only a single value from the source file (<b>globals.h</b>) and
+    to recompile the program</li>-->
+  <!--<li>Intuitive and easy
+    to use <b>User Interface</b> with Clipboard and many objects has
+    user presets</li>-->
+  <li><b>Midi</b> support and <b>JACK</b> support</li>
+  <li>A built-in
+    <b>Virtual Keyboard</b> which let you to use it even if you don't
+    have a real midi keyboard</li>
+  <li>The graphical user
+    interface can be completely disabled if the user need so</li>
+  <li>It is a
+    <b>free</b> program, licensed under <b>version 2</b> of the
+    <b>GNU General Public License</b>
+  </li>
+  <li>LASH/NSM support</li>
+  <li>DSSI/LV2/VST audio plugin support</li>
+  <li>Over 1100 high quality instruments included</li>
+    </ul>
+
+  <h2>Audio demos
+  (<a href="http://www.vorbis.com">OGGvorbis</a>):</h2>
+  <p>All these demos are recorded directly from the ZynAddSubFX
+  without audio processing with another program (well, except
+  cutting/ OGG Vorbis compressing).</p>
+  <a href="demo01.ogg">Demo01.ogg(190k)</a>
+  <a href="demo02.ogg">Demo02.ogg(150k)</a>
+  <a href="demo03.ogg">Demo03.ogg(105k)</a>
+  <a href="demo04.ogg">Demo04.ogg(190k)</a>
+  <a href="demo05.ogg">Demo05.ogg(170k)</a>
+  <a href="demo06.ogg">Demo06.ogg(50k)</a>
+  <a href="demo07.ogg">Demo07.ogg(80k)</a>
+  <a href="demo08.ogg">Demo08.ogg(65k)</a>
+  <p><a href="demo_src.tar.bz2">Source code
+  some demos(7k)</a></p>
+
+  </div></center>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-72903778-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN" "http://www.w3.org/TR/MathML2/dtd/xhtml-math11-f.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>LDR Tonemapping</title></head>
+<body style="margin: 0.5in 1in; direction: ltr; max-width: 8.5in;">
+<h1 style="text-align: center;">LDR Tonemapping</h1>
+<p style="text-align: center;" class="P4">by Nasca
+Octavian PAUL</p>
+<h2>Introduction</h2>
+<p class="P5">This
+program is for tonemapping the low-dinamic-range images. Unlike the
+other tonemappers, this takes 1 LDR image and outputs another LDR
+image. This reduces the global contrast of the pictures and increases
+the local contrast. </p>
+<h2>Features</h2>
+<ul>
+<li>
+<p class="P9" style="margin-left: 0.508cm;"><span class="" style="display: block; float: left; min-width: 0.762cm;"></span>There
+are two tonemapping algorithms: one is very fast and the other is very
+precise<span class="odfLiEnd">&nbsp;</span></p>
+</li>
+<li>
+<p class="P9" style="margin-left: 0.508cm;"><span class="" style="display: block; float: left; min-width: 0.762cm;"></span>The
+user has full control on many parameters of the tonemapping algorithm<span class="odfLiEnd">&nbsp;</span></p>
+</li>
+<li>
+<p class="P9" style="margin-left: 0.508cm;"><span class="" style="display: block; float: left; min-width: 0.762cm;"></span>Instant
+preview is available, and there is support for splitting the screen
+into the original/processed image<span class="odfLiEnd">&nbsp;</span></p>
+</li>
+<li>
+<p class="P9" style="margin-left: 0.508cm;"><span class="" style="display: block; float: left; min-width: 0.762cm;"></span>The
+program includes batch processing mode<span class="odfLiEnd">&nbsp;</span></p>
+</li>
+<li>
+<p class="P9" style="margin-left: 0.508cm;"><span class="" style="display: block; float: left; min-width: 0.762cm;"></span>Thanks
+to the <a href="http://freeimage.sourceforge.net/">FreeImage
+library</a>, it supports many image formats<span class="odfLiEnd">&nbsp;</span></p>
+</li>
+<li>
+<p class="P9" style="margin-left: 0.508cm;"><span class="" style="display: block; float: left; min-width: 0.762cm;"></span>It
+runs on Linux and Windows<span class="odfLiEnd">&nbsp;</span></p>
+</li>
+<li>
+<p class="P9" style="margin-left: 0.508cm;"><span class="" style="display: block; float: left; min-width: 0.762cm;"></span>It
+is a Free Software, released under GNU General Public License<span class="odfLiEnd">&nbsp;</span></p>
+</li>
+</ul>
+<p class="P5">&nbsp;</p>
+<h2>Examples and screenshots</h2>
+<p class="P5">Click on image below to see more screenshot
+and some examples:&nbsp;</p>
+<div class="P5">
+<div style="height: 3.8126in; width: 5in;" id="graphics1" class="fr1">
+<p><a href="examples/index.html"> <img alt="" src="./thumb.screenshot2.jpg" height="423" width="555"></a></p>
+</div>
+</div>
+<p class="P5">&nbsp;</p>
+<p class="Heading_20_2"><br>
+</p>
+<h2>Download</h2>
+<p class="Heading_20_2"></p>
+<p class="Normal">You can download the source code for
+Linux or binary for Windows from <a href="download/">HERE</a>.</p>
+<p class="Normal">&nbsp;</p>
+<h2>Usage</h2>
+<div style="text-align: justify;">&nbsp;&nbsp;&nbsp;
+This tonemapper produces a desatured and blured version of the image
+which is combine with each RGB channel using a function. This process
+can be applied more than one time and each time the effect is applied
+is called a 'stage'. After this, the user can desaturate the portions
+of the image where the initial value was either very low or very high.
+After this step, there is an optional unsharp mask to enhance the
+details of the processed image. <br>
+&nbsp;&nbsp;&nbsp; The user can
+view the original image, the processed image or both images same time
+(original is in the left and processed in the right). <br>&nbsp;&nbsp;&nbsp; User can pan the image by dragging with the mouse and can zoom by using the scroll wheel. <br>
+<br>
+<h3>Tonemapping parameters</h3>
+Usually,
+the parameters are not linear: on lower settings they grow very slow,
+but on the higher settings they grows very fast. This produces more
+'natural' behaving settings.For each stage this parameters are
+available: <br>
+<ul>
+<li>enabled - if the current tonemapping stage is enabled</li>
+<li>power - how strong the effect is applied</li>
+<li>blur - how strong the image is blured before combining with
+the original image with the tonemapping function</li>
+</ul>
+The next parameters are global for the whole effect:<br>
+<ul>
+<li>function
+- this is the function which combines the original RGB chanels with the
+desaturated blured image. This function used on each of the tonemapping
+stage. It can linear or power. Basicaly, these function increase the
+value where both the original and blurred image's value are low and do
+the opposite on high values</li>
+<li>stretch contrast - this stretch the contrast of the
+original image. This is applied before the tonemapping process</li>
+<li>high saturation and
+low saturation - Usually the (perceived) saturation is increased. The
+user can choose to lower the saturation on original highlight and
+shadows from the image with these parameters</li>
+<li>fast mode - there
+are available two ways to do the tonemapping: using a very fast
+algorithm, which might produce artifacts on the image or a more precise
+algorithm, which is slower</li>
+</ul>
+Unsharp parameters<br>
+<ul>
+<li>U.M. enabled - enable the unsharp mask filter</li>
+<li>U.M. power - the strenght of the unsharp mask</li>
+<li>U.M. blur - how much the image is blurred into the unsharp
+mask filter</li>
+<li>U.M. threshold - this avoids increasing the noise of the
+unsharp mask filter</li>
+</ul>
+<h3>View</h3>
+<ul>
+<li>preview - if checked the processed image is shown, else the
+original image is displayed</li>
+<li>histogram - shows the histogram of the displayed image</li>
+<li>show - "image" - show one image';
+"half" shows the original image in the left and the processed in the
+right. The next two modes f(x) and f(x,y) shows the tonemapping
+function and is more used in developing this program; "x" here
+represents the original channel value and "y" represents the value of
+the blurred image. f(x) shows the function as a line for every possible
+input values, the other parameter (blurred, or 'y') is set by clicking
+of the mouse on the screen. The f(x,y) mode shows the function for
+every possible combination of input channel value and 'blurred' value.</li>
+</ul>
+<h3>Menus</h3>
+<h4 style="margin-left: 40px;">File menu</h4>
+<ul>
+<ul>
+<li>Open image... - open an image from file. You can load
+many file types, if you check to show all files.&nbsp;</li>
+<li>Save image... - saves the processed image to the file</li>
+<li>Batch
+process images... - select many files from a directory and select the
+output directory. After this, all images are processed with the current
+setting. This is very useful to process a time-lapse sequence of
+images.&nbsp;</li>
+<li>Reset parameters - all tonemapping parameters are set to
+default</li>
+<li>Open parameters... - loads the tonemapping parameters
+from a file</li>
+<li>Save parameters... - write the current parameters to a
+file</li>
+<li>Exit - close the program</li>
+</ul>
+</ul>
+<div style="margin-left: 40px;"><span style="font-weight: bold;">Help menu</span><br>
+<ul>
+<li>About... - show the copyright info</li>
+</ul>
+</div>
+</div>
+<p class="Normal">&nbsp;</p>
+<p class="P7"><span class="T1"></span></p>
+<p class="P6">&nbsp;</p>
+<p class="Normal">&nbsp;</p>
+<h2>ToDo</h2>
+<ul>
+<li>
+<p class="P10" style="margin-left: 0.508cm;"><span class="" style="display: block; float: left; min-width: 0.762cm;"></span>check
+if this method can be used to process real HDR images (using the
+floating point tonemapper).<span class="odfLiEnd">&nbsp;</span></p>
+</li>
+</ul>
+<p class="P8">&nbsp;</p>
+<p class="P8">&nbsp;</p>
+<h2>History</h2>
+<p class="P11"><span style="">20090121&nbsp;
+First public release</span></p><p class="P11"><span style="">20090201 &nbsp;Added preview on file open, zoom by mouse scroll wheel</span></p>
+<p class="Normal">&nbsp;</p>
+<h2>Contact:</h2>
+<p class="Normal">zynaddsubfx AT YAHOO DOT COM</p>
+<p class="Normal">&nbsp;</p>
+<p class="Normal">&nbsp;</p>
+</body></html>

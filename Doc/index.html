@@ -1,0 +1,4049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="AsciiDoc 8.6.8">
+<title>Zynaddsubfx</title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+.monospaced, code, pre {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+  padding: 0;
+  margin: 0;
+}
+
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+
+
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install(2);
+/*]]>*/
+</script>
+<script type="text/javascript">
+/*<![CDATA[*/
+/*
+LaTeXMathML.js
+==============
+
+This file, in this form, is due to Douglas Woodall, June 2006.
+It contains JavaScript functions to convert (most simple) LaTeX
+math notation to Presentation MathML.  It was obtained by
+downloading the file ASCIIMathML.js from
+	http://www1.chapman.edu/~jipsen/mathml/asciimathdownload/
+and modifying it so that it carries out ONLY those conversions
+that would be carried out in LaTeX.  A description of the original
+file, with examples, can be found at
+	www1.chapman.edu/~jipsen/mathml/asciimath.html
+	ASCIIMathML: Math on the web for everyone
+
+Here is the header notice from the original file:
+
+ASCIIMathML.js
+==============
+This file contains JavaScript functions to convert ASCII math notation
+to Presentation MathML. The conversion is done while the (X)HTML page
+loads, and should work with Firefox/Mozilla/Netscape 7+ and Internet
+Explorer 6+MathPlayer (http://www.dessci.com/en/products/mathplayer/).
+Just add the next line to your (X)HTML page with this file in the same folder:
+This is a convenient and inexpensive solution for authoring MathML.
+
+Version 1.4.7 Dec 15, 2005, (c) Peter Jipsen http://www.chapman.edu/~jipsen
+Latest version at http://www.chapman.edu/~jipsen/mathml/ASCIIMathML.js
+For changes see http://www.chapman.edu/~jipsen/mathml/asciimathchanges.txt
+If you use it on a webpage, please send the URL to jipsen@chapman.edu
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or (at
+your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+General Public License (at http://www.gnu.org/copyleft/gpl.html)
+for more details.
+
+LaTeXMathML.js (ctd)
+==============
+
+The instructions for use are the same as for the original
+ASCIIMathML.js, except that of course the line you add to your
+file should be
+Or use absolute path names if the file is not in the same folder
+as your (X)HTML page.
+*/
+
+var checkForMathML = true;   // check if browser can display MathML
+var notifyIfNoMathML = true; // display note if no MathML capability
+var alertIfNoMathML = false;  // show alert box if no MathML capability
+// was "red":
+var mathcolor = "";	     // change it to "" (to inherit) or any other color
+// was "serif":
+var mathfontfamily = "";      // change to "" to inherit (works in IE)
+                              // or another family (e.g. "arial")
+var showasciiformulaonhover = true; // helps students learn ASCIIMath
+/*
+// Commented out by DRW -- not now used -- see DELIMITERS (twice) near the end
+var displaystyle = false;     // puts limits above and below large operators
+var decimalsign = ".";        // change to "," if you like, beware of `(1,2)`!
+var AMdelimiter1 = "`", AMescape1 = "\\\\`"; // can use other characters
+var AMdelimiter2 = "$", AMescape2 = "\\\\\\$", AMdelimiter2regexp = "\\$";
+var doubleblankmathdelimiter = false; // if true,  x+1  is equal to `x+1`
+                                      // for IE this works only in <!--   -->
+//var separatetokens;// has been removed (email me if this is a problem)
+*/
+var isIE = document.createElementNS==null;
+
+if (document.getElementById==null)
+  alert("This webpage requires a recent browser such as\
+\nMozilla/Netscape 7+ or Internet Explorer 6+MathPlayer")
+
+// all further global variables start with "AM"
+
+function AMcreateElementXHTML(t) {
+  if (isIE) return document.createElement(t);
+  else return document.createElementNS("http://www.w3.org/1999/xhtml",t);
+}
+
+function AMnoMathMLNote() {
+  var nd = AMcreateElementXHTML("h3");
+  nd.setAttribute("align","center")
+  nd.appendChild(AMcreateElementXHTML("p"));
+  nd.appendChild(document.createTextNode("To view the "));
+  var an = AMcreateElementXHTML("a");
+  an.appendChild(document.createTextNode("LaTeXMathML"));
+  an.setAttribute("href","http://www.maths.nott.ac.uk/personal/drw/lm.html");
+  nd.appendChild(an);
+  nd.appendChild(document.createTextNode(" notation use Internet Explorer 6+"));
+  an = AMcreateElementXHTML("a");
+  an.appendChild(document.createTextNode("MathPlayer"));
+  an.setAttribute("href","http://www.dessci.com/en/products/mathplayer/download.htm");
+  nd.appendChild(an);
+  nd.appendChild(document.createTextNode(" or Netscape/Mozilla/Firefox"));
+  nd.appendChild(AMcreateElementXHTML("p"));
+  return nd;
+}
+
+function AMisMathMLavailable() {
+  if (navigator.appName.slice(0,8)=="Netscape")
+    if (navigator.appVersion.slice(0,1)>="5") return null;
+    else return AMnoMathMLNote();
+  else if (navigator.appName.slice(0,9)=="Microsoft")
+    try {
+        var ActiveX = new ActiveXObject("MathPlayer.Factory.1");
+        return null;
+    } catch (e) {
+        return AMnoMathMLNote();
+    }
+  else return AMnoMathMLNote();
+}
+
+// character lists for Mozilla/Netscape fonts
+var AMcal = [0xEF35,0x212C,0xEF36,0xEF37,0x2130,0x2131,0xEF38,0x210B,0x2110,0xEF39,0xEF3A,0x2112,0x2133,0xEF3B,0xEF3C,0xEF3D,0xEF3E,0x211B,0xEF3F,0xEF40,0xEF41,0xEF42,0xEF43,0xEF44,0xEF45,0xEF46];
+var AMfrk = [0xEF5D,0xEF5E,0x212D,0xEF5F,0xEF60,0xEF61,0xEF62,0x210C,0x2111,0xEF63,0xEF64,0xEF65,0xEF66,0xEF67,0xEF68,0xEF69,0xEF6A,0x211C,0xEF6B,0xEF6C,0xEF6D,0xEF6E,0xEF6F,0xEF70,0xEF71,0x2128];
+var AMbbb = [0xEF8C,0xEF8D,0x2102,0xEF8E,0xEF8F,0xEF90,0xEF91,0x210D,0xEF92,0xEF93,0xEF94,0xEF95,0xEF96,0x2115,0xEF97,0x2119,0x211A,0x211D,0xEF98,0xEF99,0xEF9A,0xEF9B,0xEF9C,0xEF9D,0xEF9E,0x2124];
+
+var CONST = 0, UNARY = 1, BINARY = 2, INFIX = 3, LEFTBRACKET = 4,
+    RIGHTBRACKET = 5, SPACE = 6, UNDEROVER = 7, DEFINITION = 8,
+    TEXT = 9, BIG = 10, LONG = 11, STRETCHY = 12, MATRIX = 13; // token types
+
+var AMsqrt = {input:"\\sqrt",	tag:"msqrt", output:"sqrt",	ttype:UNARY},
+  AMroot = {input:"\\root",	tag:"mroot", output:"root",	ttype:BINARY},
+  AMfrac = {input:"\\frac",	tag:"mfrac", output:"/",	ttype:BINARY},
+  AMover = {input:"\\stackrel", tag:"mover", output:"stackrel", ttype:BINARY},
+  AMatop = {input:"\\atop",	tag:"mfrac", output:"",		ttype:INFIX},
+  AMchoose = {input:"\\choose", tag:"mfrac", output:"",		ttype:INFIX},
+  AMsub  = {input:"_",		tag:"msub",  output:"_",	ttype:INFIX},
+  AMsup  = {input:"^",		tag:"msup",  output:"^",	ttype:INFIX},
+  AMtext = {input:"\\mathrm",	tag:"mtext", output:"text",	ttype:TEXT},
+  AMmbox = {input:"\\mbox",	tag:"mtext", output:"mbox",	ttype:TEXT};
+
+// Commented out by DRW to prevent 1/2 turning into a 2-line fraction
+// AMdiv   = {input:"/",	 tag:"mfrac", output:"/",    ttype:INFIX},
+// Commented out by DRW so that " prints literally in equations
+// AMquote = {input:"\"",	 tag:"mtext", output:"mbox", ttype:TEXT};
+
+var AMsymbols = [
+//Greek letters
+{input:"\\alpha",	tag:"mi", output:"\u03B1", ttype:CONST},
+{input:"\\beta",	tag:"mi", output:"\u03B2", ttype:CONST},
+{input:"\\gamma",	tag:"mi", output:"\u03B3", ttype:CONST},
+{input:"\\delta",	tag:"mi", output:"\u03B4", ttype:CONST},
+{input:"\\epsilon",	tag:"mi", output:"\u03B5", ttype:CONST},
+{input:"\\varepsilon",  tag:"mi", output:"\u025B", ttype:CONST},
+{input:"\\zeta",	tag:"mi", output:"\u03B6", ttype:CONST},
+{input:"\\eta",		tag:"mi", output:"\u03B7", ttype:CONST},
+{input:"\\theta",	tag:"mi", output:"\u03B8", ttype:CONST},
+{input:"\\vartheta",	tag:"mi", output:"\u03D1", ttype:CONST},
+{input:"\\iota",	tag:"mi", output:"\u03B9", ttype:CONST},
+{input:"\\kappa",	tag:"mi", output:"\u03BA", ttype:CONST},
+{input:"\\lambda",	tag:"mi", output:"\u03BB", ttype:CONST},
+{input:"\\mu",		tag:"mi", output:"\u03BC", ttype:CONST},
+{input:"\\nu",		tag:"mi", output:"\u03BD", ttype:CONST},
+{input:"\\xi",		tag:"mi", output:"\u03BE", ttype:CONST},
+{input:"\\pi",		tag:"mi", output:"\u03C0", ttype:CONST},
+{input:"\\varpi",	tag:"mi", output:"\u03D6", ttype:CONST},
+{input:"\\rho",		tag:"mi", output:"\u03C1", ttype:CONST},
+{input:"\\varrho",	tag:"mi", output:"\u03F1", ttype:CONST},
+{input:"\\varsigma",	tag:"mi", output:"\u03C2", ttype:CONST},
+{input:"\\sigma",	tag:"mi", output:"\u03C3", ttype:CONST},
+{input:"\\tau",		tag:"mi", output:"\u03C4", ttype:CONST},
+{input:"\\upsilon",	tag:"mi", output:"\u03C5", ttype:CONST},
+{input:"\\phi",		tag:"mi", output:"\u03C6", ttype:CONST},
+{input:"\\varphi",	tag:"mi", output:"\u03D5", ttype:CONST},
+{input:"\\chi",		tag:"mi", output:"\u03C7", ttype:CONST},
+{input:"\\psi",		tag:"mi", output:"\u03C8", ttype:CONST},
+{input:"\\omega",	tag:"mi", output:"\u03C9", ttype:CONST},
+{input:"\\Gamma",	tag:"mo", output:"\u0393", ttype:CONST},
+{input:"\\Delta",	tag:"mo", output:"\u0394", ttype:CONST},
+{input:"\\Theta",	tag:"mo", output:"\u0398", ttype:CONST},
+{input:"\\Lambda",	tag:"mo", output:"\u039B", ttype:CONST},
+{input:"\\Xi",		tag:"mo", output:"\u039E", ttype:CONST},
+{input:"\\Pi",		tag:"mo", output:"\u03A0", ttype:CONST},
+{input:"\\Sigma",	tag:"mo", output:"\u03A3", ttype:CONST},
+{input:"\\Upsilon",	tag:"mo", output:"\u03A5", ttype:CONST},
+{input:"\\Phi",		tag:"mo", output:"\u03A6", ttype:CONST},
+{input:"\\Psi",		tag:"mo", output:"\u03A8", ttype:CONST},
+{input:"\\Omega",	tag:"mo", output:"\u03A9", ttype:CONST},
+
+//fractions
+{input:"\\frac12",	tag:"mo", output:"\u00BD", ttype:CONST},
+{input:"\\frac14",	tag:"mo", output:"\u00BC", ttype:CONST},
+{input:"\\frac34",	tag:"mo", output:"\u00BE", ttype:CONST},
+{input:"\\frac13",	tag:"mo", output:"\u2153", ttype:CONST},
+{input:"\\frac23",	tag:"mo", output:"\u2154", ttype:CONST},
+{input:"\\frac15",	tag:"mo", output:"\u2155", ttype:CONST},
+{input:"\\frac25",	tag:"mo", output:"\u2156", ttype:CONST},
+{input:"\\frac35",	tag:"mo", output:"\u2157", ttype:CONST},
+{input:"\\frac45",	tag:"mo", output:"\u2158", ttype:CONST},
+{input:"\\frac16",	tag:"mo", output:"\u2159", ttype:CONST},
+{input:"\\frac56",	tag:"mo", output:"\u215A", ttype:CONST},
+{input:"\\frac18",	tag:"mo", output:"\u215B", ttype:CONST},
+{input:"\\frac38",	tag:"mo", output:"\u215C", ttype:CONST},
+{input:"\\frac58",	tag:"mo", output:"\u215D", ttype:CONST},
+{input:"\\frac78",	tag:"mo", output:"\u215E", ttype:CONST},
+
+//binary operation symbols
+{input:"\\pm",		tag:"mo", output:"\u00B1", ttype:CONST},
+{input:"\\mp",		tag:"mo", output:"\u2213", ttype:CONST},
+{input:"\\triangleleft",tag:"mo", output:"\u22B2", ttype:CONST},
+{input:"\\triangleright",tag:"mo",output:"\u22B3", ttype:CONST},
+{input:"\\cdot",	tag:"mo", output:"\u22C5", ttype:CONST},
+{input:"\\star",	tag:"mo", output:"\u22C6", ttype:CONST},
+{input:"\\ast",		tag:"mo", output:"\u002A", ttype:CONST},
+{input:"\\times",	tag:"mo", output:"\u00D7", ttype:CONST},
+{input:"\\div",		tag:"mo", output:"\u00F7", ttype:CONST},
+{input:"\\circ",	tag:"mo", output:"\u2218", ttype:CONST},
+//{input:"\\bullet",	  tag:"mo", output:"\u2219", ttype:CONST},
+{input:"\\bullet",	tag:"mo", output:"\u2022", ttype:CONST},
+{input:"\\oplus",	tag:"mo", output:"\u2295", ttype:CONST},
+{input:"\\ominus",	tag:"mo", output:"\u2296", ttype:CONST},
+{input:"\\otimes",	tag:"mo", output:"\u2297", ttype:CONST},
+{input:"\\bigcirc",	tag:"mo", output:"\u25CB", ttype:CONST},
+{input:"\\oslash",	tag:"mo", output:"\u2298", ttype:CONST},
+{input:"\\odot",	tag:"mo", output:"\u2299", ttype:CONST},
+{input:"\\land",	tag:"mo", output:"\u2227", ttype:CONST},
+{input:"\\wedge",	tag:"mo", output:"\u2227", ttype:CONST},
+{input:"\\lor",		tag:"mo", output:"\u2228", ttype:CONST},
+{input:"\\vee",		tag:"mo", output:"\u2228", ttype:CONST},
+{input:"\\cap",		tag:"mo", output:"\u2229", ttype:CONST},
+{input:"\\cup",		tag:"mo", output:"\u222A", ttype:CONST},
+{input:"\\sqcap",	tag:"mo", output:"\u2293", ttype:CONST},
+{input:"\\sqcup",	tag:"mo", output:"\u2294", ttype:CONST},
+{input:"\\uplus",	tag:"mo", output:"\u228E", ttype:CONST},
+{input:"\\amalg",	tag:"mo", output:"\u2210", ttype:CONST},
+{input:"\\bigtriangleup",tag:"mo",output:"\u25B3", ttype:CONST},
+{input:"\\bigtriangledown",tag:"mo",output:"\u25BD", ttype:CONST},
+{input:"\\dag",		tag:"mo", output:"\u2020", ttype:CONST},
+{input:"\\dagger",	tag:"mo", output:"\u2020", ttype:CONST},
+{input:"\\ddag",	tag:"mo", output:"\u2021", ttype:CONST},
+{input:"\\ddagger",	tag:"mo", output:"\u2021", ttype:CONST},
+{input:"\\lhd",		tag:"mo", output:"\u22B2", ttype:CONST},
+{input:"\\rhd",		tag:"mo", output:"\u22B3", ttype:CONST},
+{input:"\\unlhd",	tag:"mo", output:"\u22B4", ttype:CONST},
+{input:"\\unrhd",	tag:"mo", output:"\u22B5", ttype:CONST},
+
+
+//BIG Operators
+{input:"\\sum",		tag:"mo", output:"\u2211", ttype:UNDEROVER},
+{input:"\\prod",	tag:"mo", output:"\u220F", ttype:UNDEROVER},
+{input:"\\bigcap",	tag:"mo", output:"\u22C2", ttype:UNDEROVER},
+{input:"\\bigcup",	tag:"mo", output:"\u22C3", ttype:UNDEROVER},
+{input:"\\bigwedge",	tag:"mo", output:"\u22C0", ttype:UNDEROVER},
+{input:"\\bigvee",	tag:"mo", output:"\u22C1", ttype:UNDEROVER},
+{input:"\\bigsqcap",	tag:"mo", output:"\u2A05", ttype:UNDEROVER},
+{input:"\\bigsqcup",	tag:"mo", output:"\u2A06", ttype:UNDEROVER},
+{input:"\\coprod",	tag:"mo", output:"\u2210", ttype:UNDEROVER},
+{input:"\\bigoplus",	tag:"mo", output:"\u2A01", ttype:UNDEROVER},
+{input:"\\bigotimes",	tag:"mo", output:"\u2A02", ttype:UNDEROVER},
+{input:"\\bigodot",	tag:"mo", output:"\u2A00", ttype:UNDEROVER},
+{input:"\\biguplus",	tag:"mo", output:"\u2A04", ttype:UNDEROVER},
+{input:"\\int",		tag:"mo", output:"\u222B", ttype:CONST},
+{input:"\\oint",	tag:"mo", output:"\u222E", ttype:CONST},
+
+//binary relation symbols
+{input:":=",		tag:"mo", output:":=",	   ttype:CONST},
+{input:"\\lt",		tag:"mo", output:"<",	   ttype:CONST},
+{input:"\\gt",		tag:"mo", output:">",	   ttype:CONST},
+{input:"\\ne",		tag:"mo", output:"\u2260", ttype:CONST},
+{input:"\\neq",		tag:"mo", output:"\u2260", ttype:CONST},
+{input:"\\le",		tag:"mo", output:"\u2264", ttype:CONST},
+{input:"\\leq",		tag:"mo", output:"\u2264", ttype:CONST},
+{input:"\\leqslant",	tag:"mo", output:"\u2264", ttype:CONST},
+{input:"\\ge",		tag:"mo", output:"\u2265", ttype:CONST},
+{input:"\\geq",		tag:"mo", output:"\u2265", ttype:CONST},
+{input:"\\geqslant",	tag:"mo", output:"\u2265", ttype:CONST},
+{input:"\\equiv",	tag:"mo", output:"\u2261", ttype:CONST},
+{input:"\\ll",		tag:"mo", output:"\u226A", ttype:CONST},
+{input:"\\gg",		tag:"mo", output:"\u226B", ttype:CONST},
+{input:"\\doteq",	tag:"mo", output:"\u2250", ttype:CONST},
+{input:"\\prec",	tag:"mo", output:"\u227A", ttype:CONST},
+{input:"\\succ",	tag:"mo", output:"\u227B", ttype:CONST},
+{input:"\\preceq",	tag:"mo", output:"\u227C", ttype:CONST},
+{input:"\\succeq",	tag:"mo", output:"\u227D", ttype:CONST},
+{input:"\\subset",	tag:"mo", output:"\u2282", ttype:CONST},
+{input:"\\supset",	tag:"mo", output:"\u2283", ttype:CONST},
+{input:"\\subseteq",	tag:"mo", output:"\u2286", ttype:CONST},
+{input:"\\supseteq",	tag:"mo", output:"\u2287", ttype:CONST},
+{input:"\\sqsubset",	tag:"mo", output:"\u228F", ttype:CONST},
+{input:"\\sqsupset",	tag:"mo", output:"\u2290", ttype:CONST},
+{input:"\\sqsubseteq",  tag:"mo", output:"\u2291", ttype:CONST},
+{input:"\\sqsupseteq",  tag:"mo", output:"\u2292", ttype:CONST},
+{input:"\\sim",		tag:"mo", output:"\u223C", ttype:CONST},
+{input:"\\simeq",	tag:"mo", output:"\u2243", ttype:CONST},
+{input:"\\approx",	tag:"mo", output:"\u2248", ttype:CONST},
+{input:"\\cong",	tag:"mo", output:"\u2245", ttype:CONST},
+{input:"\\Join",	tag:"mo", output:"\u22C8", ttype:CONST},
+{input:"\\bowtie",	tag:"mo", output:"\u22C8", ttype:CONST},
+{input:"\\in",		tag:"mo", output:"\u2208", ttype:CONST},
+{input:"\\ni",		tag:"mo", output:"\u220B", ttype:CONST},
+{input:"\\owns",	tag:"mo", output:"\u220B", ttype:CONST},
+{input:"\\propto",	tag:"mo", output:"\u221D", ttype:CONST},
+{input:"\\vdash",	tag:"mo", output:"\u22A2", ttype:CONST},
+{input:"\\dashv",	tag:"mo", output:"\u22A3", ttype:CONST},
+{input:"\\models",	tag:"mo", output:"\u22A8", ttype:CONST},
+{input:"\\perp",	tag:"mo", output:"\u22A5", ttype:CONST},
+{input:"\\smile",	tag:"mo", output:"\u2323", ttype:CONST},
+{input:"\\frown",	tag:"mo", output:"\u2322", ttype:CONST},
+{input:"\\asymp",	tag:"mo", output:"\u224D", ttype:CONST},
+{input:"\\notin",	tag:"mo", output:"\u2209", ttype:CONST},
+
+//matrices
+{input:"\\begin{eqnarray}",	output:"X",	ttype:MATRIX, invisible:true},
+{input:"\\begin{array}",	output:"X",	ttype:MATRIX, invisible:true},
+{input:"\\\\",			output:"}&{",	ttype:DEFINITION},
+{input:"\\end{eqnarray}",	output:"}}",	ttype:DEFINITION},
+{input:"\\end{array}",		output:"}}",	ttype:DEFINITION},
+
+//grouping and literal brackets -- ieval is for IE
+{input:"\\big",	   tag:"mo", output:"X", atval:"1.2", ieval:"2.2", ttype:BIG},
+{input:"\\Big",	   tag:"mo", output:"X", atval:"1.6", ieval:"2.6", ttype:BIG},
+{input:"\\bigg",   tag:"mo", output:"X", atval:"2.2", ieval:"3.2", ttype:BIG},
+{input:"\\Bigg",   tag:"mo", output:"X", atval:"2.9", ieval:"3.9", ttype:BIG},
+{input:"\\left",   tag:"mo", output:"X", ttype:LEFTBRACKET},
+{input:"\\right",  tag:"mo", output:"X", ttype:RIGHTBRACKET},
+{input:"{",	   output:"{", ttype:LEFTBRACKET,  invisible:true},
+{input:"}",	   output:"}", ttype:RIGHTBRACKET, invisible:true},
+
+{input:"(",	   tag:"mo", output:"(",      atval:"1", ttype:STRETCHY},
+{input:"[",	   tag:"mo", output:"[",      atval:"1", ttype:STRETCHY},
+{input:"\\lbrack", tag:"mo", output:"[",      atval:"1", ttype:STRETCHY},
+{input:"\\{",	   tag:"mo", output:"{",      atval:"1", ttype:STRETCHY},
+{input:"\\lbrace", tag:"mo", output:"{",      atval:"1", ttype:STRETCHY},
+{input:"\\langle", tag:"mo", output:"\u2329", atval:"1", ttype:STRETCHY},
+{input:"\\lfloor", tag:"mo", output:"\u230A", atval:"1", ttype:STRETCHY},
+{input:"\\lceil",  tag:"mo", output:"\u2308", atval:"1", ttype:STRETCHY},
+
+// rtag:"mi" causes space to be inserted before a following sin, cos, etc.
+// (see function AMparseExpr() )
+{input:")",	  tag:"mo",output:")",	    rtag:"mi",atval:"1",ttype:STRETCHY},
+{input:"]",	  tag:"mo",output:"]",	    rtag:"mi",atval:"1",ttype:STRETCHY},
+{input:"\\rbrack",tag:"mo",output:"]",	    rtag:"mi",atval:"1",ttype:STRETCHY},
+{input:"\\}",	  tag:"mo",output:"}",	    rtag:"mi",atval:"1",ttype:STRETCHY},
+{input:"\\rbrace",tag:"mo",output:"}",	    rtag:"mi",atval:"1",ttype:STRETCHY},
+{input:"\\rangle",tag:"mo",output:"\u232A", rtag:"mi",atval:"1",ttype:STRETCHY},
+{input:"\\rfloor",tag:"mo",output:"\u230B", rtag:"mi",atval:"1",ttype:STRETCHY},
+{input:"\\rceil", tag:"mo",output:"\u2309", rtag:"mi",atval:"1",ttype:STRETCHY},
+
+// "|", "\\|", "\\vert" and "\\Vert" modified later: lspace = rspace = 0em
+{input:"|",		tag:"mo", output:"\u2223", atval:"1", ttype:STRETCHY},
+{input:"\\|",		tag:"mo", output:"\u2225", atval:"1", ttype:STRETCHY},
+{input:"\\vert",	tag:"mo", output:"\u2223", atval:"1", ttype:STRETCHY},
+{input:"\\Vert",	tag:"mo", output:"\u2225", atval:"1", ttype:STRETCHY},
+{input:"\\mid",		tag:"mo", output:"\u2223", atval:"1", ttype:STRETCHY},
+{input:"\\parallel",	tag:"mo", output:"\u2225", atval:"1", ttype:STRETCHY},
+{input:"/",		tag:"mo", output:"/",	atval:"1.01", ttype:STRETCHY},
+{input:"\\backslash",	tag:"mo", output:"\u2216", atval:"1", ttype:STRETCHY},
+{input:"\\setminus",	tag:"mo", output:"\\",	   ttype:CONST},
+
+//miscellaneous symbols
+{input:"\\!",	  tag:"mspace", atname:"width", atval:"-0.167em", ttype:SPACE},
+{input:"\\,",	  tag:"mspace", atname:"width", atval:"0.167em", ttype:SPACE},
+{input:"\\>",	  tag:"mspace", atname:"width", atval:"0.222em", ttype:SPACE},
+{input:"\\:",	  tag:"mspace", atname:"width", atval:"0.222em", ttype:SPACE},
+{input:"\\;",	  tag:"mspace", atname:"width", atval:"0.278em", ttype:SPACE},
+{input:"~",	  tag:"mspace", atname:"width", atval:"0.333em", ttype:SPACE},
+{input:"\\quad",  tag:"mspace", atname:"width", atval:"1em", ttype:SPACE},
+{input:"\\qquad", tag:"mspace", atname:"width", atval:"2em", ttype:SPACE},
+//{input:"{}",		  tag:"mo", output:"\u200B", ttype:CONST}, // zero-width
+{input:"\\prime",	tag:"mo", output:"\u2032", ttype:CONST},
+{input:"'",		tag:"mo", output:"\u02B9", ttype:CONST},
+{input:"''",		tag:"mo", output:"\u02BA", ttype:CONST},
+{input:"'''",		tag:"mo", output:"\u2034", ttype:CONST},
+{input:"''''",		tag:"mo", output:"\u2057", ttype:CONST},
+{input:"\\ldots",	tag:"mo", output:"\u2026", ttype:CONST},
+{input:"\\cdots",	tag:"mo", output:"\u22EF", ttype:CONST},
+{input:"\\vdots",	tag:"mo", output:"\u22EE", ttype:CONST},
+{input:"\\ddots",	tag:"mo", output:"\u22F1", ttype:CONST},
+{input:"\\forall",	tag:"mo", output:"\u2200", ttype:CONST},
+{input:"\\exists",	tag:"mo", output:"\u2203", ttype:CONST},
+{input:"\\Re",		tag:"mo", output:"\u211C", ttype:CONST},
+{input:"\\Im",		tag:"mo", output:"\u2111", ttype:CONST},
+{input:"\\aleph",	tag:"mo", output:"\u2135", ttype:CONST},
+{input:"\\hbar",	tag:"mo", output:"\u210F", ttype:CONST},
+{input:"\\ell",		tag:"mo", output:"\u2113", ttype:CONST},
+{input:"\\wp",		tag:"mo", output:"\u2118", ttype:CONST},
+{input:"\\emptyset",	tag:"mo", output:"\u2205", ttype:CONST},
+{input:"\\infty",	tag:"mo", output:"\u221E", ttype:CONST},
+{input:"\\surd",	tag:"mo", output:"\\sqrt{}", ttype:DEFINITION},
+{input:"\\partial",	tag:"mo", output:"\u2202", ttype:CONST},
+{input:"\\nabla",	tag:"mo", output:"\u2207", ttype:CONST},
+{input:"\\triangle",	tag:"mo", output:"\u25B3", ttype:CONST},
+{input:"\\therefore",	tag:"mo", output:"\u2234", ttype:CONST},
+{input:"\\angle",	tag:"mo", output:"\u2220", ttype:CONST},
+//{input:"\\\\ ",	  tag:"mo", output:"\u00A0", ttype:CONST},
+{input:"\\diamond",	tag:"mo", output:"\u22C4", ttype:CONST},
+//{input:"\\Diamond",	  tag:"mo", output:"\u25CA", ttype:CONST},
+{input:"\\Diamond",	tag:"mo", output:"\u25C7", ttype:CONST},
+{input:"\\neg",		tag:"mo", output:"\u00AC", ttype:CONST},
+{input:"\\lnot",	tag:"mo", output:"\u00AC", ttype:CONST},
+{input:"\\bot",		tag:"mo", output:"\u22A5", ttype:CONST},
+{input:"\\top",		tag:"mo", output:"\u22A4", ttype:CONST},
+{input:"\\square",	tag:"mo", output:"\u25AB", ttype:CONST},
+{input:"\\Box",		tag:"mo", output:"\u25A1", ttype:CONST},
+{input:"\\wr",		tag:"mo", output:"\u2240", ttype:CONST},
+
+//standard functions
+//Note UNDEROVER *must* have tag:"mo" to work properly
+{input:"\\arccos", tag:"mi", output:"arccos", ttype:UNARY, func:true},
+{input:"\\arcsin", tag:"mi", output:"arcsin", ttype:UNARY, func:true},
+{input:"\\arctan", tag:"mi", output:"arctan", ttype:UNARY, func:true},
+{input:"\\arg",	   tag:"mi", output:"arg",    ttype:UNARY, func:true},
+{input:"\\cos",	   tag:"mi", output:"cos",    ttype:UNARY, func:true},
+{input:"\\cosh",   tag:"mi", output:"cosh",   ttype:UNARY, func:true},
+{input:"\\cot",	   tag:"mi", output:"cot",    ttype:UNARY, func:true},
+{input:"\\coth",   tag:"mi", output:"coth",   ttype:UNARY, func:true},
+{input:"\\csc",	   tag:"mi", output:"csc",    ttype:UNARY, func:true},
+{input:"\\deg",	   tag:"mi", output:"deg",    ttype:UNARY, func:true},
+{input:"\\det",	   tag:"mi", output:"det",    ttype:UNARY, func:true},
+{input:"\\dim",	   tag:"mi", output:"dim",    ttype:UNARY, func:true}, //CONST?
+{input:"\\exp",	   tag:"mi", output:"exp",    ttype:UNARY, func:true},
+{input:"\\gcd",	   tag:"mi", output:"gcd",    ttype:UNARY, func:true}, //CONST?
+{input:"\\hom",	   tag:"mi", output:"hom",    ttype:UNARY, func:true},
+{input:"\\inf",	      tag:"mo", output:"inf",	 ttype:UNDEROVER},
+{input:"\\ker",	   tag:"mi", output:"ker",    ttype:UNARY, func:true},
+{input:"\\lg",	   tag:"mi", output:"lg",     ttype:UNARY, func:true},
+{input:"\\lim",	      tag:"mo", output:"lim",	 ttype:UNDEROVER},
+{input:"\\liminf",    tag:"mo", output:"liminf", ttype:UNDEROVER},
+{input:"\\limsup",    tag:"mo", output:"limsup", ttype:UNDEROVER},
+{input:"\\ln",	   tag:"mi", output:"ln",     ttype:UNARY, func:true},
+{input:"\\log",	   tag:"mi", output:"log",    ttype:UNARY, func:true},
+{input:"\\max",	      tag:"mo", output:"max",	 ttype:UNDEROVER},
+{input:"\\min",	      tag:"mo", output:"min",	 ttype:UNDEROVER},
+{input:"\\Pr",	   tag:"mi", output:"Pr",     ttype:UNARY, func:true},
+{input:"\\sec",	   tag:"mi", output:"sec",    ttype:UNARY, func:true},
+{input:"\\sin",	   tag:"mi", output:"sin",    ttype:UNARY, func:true},
+{input:"\\sinh",   tag:"mi", output:"sinh",   ttype:UNARY, func:true},
+{input:"\\sup",	      tag:"mo", output:"sup",	 ttype:UNDEROVER},
+{input:"\\tan",	   tag:"mi", output:"tan",    ttype:UNARY, func:true},
+{input:"\\tanh",   tag:"mi", output:"tanh",   ttype:UNARY, func:true},
+
+//arrows
+{input:"\\gets",		tag:"mo", output:"\u2190", ttype:CONST},
+{input:"\\leftarrow",		tag:"mo", output:"\u2190", ttype:CONST},
+{input:"\\to",			tag:"mo", output:"\u2192", ttype:CONST},
+{input:"\\rightarrow",		tag:"mo", output:"\u2192", ttype:CONST},
+{input:"\\leftrightarrow",	tag:"mo", output:"\u2194", ttype:CONST},
+{input:"\\uparrow",		tag:"mo", output:"\u2191", ttype:CONST},
+{input:"\\downarrow",		tag:"mo", output:"\u2193", ttype:CONST},
+{input:"\\updownarrow",		tag:"mo", output:"\u2195", ttype:CONST},
+{input:"\\Leftarrow",		tag:"mo", output:"\u21D0", ttype:CONST},
+{input:"\\Rightarrow",		tag:"mo", output:"\u21D2", ttype:CONST},
+{input:"\\Leftrightarrow",	tag:"mo", output:"\u21D4", ttype:CONST},
+{input:"\\iff", tag:"mo", output:"~\\Longleftrightarrow~", ttype:DEFINITION},
+{input:"\\Uparrow",		tag:"mo", output:"\u21D1", ttype:CONST},
+{input:"\\Downarrow",		tag:"mo", output:"\u21D3", ttype:CONST},
+{input:"\\Updownarrow",		tag:"mo", output:"\u21D5", ttype:CONST},
+{input:"\\mapsto",		tag:"mo", output:"\u21A6", ttype:CONST},
+{input:"\\longleftarrow",	tag:"mo", output:"\u2190", ttype:LONG},
+{input:"\\longrightarrow",	tag:"mo", output:"\u2192", ttype:LONG},
+{input:"\\longleftrightarrow",	tag:"mo", output:"\u2194", ttype:LONG},
+{input:"\\Longleftarrow",	tag:"mo", output:"\u21D0", ttype:LONG},
+{input:"\\Longrightarrow",	tag:"mo", output:"\u21D2", ttype:LONG},
+{input:"\\Longleftrightarrow",  tag:"mo", output:"\u21D4", ttype:LONG},
+{input:"\\longmapsto",		tag:"mo", output:"\u21A6", ttype:CONST},
+							// disaster if LONG
+
+//commands with argument
+AMsqrt, AMroot, AMfrac, AMover, AMsub, AMsup, AMtext, AMmbox, AMatop, AMchoose,
+//AMdiv, AMquote,
+
+//diacritical marks
+{input:"\\acute",	tag:"mover",  output:"\u00B4", ttype:UNARY, acc:true},
+//{input:"\\acute",	  tag:"mover",  output:"\u0317", ttype:UNARY, acc:true},
+//{input:"\\acute",	  tag:"mover",  output:"\u0301", ttype:UNARY, acc:true},
+//{input:"\\grave",	  tag:"mover",  output:"\u0300", ttype:UNARY, acc:true},
+//{input:"\\grave",	  tag:"mover",  output:"\u0316", ttype:UNARY, acc:true},
+{input:"\\grave",	tag:"mover",  output:"\u0060", ttype:UNARY, acc:true},
+{input:"\\breve",	tag:"mover",  output:"\u02D8", ttype:UNARY, acc:true},
+{input:"\\check",	tag:"mover",  output:"\u02C7", ttype:UNARY, acc:true},
+{input:"\\dot",		tag:"mover",  output:".",      ttype:UNARY, acc:true},
+{input:"\\ddot",	tag:"mover",  output:"..",     ttype:UNARY, acc:true},
+//{input:"\\ddot",	  tag:"mover",  output:"\u00A8", ttype:UNARY, acc:true},
+{input:"\\mathring",	tag:"mover",  output:"\u00B0", ttype:UNARY, acc:true},
+{input:"\\vec",		tag:"mover",  output:"\u20D7", ttype:UNARY, acc:true},
+{input:"\\overrightarrow",tag:"mover",output:"\u20D7", ttype:UNARY, acc:true},
+{input:"\\overleftarrow",tag:"mover", output:"\u20D6", ttype:UNARY, acc:true},
+{input:"\\hat",		tag:"mover",  output:"\u005E", ttype:UNARY, acc:true},
+{input:"\\widehat",	tag:"mover",  output:"\u0302", ttype:UNARY, acc:true},
+{input:"\\tilde",	tag:"mover",  output:"~",      ttype:UNARY, acc:true},
+//{input:"\\tilde",	  tag:"mover",  output:"\u0303", ttype:UNARY, acc:true},
+{input:"\\widetilde",	tag:"mover",  output:"\u02DC", ttype:UNARY, acc:true},
+{input:"\\bar",		tag:"mover",  output:"\u203E", ttype:UNARY, acc:true},
+{input:"\\overbrace",	tag:"mover",  output:"\u23B4", ttype:UNARY, acc:true},
+{input:"\\overline",	tag:"mover",  output:"\u00AF", ttype:UNARY, acc:true},
+{input:"\\underbrace",  tag:"munder", output:"\u23B5", ttype:UNARY, acc:true},
+{input:"\\underline",	tag:"munder", output:"\u00AF", ttype:UNARY, acc:true},
+//{input:"underline",	tag:"munder", output:"\u0332", ttype:UNARY, acc:true},
+
+//typestyles and fonts
+{input:"\\displaystyle",tag:"mstyle",atname:"displaystyle",atval:"true", ttype:UNARY},
+{input:"\\textstyle",tag:"mstyle",atname:"displaystyle",atval:"false", ttype:UNARY},
+{input:"\\scriptstyle",tag:"mstyle",atname:"scriptlevel",atval:"1", ttype:UNARY},
+{input:"\\scriptscriptstyle",tag:"mstyle",atname:"scriptlevel",atval:"2", ttype:UNARY},
+{input:"\\textrm", tag:"mstyle", output:"\\mathrm", ttype: DEFINITION},
+{input:"\\mathbf", tag:"mstyle", atname:"mathvariant", atval:"bold", ttype:UNARY},
+{input:"\\textbf", tag:"mstyle", atname:"mathvariant", atval:"bold", ttype:UNARY},
+{input:"\\mathit", tag:"mstyle", atname:"mathvariant", atval:"italic", ttype:UNARY},
+{input:"\\textit", tag:"mstyle", atname:"mathvariant", atval:"italic", ttype:UNARY},
+{input:"\\mathtt", tag:"mstyle", atname:"mathvariant", atval:"monospace", ttype:UNARY},
+{input:"\\texttt", tag:"mstyle", atname:"mathvariant", atval:"monospace", ttype:UNARY},
+{input:"\\mathsf", tag:"mstyle", atname:"mathvariant", atval:"sans-serif", ttype:UNARY},
+{input:"\\mathbb", tag:"mstyle", atname:"mathvariant", atval:"double-struck", ttype:UNARY, codes:AMbbb},
+{input:"\\mathcal",tag:"mstyle", atname:"mathvariant", atval:"script", ttype:UNARY, codes:AMcal},
+{input:"\\mathfrak",tag:"mstyle",atname:"mathvariant", atval:"fraktur",ttype:UNARY, codes:AMfrk}
+];
+
+function compareNames(s1,s2) {
+  if (s1.input > s2.input) return 1
+  else return -1;
+}
+
+var AMnames = []; //list of input symbols
+
+function AMinitSymbols() {
+  AMsymbols.sort(compareNames);
+  for (i=0; i<AMsymbols.length; i++) AMnames[i] = AMsymbols[i].input;
+}
+
+var AMmathml = "http://www.w3.org/1998/Math/MathML";
+
+function AMcreateElementMathML(t) {
+  if (isIE) return document.createElement("m:"+t);
+  else return document.createElementNS(AMmathml,t);
+}
+
+function AMcreateMmlNode(t,frag) {
+//  var node = AMcreateElementMathML(name);
+  if (isIE) var node = document.createElement("m:"+t);
+  else var node = document.createElementNS(AMmathml,t);
+  node.appendChild(frag);
+  return node;
+}
+
+function newcommand(oldstr,newstr) {
+  AMsymbols = AMsymbols.concat([{input:oldstr, tag:"mo", output:newstr,
+                                 ttype:DEFINITION}]);
+}
+
+function AMremoveCharsAndBlanks(str,n) {
+//remove n characters and any following blanks
+  var st;
+  st = str.slice(n);
+  for (var i=0; i<st.length && st.charCodeAt(i)<=32; i=i+1);
+  return st.slice(i);
+}
+
+function AMposition(arr, str, n) {
+// return position >=n where str appears or would be inserted
+// assumes arr is sorted
+  if (n==0) {
+    var h,m;
+    n = -1;
+    h = arr.length;
+    while (n+1<h) {
+      m = (n+h) >> 1;
+      if (arr[m]<str) n = m; else h = m;
+    }
+    return h;
+  } else
+    for (var i=n; i<arr.length && arr[i]<str; i++);
+  return i; // i=arr.length || arr[i]>=str
+}
+
+function AMgetSymbol(str) {
+//return maximal initial substring of str that appears in names
+//return null if there is none
+  var k = 0; //new pos
+  var j = 0; //old pos
+  var mk; //match pos
+  var st;
+  var tagst;
+  var match = "";
+  var more = true;
+  for (var i=1; i<=str.length && more; i++) {
+    st = str.slice(0,i); //initial substring of length i
+    j = k;
+    k = AMposition(AMnames, st, j);
+    if (k<AMnames.length && str.slice(0,AMnames[k].length)==AMnames[k]){
+      match = AMnames[k];
+      mk = k;
+      i = match.length;
+    }
+    more = k<AMnames.length && str.slice(0,AMnames[k].length)>=AMnames[k];
+  }
+  AMpreviousSymbol=AMcurrentSymbol;
+  if (match!=""){
+    AMcurrentSymbol=AMsymbols[mk].ttype;
+    return AMsymbols[mk];
+  }
+  AMcurrentSymbol=CONST;
+  k = 1;
+  st = str.slice(0,1); //take 1 character
+  if ("0"<=st && st<="9") tagst = "mn";
+  else tagst = (("A">st || st>"Z") && ("a">st || st>"z")?"mo":"mi");
+/*
+// Commented out by DRW (not fully understood, but probably to do with
+// use of "/" as an INFIX version of "\\frac", which we don't want):
+//}
+//if (st=="-" && AMpreviousSymbol==INFIX) {
+//  AMcurrentSymbol = INFIX;  //trick "/" into recognizing "-" on second parse
+//  return {input:st, tag:tagst, output:st, ttype:UNARY, func:true};
+//}
+*/
+  return {input:st, tag:tagst, output:st, ttype:CONST};
+}
+
+
+/*Parsing ASCII math expressions with the following grammar
+v ::= [A-Za-z] | greek letters | numbers | other constant symbols
+u ::= sqrt | text | bb | other unary symbols for font commands
+b ::= frac | root | stackrel	binary symbols
+l ::= { | \left			left brackets
+r ::= } | \right		right brackets
+S ::= v | lEr | uS | bSS	Simple expression
+I ::= S_S | S^S | S_S^S | S	Intermediate expression
+E ::= IE | I/I			Expression
+Each terminal symbol is translated into a corresponding mathml node.*/
+
+var AMpreviousSymbol,AMcurrentSymbol;
+
+function AMparseSexpr(str) { //parses str and returns [node,tailstr,(node)tag]
+  var symbol, node, result, result2, i, st,// rightvert = false,
+    newFrag = document.createDocumentFragment();
+  str = AMremoveCharsAndBlanks(str,0);
+  symbol = AMgetSymbol(str);             //either a token or a bracket or empty
+  if (symbol == null || symbol.ttype == RIGHTBRACKET)
+    return [null,str,null];
+  if (symbol.ttype == DEFINITION) {
+    str = symbol.output+AMremoveCharsAndBlanks(str,symbol.input.length);
+    symbol = AMgetSymbol(str);
+    if (symbol == null || symbol.ttype == RIGHTBRACKET)
+      return [null,str,null];
+  }
+  str = AMremoveCharsAndBlanks(str,symbol.input.length);
+  switch (symbol.ttype) {
+  case SPACE:
+    node = AMcreateElementMathML(symbol.tag);
+    node.setAttribute(symbol.atname,symbol.atval);
+    return [node,str,symbol.tag];
+  case UNDEROVER:
+    if (isIE) {
+      if (symbol.input.substr(0,4) == "\\big") {   // botch for missing symbols
+	str = "\\"+symbol.input.substr(4)+str;	   // make \bigcup = \cup etc.
+	symbol = AMgetSymbol(str);
+	symbol.ttype = UNDEROVER;
+	str = AMremoveCharsAndBlanks(str,symbol.input.length);
+      }
+    }
+    return [AMcreateMmlNode(symbol.tag,
+			document.createTextNode(symbol.output)),str,symbol.tag];
+  case CONST:
+    var output = symbol.output;
+    if (isIE) {
+      if (symbol.input == "'")
+	output = "\u2032";
+      else if (symbol.input == "''")
+	output = "\u2033";
+      else if (symbol.input == "'''")
+	output = "\u2033\u2032";
+      else if (symbol.input == "''''")
+	output = "\u2033\u2033";
+      else if (symbol.input == "\\square")
+	output = "\u25A1";	// same as \Box
+      else if (symbol.input.substr(0,5) == "\\frac") {
+						// botch for missing fractions
+	var denom = symbol.input.substr(6,1);
+	if (denom == "5" || denom == "6") {
+	  str = symbol.input.replace(/\\frac/,"\\frac ")+str;
+	  return [node,str,symbol.tag];
+	}
+      }
+    }
+    node = AMcreateMmlNode(symbol.tag,document.createTextNode(output));
+    return [node,str,symbol.tag];
+  case LONG:  // added by DRW
+    node = AMcreateMmlNode(symbol.tag,document.createTextNode(symbol.output));
+    node.setAttribute("minsize","1.5");
+    node.setAttribute("maxsize","1.5");
+    node = AMcreateMmlNode("mover",node);
+    node.appendChild(AMcreateElementMathML("mspace"));
+    return [node,str,symbol.tag];
+  case STRETCHY:  // added by DRW
+    if (isIE && symbol.input == "\\backslash")
+	symbol.output = "\\";	// doesn't expand, but then nor does "\u2216"
+    node = AMcreateMmlNode(symbol.tag,document.createTextNode(symbol.output));
+    if (symbol.input == "|" || symbol.input == "\\vert" ||
+	symbol.input == "\\|" || symbol.input == "\\Vert") {
+	  node.setAttribute("lspace","0em");
+	  node.setAttribute("rspace","0em");
+    }
+    node.setAttribute("maxsize",symbol.atval);  // don't allow to stretch here
+    if (symbol.rtag != null)
+      return [node,str,symbol.rtag];
+    else
+      return [node,str,symbol.tag];
+  case BIG:  // added by DRW
+    var atval = symbol.atval;
+    if (isIE)
+      atval = symbol.ieval;
+    symbol = AMgetSymbol(str);
+    if (symbol == null)
+	return [null,str,null];
+    str = AMremoveCharsAndBlanks(str,symbol.input.length);
+    node = AMcreateMmlNode(symbol.tag,document.createTextNode(symbol.output));
+    if (isIE) {		// to get brackets to expand
+      var space = AMcreateElementMathML("mspace");
+      space.setAttribute("height",atval+"ex");
+      node = AMcreateMmlNode("mrow",node);
+      node.appendChild(space);
+    } else {		// ignored in IE
+      node.setAttribute("minsize",atval);
+      node.setAttribute("maxsize",atval);
+    }
+    return [node,str,symbol.tag];
+  case LEFTBRACKET:   //read (expr+)
+    if (symbol.input == "\\left") { // left what?
+      symbol = AMgetSymbol(str);
+      if (symbol != null) {
+	if (symbol.input == ".")
+	  symbol.invisible = true;
+	str = AMremoveCharsAndBlanks(str,symbol.input.length);
+      }
+    }
+    result = AMparseExpr(str,true,false);
+    if (symbol==null ||
+	(typeof symbol.invisible == "boolean" && symbol.invisible))
+      node = AMcreateMmlNode("mrow",result[0]);
+    else {
+      node = AMcreateMmlNode("mo",document.createTextNode(symbol.output));
+      node = AMcreateMmlNode("mrow",node);
+      node.appendChild(result[0]);
+    }
+    return [node,result[1],result[2]];
+  case MATRIX:	 //read (expr+)
+    if (symbol.input == "\\begin{array}") {
+      var mask = "";
+      symbol = AMgetSymbol(str);
+      str = AMremoveCharsAndBlanks(str,0);
+      if (symbol == null)
+	mask = "l";
+      else {
+	str = AMremoveCharsAndBlanks(str,symbol.input.length);
+	if (symbol.input != "{")
+	  mask = "l";
+	else do {
+	  symbol = AMgetSymbol(str);
+	  if (symbol != null) {
+	    str = AMremoveCharsAndBlanks(str,symbol.input.length);
+	    if (symbol.input != "}")
+	      mask = mask+symbol.input;
+	  }
+	} while (symbol != null && symbol.input != "" && symbol.input != "}");
+      }
+      result = AMparseExpr("{"+str,true,true);
+//    if (result[0]==null) return [AMcreateMmlNode("mo",
+//			   document.createTextNode(symbol.input)),str];
+      node = AMcreateMmlNode("mtable",result[0]);
+      mask = mask.replace(/l/g,"left ");
+      mask = mask.replace(/r/g,"right ");
+      mask = mask.replace(/c/g,"center ");
+      node.setAttribute("columnalign",mask);
+      node.setAttribute("displaystyle","false");
+      if (isIE)
+	return [node,result[1],null];
+// trying to get a *little* bit of space around the array
+// (IE already includes it)
+      var lspace = AMcreateElementMathML("mspace");
+      lspace.setAttribute("width","0.167em");
+      var rspace = AMcreateElementMathML("mspace");
+      rspace.setAttribute("width","0.167em");
+      var node1 = AMcreateMmlNode("mrow",lspace);
+      node1.appendChild(node);
+      node1.appendChild(rspace);
+      return [node1,result[1],null];
+    } else {	// eqnarray
+      result = AMparseExpr("{"+str,true,true);
+      node = AMcreateMmlNode("mtable",result[0]);
+      if (isIE)
+	node.setAttribute("columnspacing","0.25em"); // best in practice?
+      else
+	node.setAttribute("columnspacing","0.167em"); // correct (but ignored?)
+      node.setAttribute("columnalign","right center left");
+      node.setAttribute("displaystyle","true");
+      node = AMcreateMmlNode("mrow",node);
+      return [node,result[1],null];
+    }
+  case TEXT:
+      if (str.charAt(0)=="{") i=str.indexOf("}");
+      else i = 0;
+      if (i==-1)
+		 i = str.length;
+      st = str.slice(1,i);
+      if (st.charAt(0) == " ") {
+	node = AMcreateElementMathML("mspace");
+	node.setAttribute("width","0.33em");	// was 1ex
+	newFrag.appendChild(node);
+      }
+      newFrag.appendChild(
+        AMcreateMmlNode(symbol.tag,document.createTextNode(st)));
+      if (st.charAt(st.length-1) == " ") {
+	node = AMcreateElementMathML("mspace");
+	node.setAttribute("width","0.33em");	// was 1ex
+	newFrag.appendChild(node);
+      }
+      str = AMremoveCharsAndBlanks(str,i+1);
+      return [AMcreateMmlNode("mrow",newFrag),str,null];
+  case UNARY:
+      result = AMparseSexpr(str);
+      if (result[0]==null) return [AMcreateMmlNode(symbol.tag,
+                             document.createTextNode(symbol.output)),str];
+      if (typeof symbol.func == "boolean" && symbol.func) { // functions hack
+	st = str.charAt(0);
+//	if (st=="^" || st=="_" || st=="/" || st=="|" || st==",") {
+	if (st=="^" || st=="_" || st==",") {
+	  return [AMcreateMmlNode(symbol.tag,
+		    document.createTextNode(symbol.output)),str,symbol.tag];
+        } else {
+	  node = AMcreateMmlNode("mrow",
+	   AMcreateMmlNode(symbol.tag,document.createTextNode(symbol.output)));
+	  if (isIE) {
+	    var space = AMcreateElementMathML("mspace");
+	    space.setAttribute("width","0.167em");
+	    node.appendChild(space);
+	  }
+	  node.appendChild(result[0]);
+	  return [node,result[1],symbol.tag];
+        }
+      }
+      if (symbol.input == "\\sqrt") {		// sqrt
+	if (isIE) {	// set minsize, for \surd
+	  var space = AMcreateElementMathML("mspace");
+	  space.setAttribute("height","1.2ex");
+	  space.setAttribute("width","0em");	// probably no effect
+	  node = AMcreateMmlNode(symbol.tag,result[0])
+//	  node.setAttribute("minsize","1");	// ignored
+//	  node = AMcreateMmlNode("mrow",node);  // hopefully unnecessary
+	  node.appendChild(space);
+	  return [node,result[1],symbol.tag];
+	} else
+	  return [AMcreateMmlNode(symbol.tag,result[0]),result[1],symbol.tag];
+      } else if (typeof symbol.acc == "boolean" && symbol.acc) {   // accent
+        node = AMcreateMmlNode(symbol.tag,result[0]);
+	var output = symbol.output;
+	if (isIE) {
+		if (symbol.input == "\\hat")
+			output = "\u0302";
+		else if (symbol.input == "\\widehat")
+			output = "\u005E";
+		else if (symbol.input == "\\bar")
+			output = "\u00AF";
+		else if (symbol.input == "\\grave")
+			output = "\u0300";
+		else if (symbol.input == "\\tilde")
+			output = "\u0303";
+	}
+	var node1 = AMcreateMmlNode("mo",document.createTextNode(output));
+	if (symbol.input == "\\vec" || symbol.input == "\\check")
+						// don't allow to stretch
+	    node1.setAttribute("maxsize","1.2");
+		 // why doesn't "1" work?  \vec nearly disappears in firefox
+	if (isIE && symbol.input == "\\bar")
+	    node1.setAttribute("maxsize","0.5");
+	if (symbol.input == "\\underbrace" || symbol.input == "\\underline")
+	  node1.setAttribute("accentunder","true");
+	else
+	  node1.setAttribute("accent","true");
+	node.appendChild(node1);
+	if (symbol.input == "\\overbrace" || symbol.input == "\\underbrace")
+	  node.ttype = UNDEROVER;
+	return [node,result[1],symbol.tag];
+      } else {			      // font change or displaystyle command
+        if (!isIE && typeof symbol.codes != "undefined") {
+          for (i=0; i<result[0].childNodes.length; i++)
+            if (result[0].childNodes[i].nodeName=="mi" || result[0].nodeName=="mi") {
+              st = (result[0].nodeName=="mi"?result[0].firstChild.nodeValue:
+                              result[0].childNodes[i].firstChild.nodeValue);
+              var newst = [];
+              for (var j=0; j<st.length; j++)
+                if (st.charCodeAt(j)>64 && st.charCodeAt(j)<91) newst = newst +
+                  String.fromCharCode(symbol.codes[st.charCodeAt(j)-65]);
+                else newst = newst + st.charAt(j);
+              if (result[0].nodeName=="mi")
+                result[0]=AMcreateElementMathML("mo").
+                          appendChild(document.createTextNode(newst));
+              else result[0].replaceChild(AMcreateElementMathML("mo").
+          appendChild(document.createTextNode(newst)),result[0].childNodes[i]);
+            }
+        }
+        node = AMcreateMmlNode(symbol.tag,result[0]);
+        node.setAttribute(symbol.atname,symbol.atval);
+	if (symbol.input == "\\scriptstyle" ||
+	    symbol.input == "\\scriptscriptstyle")
+		node.setAttribute("displaystyle","false");
+	return [node,result[1],symbol.tag];
+      }
+  case BINARY:
+    result = AMparseSexpr(str);
+    if (result[0]==null) return [AMcreateMmlNode("mo",
+			   document.createTextNode(symbol.input)),str,null];
+    result2 = AMparseSexpr(result[1]);
+    if (result2[0]==null) return [AMcreateMmlNode("mo",
+			   document.createTextNode(symbol.input)),str,null];
+    if (symbol.input=="\\root" || symbol.input=="\\stackrel")
+      newFrag.appendChild(result2[0]);
+    newFrag.appendChild(result[0]);
+    if (symbol.input=="\\frac") newFrag.appendChild(result2[0]);
+    return [AMcreateMmlNode(symbol.tag,newFrag),result2[1],symbol.tag];
+  case INFIX:
+    str = AMremoveCharsAndBlanks(str,symbol.input.length);
+    return [AMcreateMmlNode("mo",document.createTextNode(symbol.output)),
+	str,symbol.tag];
+  default:
+    return [AMcreateMmlNode(symbol.tag,        //its a constant
+	document.createTextNode(symbol.output)),str,symbol.tag];
+  }
+}
+
+function AMparseIexpr(str) {
+  var symbol, sym1, sym2, node, result, tag, underover;
+  str = AMremoveCharsAndBlanks(str,0);
+  sym1 = AMgetSymbol(str);
+  result = AMparseSexpr(str);
+  node = result[0];
+  str = result[1];
+  tag = result[2];
+  symbol = AMgetSymbol(str);
+  if (symbol.ttype == INFIX) {
+    str = AMremoveCharsAndBlanks(str,symbol.input.length);
+    result = AMparseSexpr(str);
+    if (result[0] == null) // show box in place of missing argument
+      result[0] = AMcreateMmlNode("mo",document.createTextNode("\u25A1"));
+    str = result[1];
+    tag = result[2];
+    if (symbol.input == "_" || symbol.input == "^") {
+      sym2 = AMgetSymbol(str);
+      tag = null;	// no space between x^2 and a following sin, cos, etc.
+// This is for \underbrace and \overbrace
+      underover = ((sym1.ttype == UNDEROVER) || (node.ttype == UNDEROVER));
+//    underover = (sym1.ttype == UNDEROVER);
+      if (symbol.input == "_" && sym2.input == "^") {
+        str = AMremoveCharsAndBlanks(str,sym2.input.length);
+        var res2 = AMparseSexpr(str);
+	str = res2[1];
+	tag = res2[2];  // leave space between x_1^2 and a following sin etc.
+        node = AMcreateMmlNode((underover?"munderover":"msubsup"),node);
+        node.appendChild(result[0]);
+        node.appendChild(res2[0]);
+      } else if (symbol.input == "_") {
+	node = AMcreateMmlNode((underover?"munder":"msub"),node);
+        node.appendChild(result[0]);
+      } else {
+	node = AMcreateMmlNode((underover?"mover":"msup"),node);
+        node.appendChild(result[0]);
+      }
+      node = AMcreateMmlNode("mrow",node); // so sum does not stretch
+    } else {
+      node = AMcreateMmlNode(symbol.tag,node);
+      if (symbol.input == "\\atop" || symbol.input == "\\choose")
+	node.setAttribute("linethickness","0ex");
+      node.appendChild(result[0]);
+      if (symbol.input == "\\choose")
+	node = AMcreateMmlNode("mfenced",node);
+    }
+  }
+  return [node,str,tag];
+}
+
+function AMparseExpr(str,rightbracket,matrix) {
+  var symbol, node, result, i, tag,
+  newFrag = document.createDocumentFragment();
+  do {
+    str = AMremoveCharsAndBlanks(str,0);
+    result = AMparseIexpr(str);
+    node = result[0];
+    str = result[1];
+    tag = result[2];
+    symbol = AMgetSymbol(str);
+    if (node!=undefined) {
+      if ((tag == "mn" || tag == "mi") && symbol!=null &&
+	typeof symbol.func == "boolean" && symbol.func) {
+			// Add space before \sin in 2\sin x or x\sin x
+	  var space = AMcreateElementMathML("mspace");
+	  space.setAttribute("width","0.167em");
+	  node = AMcreateMmlNode("mrow",node);
+	  node.appendChild(space);
+      }
+      newFrag.appendChild(node);
+    }
+  } while ((symbol.ttype != RIGHTBRACKET)
+        && symbol!=null && symbol.output!="");
+  tag = null;
+  if (symbol.ttype == RIGHTBRACKET) {
+    if (symbol.input == "\\right") { // right what?
+      str = AMremoveCharsAndBlanks(str,symbol.input.length);
+      symbol = AMgetSymbol(str);
+      if (symbol != null && symbol.input == ".")
+	symbol.invisible = true;
+      if (symbol != null)
+	tag = symbol.rtag;
+    }
+    if (symbol!=null)
+      str = AMremoveCharsAndBlanks(str,symbol.input.length); // ready to return
+    var len = newFrag.childNodes.length;
+    if (matrix &&
+      len>0 && newFrag.childNodes[len-1].nodeName == "mrow" && len>1 &&
+      newFrag.childNodes[len-2].nodeName == "mo" &&
+      newFrag.childNodes[len-2].firstChild.nodeValue == "&") { //matrix
+	var pos = []; // positions of ampersands
+        var m = newFrag.childNodes.length;
+        for (i=0; matrix && i<m; i=i+2) {
+          pos[i] = [];
+          node = newFrag.childNodes[i];
+	  for (var j=0; j<node.childNodes.length; j++)
+	    if (node.childNodes[j].firstChild.nodeValue=="&")
+	      pos[i][pos[i].length]=j;
+        }
+	var row, frag, n, k, table = document.createDocumentFragment();
+	for (i=0; i<m; i=i+2) {
+	  row = document.createDocumentFragment();
+	  frag = document.createDocumentFragment();
+	  node = newFrag.firstChild; // <mrow> -&-&...&-&- </mrow>
+	  n = node.childNodes.length;
+	  k = 0;
+	  for (j=0; j<n; j++) {
+	    if (typeof pos[i][k] != "undefined" && j==pos[i][k]){
+	      node.removeChild(node.firstChild); //remove &
+	      row.appendChild(AMcreateMmlNode("mtd",frag));
+	      k++;
+	    } else frag.appendChild(node.firstChild);
+	  }
+	  row.appendChild(AMcreateMmlNode("mtd",frag));
+	  if (newFrag.childNodes.length>2) {
+	    newFrag.removeChild(newFrag.firstChild); //remove <mrow> </mrow>
+	    newFrag.removeChild(newFrag.firstChild); //remove <mo>&</mo>
+	  }
+	  table.appendChild(AMcreateMmlNode("mtr",row));
+	}
+	return [table,str];
+    }
+    if (typeof symbol.invisible != "boolean" || !symbol.invisible) {
+      node = AMcreateMmlNode("mo",document.createTextNode(symbol.output));
+      newFrag.appendChild(node);
+    }
+  }
+  return [newFrag,str,tag];
+}
+
+function AMparseMath(str) {
+  var result, node = AMcreateElementMathML("mstyle");
+  if (mathcolor != "") node.setAttribute("mathcolor",mathcolor);
+  if (mathfontfamily != "") node.setAttribute("fontfamily",mathfontfamily);
+  node.appendChild(AMparseExpr(str.replace(/^\s+/g,""),false,false)[0]);
+  node = AMcreateMmlNode("math",node);
+  if (showasciiformulaonhover)                      //fixed by djhsu so newline
+    node.setAttribute("title",str.replace(/\s+/g," "));//does not show in Gecko
+  if (mathfontfamily != "" && (isIE || mathfontfamily != "serif")) {
+    var fnode = AMcreateElementXHTML("font");
+    fnode.setAttribute("face",mathfontfamily);
+    fnode.appendChild(node);
+    return fnode;
+  }
+  return node;
+}
+
+function AMstrarr2docFrag(arr, linebreaks) {
+  var newFrag=document.createDocumentFragment();
+  var expr = false;
+  for (var i=0; i<arr.length; i++) {
+    if (expr) newFrag.appendChild(AMparseMath(arr[i]));
+    else {
+      var arri = (linebreaks ? arr[i].split("\n\n") : [arr[i]]);
+      newFrag.appendChild(AMcreateElementXHTML("span").
+      appendChild(document.createTextNode(arri[0])));
+      for (var j=1; j<arri.length; j++) {
+        newFrag.appendChild(AMcreateElementXHTML("p"));
+        newFrag.appendChild(AMcreateElementXHTML("span").
+        appendChild(document.createTextNode(arri[j])));
+      }
+    }
+    expr = !expr;
+  }
+  return newFrag;
+}
+
+function AMprocessNodeR(n, linebreaks) {
+  var mtch, str, arr, frg, i;
+  if (n.childNodes.length == 0) {
+   if ((n.nodeType!=8 || linebreaks) &&
+    n.parentNode.nodeName!="form" && n.parentNode.nodeName!="FORM" &&
+    n.parentNode.nodeName!="textarea" && n.parentNode.nodeName!="TEXTAREA" &&
+    n.parentNode.nodeName!="pre" && n.parentNode.nodeName!="PRE") {
+    str = n.nodeValue;
+    if (!(str == null)) {
+      str = str.replace(/\r\n\r\n/g,"\n\n");
+      str = str.replace(/\x20+/g," ");
+      str = str.replace(/\s*\r\n/g," ");
+// DELIMITERS:
+      mtch = (str.indexOf("\$")==-1 ? false : true);
+      str = str.replace(/([^\\])\$/g,"$1 \$");
+      str = str.replace(/^\$/," \$");	// in case \$ at start of string
+      arr = str.split(" \$");
+      for (i=0; i<arr.length; i++)
+	arr[i]=arr[i].replace(/\\\$/g,"\$");
+      if (arr.length>1 || mtch) {
+        if (checkForMathML) {
+          checkForMathML = false;
+          var nd = AMisMathMLavailable();
+          AMnoMathML = nd != null;
+          if (AMnoMathML && notifyIfNoMathML)
+            if (alertIfNoMathML)
+              alert("To view the ASCIIMathML notation use Internet Explorer 6 +\nMathPlayer (free from www.dessci.com)\n\
+                or Firefox/Mozilla/Netscape");
+            else AMbody.insertBefore(nd,AMbody.childNodes[0]);
+        }
+        if (!AMnoMathML) {
+          frg = AMstrarr2docFrag(arr,n.nodeType==8);
+          var len = frg.childNodes.length;
+          n.parentNode.replaceChild(frg,n);
+          return len-1;
+        } else return 0;
+      }
+    }
+   } else return 0;
+  } else if (n.nodeName!="math") {
+    for (i=0; i<n.childNodes.length; i++)
+      i += AMprocessNodeR(n.childNodes[i], linebreaks);
+  }
+  return 0;
+}
+
+function AMprocessNode(n, linebreaks, spanclassAM) {
+  var frag,st;
+  if (spanclassAM!=null) {
+    frag = document.getElementsByTagName("span")
+    for (var i=0;i<frag.length;i++)
+      if (frag[i].className == "AM")
+        AMprocessNodeR(frag[i],linebreaks);
+  } else {
+    try {
+      st = n.innerHTML;
+    } catch(err) {}
+// DELIMITERS:
+    if (st==null || st.indexOf("\$")!=-1)
+      AMprocessNodeR(n,linebreaks);
+  }
+  if (isIE) { //needed to match size and font of formula to surrounding text
+    frag = document.getElementsByTagName('math');
+    for (var i=0;i<frag.length;i++) frag[i].update()
+  }
+}
+
+var AMbody;
+var AMnoMathML = false, AMtranslated = false;
+
+function translate(spanclassAM) {
+  if (!AMtranslated) { // run this only once
+    AMtranslated = true;
+    AMinitSymbols();
+    AMbody = document.getElementsByTagName("body")[0];
+    AMprocessNode(AMbody, false, spanclassAM);
+  }
+}
+
+if (isIE) { // avoid adding MathPlayer info explicitly to each webpage
+  document.write("<object id=\"mathplayer\"\
+  classid=\"clsid:32F66A20-7614-11D4-BD11-00104BD3F987\"></object>");
+  document.write("<?import namespace=\"m\" implementation=\"#mathplayer\"?>");
+}
+
+// GO1.1 Generic onload by Brothercake
+// http://www.brothercake.com/
+//onload function (replaces the onload="translate()" in the <body> tag)
+function generic()
+{
+  translate();
+};
+//setup onload function
+if(typeof window.addEventListener != 'undefined')
+{
+  //.. gecko, safari, konqueror and standard
+  window.addEventListener('load', generic, false);
+}
+else if(typeof document.addEventListener != 'undefined')
+{
+  //.. opera 7
+  document.addEventListener('load', generic, false);
+}
+else if(typeof window.attachEvent != 'undefined')
+{
+  //.. win/ie
+  window.attachEvent('onload', generic);
+}
+//** remove this condition to degrade older browsers
+else
+{
+  //.. mac/ie5 and anything else that gets this far
+  //if there's an existing onload function
+  if(typeof window.onload == 'function')
+  {
+    //store it
+    var existing = onload;
+    //add new onload handler
+    window.onload = function()
+    {
+      //call existing onload function
+      existing();
+      //call generic onload function
+      generic();
+    };
+  }
+  else
+  {
+    //setup onload function
+    window.onload = generic;
+  }
+}
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+<h1>Zynaddsubfx</h1>
+<span id="author">Paul Nasca and Mark McCurry</span><br>
+<div id="toc">
+  <div id="toctitle">Table of Contents</div>
+  <noscript><p><b>JavaScript must be enabled in your browser to display the table of contents.</b></p></noscript>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph"><p>This documentation is a work in progress</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_getting_started">1. Getting Started</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>ZynAddSubFX is a fairly complex software synthesizer with a very large number of
+controls.
+As such, it is not alway obvious how to use ZynAddSubFX.</p></div>
+<div class="paragraph"><p>Many applications under Linux transport MIDI over ALSA and transmit audio over
+JACK.
+ZynAddSubFX can be run in this configuration by running:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>zynaddsubfx -I alsa -O jack -a</pre>
+</div></div>
+<div class="paragraph"><p>This sets the input driver to be alsa and the output driver to be jack, which
+should attempt to autoconnect to your soundcard as per the <em>-a</em> flag.
+If this is your first time running ZynAddSubFX, you will see a screen that lets
+you choose between the advanced and beginner interface.
+Currently the beginner interface is deprecated, so the advanced one is
+recommended.</p></div>
+<div class="paragraph"><p>Now you should be able to see ZynAddSubFX&#8217;s main window, from which you can
+setup patches, effects, and general configurations, but more importatnly it
+provides links into the parameters of the patches.
+ZynAddSubFX is a powerful tool with a number of base patches, but its true power
+lies in the ability to make your own patches.</p></div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/uimain.png" alt="./images/uimain.png">
+</div>
+<div class="title">Figure 1. Main Window</div>
+</div>
+<div class="paragraph"><p>For basic usage, you will want to use the button to the right of the enabled
+label.
+This button will allow for one to select the desired instrument from the banks
+that ZynAddSubFX has available.
+To play notes in ZynAddSubFX, either utilize the builtin virtual keyboard
+(accessible via the vK button) or connect your keyboard to the system and use
+<strong>aconnect</strong> to connect it to ZynAddSubFX (assuming that ALSA was used).</p></div>
+<div class="paragraph"><p>This main window provides access to a number of more advanced features.
+Some of these features are:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+System Effects
+</p>
+</li>
+<li>
+<p>
+Insertion Effects
+</p>
+</li>
+<li>
+<p>
+Recording
+</p>
+</li>
+<li>
+<p>
+Part Settings (instrument level settings)
+</p>
+</li>
+<li>
+<p>
+Master Settings
+</p>
+</li>
+<li>
+<p>
+Microtonal Settings
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>For instance to use the recording feature, a wave file must be selected from the
+recording menu and then the recording can be started with the record button and
+stopped with the stop button.
+This is a simple and quick way of recording some samples from ZynAddSubFX,
+though there are more full featured options available via JACK recording tools.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">After hitting record, the wave file will not start recording until a new
+key has been pressed via either an external midi source or the virtual keyboard
+Both system and insertion effects can be accessed, the properties are available as well as properties of each
+instrument.</td>
+</tr></table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="filters">2. Filters</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>ZynAddSubFX offers several different types of filters, which can be used to
+shape the spectrum of a signal.
+The primary parameters that affect the characteristics of the filter are the
+cutoff, resonance, filter stages, and the filter type.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>Cutoff</strong>: This value determines which frequency marks the changing point for
+            the filter. In a low pass filter, this value marks the point where
+            higher frequencies are attenuated.
+</p>
+</li>
+<li>
+<p>
+<strong>Resonance</strong>: The resonance of a filter determines how much excess energy is
+               present at the cutoff frequency. In ZynAddSubFX, this is
+               represented by the Q-factor, which is defined to be the cutoff
+               frequency divided by the bandwidth. In other words higher Q
+               values result in a much more narrow resonant spike.
+</p>
+</li>
+<li>
+<p>
+<strong>Stages</strong>: The number of stages in a given filter describes how sharply it is
+            able to make changes in the frequency response.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>The basic <em>analog</em> filters that ZynAddSubFX offers are shown below, with the
+center frequency being marked by the red line.
+The <em>state variable</em> filters should look quite similar.</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/filter0.png" alt="images/filter0.png">
+</span></p></div>
+<div class="paragraph"><p>As previously mentioned, the Q value of a filter affects how concentrated the
+signal&#8217;s energy is at the cutoff frequency; The result of differing Q values are
+below.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">For many classical analog sounds, high Q values were used on sweeping
+filters. A simple high Q low pass filter modulated by a strong envelope is
+usually sufficient to get a good sound.</td>
+</tr></table>
+</div>
+<div class="paragraph"><p><span class="image">
+<img src="images/filter1.png" alt="images/filter1.png">
+</span></p></div>
+<div class="paragraph"><p>Lastly, the affect of the order of the filter can be seen below.
+This is roughly synonymous with the number of stages of the filter.
+For more complex patches it is important to realize that the extra sharpness in
+the filter does not come for free as it requires many more calculations being
+performed; This phenomena is the most visible in subsynth, where it is easy to
+need several hundred filter stages to produce a given note.</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/filter2.png" alt="images/filter2.png">
+</span></p></div>
+<div class="paragraph"><p>There are different types of filters. The number of poles define what will
+happen at a given frequency. Mathematically, the filters are functions which
+have poles that correspond to that frequency. Usually, two poles mean that the
+function has more "steepness", and that you can set the exact value of the
+function at the poles by defining the "resonance value". Filters with two poles
+are also often referenced
+as <a href="http://de.wikipedia.org/wiki/Butterworth-Filter">Butterworth Filters</a>.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>For the interested, functions having poles means that we are given a quotient of
+polynomials. The denominator has degree 1 or 2, depending on the filter having
+one or two poles. In the file <em>DSP/AnalogFilter.cpp</em>,
+<em>AnalogFilter::computefiltercoefs()</em> sets the coefficients (depending on the
+filter type), and <em>AnalogFilter::singlefilterout()</em> shows the whole polynomial
+(in a formula where no quotient is needed).</p></div>
+</div></div>
+<div class="sect2">
+<h3 id="_user_interface">2.1. User Interface</h3>
+<div class="paragraph"><p><span class="image">
+<img src="images/uifilter.png" alt="images/uifilter.png">
+</span></p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>C.freq</strong>: Cutoff frequency
+</p>
+</li>
+<li>
+<p>
+<strong>Q</strong>: Level of resonance for the filter
+</p>
+</li>
+<li>
+<p>
+<strong>V.SnsA.</strong>: Velocity sensing amount for filter cutoff
+</p>
+</li>
+<li>
+<p>
+<strong>V.Sns.</strong>: Velocity sensing function
+</p>
+</li>
+<li>
+<p>
+<strong>freq.tr</strong>: Frequency tracking amount. When this parameter is positive, higher
+             note frequencies shift the filter&#8217;s cutoff frequency higher.
+</p>
+</li>
+<li>
+<p>
+<strong>gain</strong>: Additional gain/attenuation for filter
+</p>
+</li>
+<li>
+<p>
+<strong>St</strong>: Filter stages
+</p>
+</li>
+</ul></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">TODO add a lengthy section on the formant filter setup</td>
+</tr></table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lfo">3. LFO</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_introduction">3.1. Introduction</h3>
+<div class="paragraph"><p>"LFO" means Low Frequency Oscillator.
+These oscillators are not used to make sounds by themselves, but they changes
+somes parameters (like the frequencies, the amplitudes or the filters).</p></div>
+<div class="paragraph"><p>The LFOs has some basic parameters:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>Delay</strong>: This parameter sets how much time takes since the start of the
+           note to the start of the LFO
+</p>
+</li>
+<li>
+<p>
+<strong>Start Phase</strong>: The possition that a LFO will start at
+</p>
+</li>
+<li>
+<p>
+<strong>Frequency</strong>: How fast the LFO is (i.e. how fast the parameter&#8217;s controlled by
+               the LFO changes)
+</p>
+</li>
+<li>
+<p>
+<strong>Depth</strong>: The amplitude of the LFO (i.e. how much the parameter&#8217;s controlled
+           by the LFO changes)
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/lfo0.png" alt="images/lfo0.png">
+</span></p></div>
+<div class="paragraph"><p>Another important LFO parameter is the shape.
+There are many LFO Types according to the shape.
+ZynAddSubFX supports the folowing LFO shapes:</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/lfo1.png" alt="images/lfo1.png">
+</span></p></div>
+<div class="paragraph"><p>Another parameter is the LFO Randomness.
+It modifies the LFO amplitude or the LFO frequency at random.
+In ZynAddSubFX you can choose how much the LFO frequency or LFO amplitude
+changes by this parameter.
+In the folowing images are shown some examples of randomness and how changes
+the shape of a triangle LFO.</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/lfo2.png" alt="images/lfo2.png">
+</span></p></div>
+<div class="paragraph"><p>Other parameters are:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>Continous mode</strong>: If this mode is used, the LFO will not start from "zero" on each new note, but it will be continuous. This is very usefull if you apply on filters to make interesting sweeps.
+</p>
+</li>
+<li>
+<p>
+<strong>Stretch</strong>: It controlls how much the LFO frequency changes according to the
+note&#8217;s frequency.
+It can vary from negative stretch (the LFO frequency is decreased on higher
+notes) to zero (the LFO frequency will be the same on all notes) to positive
+stretch (the LFO frequency will be increased on higher notes).
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_user_interface_2">3.2. User Interface</h3>
+<div class="paragraph"><p>In ZynAddSubFX, LFO parameters are shown as:</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/uilfo.jpg" alt="images/uilfo.jpg">
+</span></p></div>
+<div class="paragraph"><p>Theese parameters are:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>Freq</strong>: LFO Frequency
+</p>
+</li>
+<li>
+<p>
+<strong>Depth</strong>: LFO Depth
+</p>
+</li>
+<li>
+<p>
+<strong>Start</strong>: LFO Start Phase -
+If this knob is at the lowest value, the LFO Start Phase will be random.
+</p>
+</li>
+<li>
+<p>
+<strong>Delay</strong>: LFO Delay
+</p>
+</li>
+<li>
+<p>
+<strong>A.R.</strong>: LFO Amplitude Randomnes
+</p>
+</li>
+<li>
+<p>
+<strong>F.R.</strong>: LFO Frequency Randomness
+</p>
+</li>
+<li>
+<p>
+<strong>C.</strong>: LFO Continous Mode
+</p>
+</li>
+<li>
+<p>
+<strong>Str.</strong>: LFO Stretch - in the image above the LFO stretch is set to zero
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_envelopes">4. Envelopes</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_introduction_2">4.1. Introduction</h3>
+<div class="paragraph"><p>Envelopes control how the amplitude, the frequency, or the
+filter changes over time.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_amplitude_envelopes">4.2. Amplitude Envelopes</h3>
+<div class="paragraph"><p>These envelopes controls the amplitude of the sound.
+In ZynAddSubFX, amplitude envelopes can be linear or logarithmic.
+In the next image, it is shown the differences between these envelopes.</p></div>
+<div class="imageblock">
+<div class="content">
+<img src="images/envelope1.png" alt="Alt text">
+</div>
+</div>
+<div class="paragraph"><p>The amplitude envelope is divided into:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>Attack</strong>: Begins at the Note On. The volume starts from 0 to the maximum.
+In ZynAddSubFX, the attack is always linear.
+</p>
+</li>
+<li>
+<p>
+<strong>Decay</strong>: The volume drops from the maximum value to a level called "Sustain level"
+</p>
+</li>
+<li>
+<p>
+<strong>Sustain</strong>: The volume remains constant until the key is depressed (Note Off).
+After this, the last stage take place.
+</p>
+</li>
+<li>
+<p>
+<strong>Release</strong>: The volume drops to zero
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_frequency_envelopes">4.3. Frequency Envelopes</h3>
+<div class="paragraph"><p>These envelopes controls the frequency (more exactly, the pitch) of
+the oscillators.
+The following picture draws the stages of these envelopes.</p></div>
+<div class="imageblock">
+<div class="content">
+<img src="images/envelope2.png" alt="Alt text">
+</div>
+</div>
+<div class="paragraph"><p>The dotted line represents the real pitch of the sound without the
+envelope.</p></div>
+<div class="paragraph"><p>The frequency envelopes are divided into 3 stages:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>Attack</strong>: Begins at the Note On. The frequency starts from a certain value and
+glides to the real frequency of the note.
+</p>
+</li>
+<li>
+<p>
+<strong>Sustain</strong>: The frequency is the same on over the sustain period
+</p>
+</li>
+<li>
+<p>
+<strong>Release</strong>: This stage begins on Note Off and glides the frequency of the note
+to a certain
+value
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_filter_envelopes">4.4. Filter Envelopes</h3>
+<div class="paragraph"><p>These envelopes controls the cutoff frequency of the filters and are divided
+into</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/envelope3.png" alt="Alt Text">
+</span></p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>Attack</strong>: Begins at the Note On. The cutoff frequency starts from a certain value and glides to another value
+</p>
+</li>
+<li>
+<p>
+<strong>Decay</strong>: The cutoff frequency continues to glide to the real cutoff frequency value of the filter (dotted line)
+</p>
+</li>
+<li>
+<p>
+<strong>Sustain</strong>: the cutoff frequency is the same on over the sustain period (dotted line)
+</p>
+</li>
+<li>
+<p>
+<strong>Release</strong>: this stage begins on Note Off and glides the filter cutoff frequency of the note to a certain value
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_freemode_envelopes">4.5. Freemode Envelopes</h3>
+<div class="paragraph"><p>For all envelope there is a mode that allows the user to set an arbitrary number of stages and control points. This mode is called Freemode.</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/envelope4.png" alt="Alt Text">
+</span></p></div>
+<div class="paragraph"><p>Only stage that always remains defined is the Sustain, where the envelopes freezes until a Note Off event.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_user_interface_3">4.6. User Interface</h3>
+<div class="paragraph"><p>All the envelope types has some common controls:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>E</strong>: Shows a window that you can view the real envelope shape or convert to free mode to edit it
+</p>
+</li>
+<li>
+<p>
+<strong>Stretch</strong>: How the envelope is stretched according the note.
+On the higher notes the envelopes are shorter than lower notes.
+In the leftmost value, the stretch is zero.
+The rightmost use a stretch of 200%; this means that the envelope is stretched about 4 times/octave.
+</p>
+</li>
+<li>
+<p>
+<strong>frcR</strong>: Forced release.
+This means that if this option is turned on, the release will go to the final value, even if the sustain stage is not reached. Usually, this must be set.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>The parameters for Amplitude Envelopes for ZynAddSubFX are:</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/uienvelope3.jpg" alt="Alt Text">
+</span></p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>A.dt</strong>: Attack duration
+</p>
+</li>
+<li>
+<p>
+<strong>D.dt</strong>: Decay duration
+</p>
+</li>
+<li>
+<p>
+<strong>S.Val</strong>: Sustain value
+</p>
+</li>
+<li>
+<p>
+<strong>R.dt</strong>: Release time
+</p>
+</li>
+<li>
+<p>
+<strong>L</strong>: If this option is set, the envelope is linear, otherwise, it will be
+logarithmic
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>For Frequency Envelopes the interface has the following parameters:</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/uienvelope2.jpg" alt="Alt Text">
+</span></p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>A.val</strong>: Attack value
+</p>
+</li>
+<li>
+<p>
+<strong>A.dt</strong>: Attack duration
+</p>
+</li>
+<li>
+<p>
+<strong>R.dt</strong>: Release time
+</p>
+</li>
+<li>
+<p>
+<strong>R.val</strong>: Release value
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Filter Envelopes has the parameters:</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/uienvelope1.jpg" alt="Alt Text">
+</span></p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>A.val</strong>: Attack value
+</p>
+</li>
+<li>
+<p>
+<strong>A.dt</strong>: Attack duration
+</p>
+</li>
+<li>
+<p>
+<strong>D.val</strong>: Decay value
+</p>
+</li>
+<li>
+<p>
+<strong>D.dt</strong>: Decay time
+</p>
+</li>
+<li>
+<p>
+<strong>R.dt</strong>: Release time
+</p>
+</li>
+<li>
+<p>
+<strong>R.val</strong>: Release value
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>The Freemode envelopes has a separate window to set the parameters and controls:</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/uienvelope0.jpg" alt="images/uienvelope0.jpg">
+</span></p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>Control points</strong>: You can move the points using the mouse.
+In the right on the windows, it is shown the total duration of the envelope.
+If the mouse button will be pressed on a control point, it will be shown the
+duration of the stage where the point is.
+</p>
+</li>
+<li>
+<p>
+<strong>FreeMode</strong>: this button activates or deactivates the freemode mode.
+</p>
+</li>
+<li>
+<p>
+<strong>Add Point</strong>: Adds the point next to the current selected point.
+You can select a point by clicking on it.
+</p>
+</li>
+<li>
+<p>
+<strong>Delete point</strong>: Removes the point from the envelope.
+</p>
+</li>
+<li>
+<p>
+<strong>Sust.</strong>: Set the sustain point. It is shown using the yellow line.
+</p>
+</li>
+<li>
+<p>
+<strong>Str.</strong>: Envelope stretch
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_adsynth">5. AdSynth</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>AdSynth, a primarily additive synthesis engine, is one of the three major
+synthesis engines available in ZynAddSubFX.
+The basic concept of this engine is the summation of a collection of voices,
+each of which consist of oscillators.</p></div>
+<div class="sect2">
+<h3 id="_high_level_global">5.1. High Level (Global)</h3>
+<div class="paragraph"><p>AdSynth&#8217;s global level consists of the elements shown in the below figure:</p></div>
+<div class="imageblock">
+<div class="content">
+<img src="gen/ad-note.png" alt="gen/ad-note.png" width="700">
+</div>
+<div class="title">Figure 2. AdSynth Global Elements</div>
+</div>
+<div class="paragraph"><p>The global level of adsynth is almost entirely composed of previously discussed
+elements.
+However a few new features appear here, this includes velocity sensing, punch,
+detune options and realative bandwidth , and resonance.</p></div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ad-global.png" alt="images/ad-global.png">
+</div>
+<div class="title">Figure 3. AdSynth Global Window</div>
+</div>
+<div class="paragraph"><p>Velocity sensing is simply an exponental transformation from the note&#8217;s velocity
+to some parameter change.
+The below diagram shows how the velocity senseing controls affects this
+translation over the whole range of possible note velocities.</p></div>
+<div class="imageblock">
+<div class="content">
+<img src="gen/velf.png" alt="gen/velf.png" width="600">
+</div>
+<div class="title">Figure 4. Velocity Sensing Chart</div>
+</div>
+<div class="paragraph"><p>The puch of a note in AdSynth is a constant amplification to the output at the
+start of the note, with its length determined by the punch time and stretch and
+the amplitude being determined by the punch strength and velocity sensing.
+The relBW control in the frequency pane is effectively a multiplier for detuning
+all voices within an adnote.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">TODO Talk about resonance</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>The sum of the voices are passed through filters and amplification to produce
+the final sound.
+This could lead one to think that ad-note is just a bunch of minor
+postprocessing and at this level much of the sound generation is hidden.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_voices">5.2. Voices</h3>
+<div class="paragraph"><p>The voice gives access to a similar setup to the global parameters and then some
+more, such as the modulator, oscillator, and unison features.</p></div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ad-voice.png" alt="images/ad-voice.png">
+</div>
+<div class="title">Figure 5. AdSynth Voice Window</div>
+</div>
+<div class="sect3">
+<h4 id="_modulation">5.2.1. Modulation</h4>
+<div class="paragraph"><p>Within the options for modulation, one can select:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Morph
+</p>
+</li>
+<li>
+<p>
+Ring Modulation
+</p>
+</li>
+<li>
+<p>
+Phase Modulation
+</p>
+</li>
+<li>
+<p>
+Frequency Modulation
+</p>
+</li>
+<li>
+<p>
+Disabled
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect3">
+<h4 id="_unison">5.2.2. Unison</h4>
+<div class="paragraph"><p>Unison is useful in creating the chorus like sound of many simultaneous
+oscillators</p></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_oscillator">5.3. Oscillator</h3>
+<div class="paragraph"><p>The oscillator is lets you choose the basic waveform, which oscillates while
+the sound is playing and is then further modified.</p></div>
+<div class="imageblock">
+<div class="content">
+<img src="images/uioscil.png" alt="images/uioscil.png">
+</div>
+<div class="title">Figure 6. Oscillator Window</div>
+</div>
+<div class="sect3">
+<h4 id="adsynth::oscilllator::types_of_waveshaping">5.3.1. Types of Waveshaping</h4>
+<div class="paragraph"><p>Waveshaping can be done using the <strong>Wsh</strong> area in the Oscillator editor.</p></div>
+<div class="paragraph"><p>The type of distortion has much influence on how the overtones are being placed.
+Sometimes, you get a "fat" bass, and sometimes, high frequencies are added,
+makeing the sound "crystal clear".</p></div>
+<div class="sect4">
+<h5 id="_atan_amp_sigmoid">Atan &amp; Sigmoid</h5>
+<div class="paragraph"><p>This is the default setting. It is an easy way to apply loudness to a
+wave without getting undesired high overtones. Thus, it can be used both for
+making instruments that sound like "real" ones, but also for electronic music.
+The transformation turns, roughly said, every amplitude into a square amplitude.
+Thus, sine, power, pulse and triangle turn into a usual square wave, while a saw
+turns into a phased square wave. A chirp wave turns into a kind of phase
+modulated square wave.</p></div>
+</div>
+<div class="sect4">
+<h5 id="_quants">Quants</h5>
+<div class="paragraph"><p><a href="http://en.wikipedia.org/wiki/Quantization_%28sound_processing%29">Quantization</a>
+adds high overtones early. It can be seen as an unnatural effect, which is often
+used for electronic music.</p></div>
+<div class="paragraph"><p>The transformation is a bit similar to building
+the <a href="http://en.wikipedia.org/wiki/Riemann_sum">lower sum</a> of a wave,
+mathematically said. This means that the transformation effect turns your
+"endless high" sampled wave into only a few samples. The more distortion you
+will apply, the less samples will be used. Indeed, this is equivalent to say
+that more input amplification is used. To see this, here is a small sample of
+code, where "ws" is the (correctly scaled amount of input amplification, and "n"
+the number of original samples.</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>for(i = 0; i &lt; n; ++i)
+  smps[i] = floor(smps[i] / ws + 0.5f) * ws;</pre>
+</div></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">If you turn on quantisation very high, you might be confused
+that, especially high notes, make no sound. The reason: High frequencies are
+"forgotten" if you sample with only few samples. Also, the sign of an amplitude
+can be forgotten. This behaviour might make some quantisations a bit unexpected.</td>
+</tr></table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_limiting_amp_clipping">Limiting &amp; Clipping</h5>
+<div class="paragraph"><p><a href="http://en.wikipedia.org/wiki/Limiting">Limiting</a> usually means that for a signal,
+the amplitude is modified because it exceeds its maximum value. Overdrive, as
+often used for guitars, is often achieved by limiting: It happens because an
+amplifier "overdrives" the maximum amplitude it can deliver.</p></div>
+<div class="paragraph"><p>ZynAddSubFX has two types of limiting. Soft limiting, here as <strong>Lmt</strong>, means
+that the sound may not exceed a certain value. If the amplitude does so, it will
+simply be reduced to the limiting value. The overtones are generated in the
+lower frequencies first.</p></div>
+<div class="paragraph"><p>Hard limiting, is also called clipping and abbreviated <strong>Clip</strong>. This means that
+if the maximum is exceeded, instead of being constant at the limiting value, the
+original signal still has some influence on the output signal. Still, it does
+not exceed the limiting value. For ZynAddSubFX, a signal exceeding the limiting
+value will continue to grow "in the negative". This leads to overtones being
+generated on the full frequency band.</p></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_controller">6. Controller</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="./images/uicontroller.png" alt="./images/uicontroller.png">
+</div>
+</div>
+<div class="sect2">
+<h3 id="_general">6.1. General</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>ModWh</strong>: Modullation Wheel depth
+</p>
+</li>
+<li>
+<p>
+<strong>Exp MWh</strong>: Exponental Modulation Wheel (changes modulation scale to
+             exponental)
+</p>
+</li>
+<li>
+<p>
+<strong>BwDpth</strong>: Bandwidth Depth
+</p>
+</li>
+<li>
+<p>
+<strong>Exp BW</strong>: Exponental Bandwidth (changes badwidth scale to exponental)
+</p>
+</li>
+<li>
+<p>
+<strong>PanDpth</strong>: Panning Depth
+</p>
+</li>
+<li>
+<p>
+<strong>FltQ</strong>: Filter Q (ressonance) depth
+</p>
+</li>
+<li>
+<p>
+<strong>FltCut</strong> Filter Cutoff frequency depth
+</p>
+</li>
+<li>
+<p>
+<strong>Expr</strong>: enable/disable expression
+</p>
+</li>
+<li>
+<p>
+<strong>Vol</strong>: enable/disable receiving volume controller
+</p>
+</li>
+<li>
+<p>
+<strong>FMamp</strong>: enable/disable receiving Modulation Amplitude controller (76)
+</p>
+</li>
+<li>
+<p>
+<strong>Sustain</strong>: enable/disable sustain pedal
+</p>
+</li>
+<li>
+<p>
+<strong>PWheelB.Rng (cents)</strong>: Pitch Wheel Bend Range (cents; 100 cents = 1 halftone)
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_portamento">6.2. Portamento</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>Rcv.</strong>: If the part receives portamento On/Off (65) controller
+</p>
+</li>
+<li>
+<p>
+<strong>time</strong>: The duration of the portamento
+</p>
+</li>
+<li>
+<p>
+<strong>thresh</strong>: The threshold of the portamento.
+It represents the minimum or the maximum number of halftones
+(or hundried cents) required to start the portamento.
+The difference is computed between the last note and current note.
+</p>
+</li>
+<li>
+<p>
+<strong>th.type</strong>: The threshold type.
+Checked means that the portamento activates when the difference of frequencies
+is above the threshold ("thresh"); not checked is for below the threshold.
+</p>
+</li>
+</ul></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">The threshold refers to the frequencies and not to MIDI notes
+      (you should consider this if you use microtonal scales).</td>
+</tr></table>
+</div>
+<div class="sect3">
+<h4 id="_proportinal_portamento">6.2.1. Proportinal Portamento</h4>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>Propt.</strong>: If the portamento is proportinal to ratio of frequencies
+</p>
+</li>
+<li>
+<p>
+<strong>Prp. Rate</strong>: Ratio needed to double the time of portamento
+</p>
+</li>
+<li>
+<p>
+<strong>Prp. Dpth</strong>: The divergence from
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_resonance">6.3. Resonance</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CFdpth</strong>: resonance center controller depth
+</p>
+</li>
+<li>
+<p>
+<strong>BWdpth</strong>: resonance bandwidth controller depth
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_effects">7. Effects</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Effects are, generally, blackboxes that transform audio signals in a
+specified way. More exactly, the only input data for an effect in ZynAddSubFX
+is:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+an array of samples, which is read <strong>on line</strong>
+</p>
+</li>
+<li>
+<p>
+the current system time (used for LFOs)
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>The output is the transformed array of samples.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">As described, effects have no information about anything else. For
+example, key presses are not recognized. Therefore, pressing a key does not
+initiate the LFO. Phase knobs will always be relative to a <strong>global</strong> LFO, which is
+only dependent on the system time.</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>ZynAddSubFX has 3 types of effects:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+System Effects
+</p>
+</li>
+<li>
+<p>
+Insertion Effects
+</p>
+</li>
+<li>
+<p>
+Instrument Effects
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>TODO: Describe these 3 types (their differences).</p></div>
+<div class="sect2">
+<h3 id="effects::general_topics">7.1. General topics</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>Wetness</strong> determines the mix of the results of the effect and its input. This
+mix is made the effects output. If an effect is wet, it means that nothing of
+the input signal is bypassing the effect. If it is dry, then the effect has no
+effect. TODO: Difference between Volume and D/W?
+</p>
+</li>
+<li>
+<p>
+<strong>Pan</strong> lets you apply panning, which means that the sound source can move to
+the right or left. Set it to 0.0 to only hear output on the right side, or to
+the maximum value to only hear output on the left side.
+</p>
+</li>
+<li>
+<p>
+<strong>LRc.</strong> or <strong>L/R</strong> let you apply crossover.
+</p>
+</li>
+<li>
+<p>
+<strong>Filter stages</strong> are the number of times that this filter is applied in series.
+So, if this number is 1, you simply have this one filter. If it is two, the
+sound first passes the filter, and the results then pass the same filter again.
+In ZynAddSubFX, the wetness is applied after all stages were passed.
+</p>
+</li>
+<li>
+<p>
+<strong>LFOs</strong> are, as the name says, oscillators with, compared to the frequency of
+the sound, low frequency. They often appear in order to control the effect.
+They can have some of the following controls:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>LFO Type</strong> determines the shape of the LFO. If not present, the LFO is a
+sine wave.
+</p>
+</li>
+<li>
+<p>
+<strong>Freq</strong> determines the LFO&#8217;s frequency.
+</p>
+</li>
+<li>
+<p>
+<strong>Dpth</strong> is a multiplier to the LFO. Thus, it determines the LFOs amplitude
+and its influence.
+</p>
+</li>
+<li>
+<p>
+<strong>Rnd</strong> is the LFO amplitude&#8217;s randomness
+</p>
+</li>
+<li>
+<p>
+<strong>St.df</strong> lets you determine how much left and right LFO are phase shifted.
+64.0 means stereo, higher values increase the right LFO relatively to the left
+one.
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Hint: Keep in mind that Effects that can be controlled by LFO can also be
+controlled arbitrary: Set the LFO depth to zero and manipulate the phase knob
+(e.g. with NRPNs or maybe via OSC in the future).</p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="_equalizer">7.2. Equalizer</h3>
+<div class="sect3">
+<h4 id="_introduction_3">7.2.1. Introduction</h4>
+<div class="paragraph"><p>An <a href="http://en.wikipedia.org/wiki/Filter_%28signal_processing%29">equalizer</a> is a
+filter effect that applies different volume to different frequencies of the
+input signal. This can, for example, be used to "filter out" unwanted
+frequencies.
+ZynAddSubFX&#8217;s implementations follow the
+<a href="http://www.musicdsp.org/files/Audio-EQ-Cookbook.txt">"Cookbook formulae for
+audio EQ"</a> by Robert Bristow-Johnson.</p></div>
+</div>
+<div class="sect3">
+<h4 id="_filter_types">7.2.2. Filter Types</h4>
+<div class="paragraph"><p>This topic is completely discussed in <a href="#filters">the Filters section</a>.</p></div>
+</div>
+<div class="sect3">
+<h4 id="_usage">7.2.3. Usage</h4>
+<div class="paragraph"><p>We describe all parts of the GUI here. The term passband (or often just "band")
+refers to the amount of frequencies which are not significantly attenuated by
+the filter.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>Gain</strong> (on the left) defines an offset which is added to the complete filter.
+</p>
+</li>
+<li>
+<p>
+<strong>B.</strong> lets you choose the passband number. Multiple passbands define one
+filter. This is important if you want multiple filters to be called after each
+other. Note that filters are commutative.
+</p>
+</li>
+<li>
+<p>
+<strong>T.</strong> lets you choose the current filter&#8217;s type, as described above.
+</p>
+</li>
+<li>
+<p>
+<strong>Freq</strong> describes the frequencies where the filter has its poles. For some
+filters, this is called the "cutoff" frequency. Note, however, that a bandpass
+filter has two cutoff frequencies.
+</p>
+</li>
+<li>
+<p>
+<strong>Gain</strong> is only active for some filters and sets the amount of a special peak
+these filters have. Note that for those filters, using the predefined gain makes
+them effectless.
+</p>
+</li>
+<li>
+<p>
+<strong>Resonance</strong> lets you describe a peak at the given frequency for filters with
+2 poles. This can be compared to real physical objects that have more gain at
+their resonance frequency.
+</p>
+</li>
+<li>
+<p>
+<strong>St.</strong> lets you define multiple filter stages. This is equivalent to having
+multiple copies of the same filter in sequence.
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_chorus">7.3. Chorus</h3>
+<div class="sect3">
+<h4 id="_introduction_4">7.3.1. Introduction</h4>
+<div class="paragraph"><p>In a chorus, many people sing together. Even if each of them sings at exactly
+the same frequency, all their voices usually sound different. We say they have a
+different timbre. Timbre is the way we perceive sound and makes us differ
+between different music instruments. This is, physically, achieved by varying
+both the amplitude envelope and the frequency spectrum. Multiple sounds with
+slightly different timbres make a sound more shimmering, or powerful. This is
+called the chorus effect.</p></div>
+</div>
+<div class="sect3">
+<h4 id="_function">7.3.2. Function</h4>
+<div class="paragraph"><p>The chorus effect can be achieved by multiple people singing together. In
+a concert, there are many instruments, resulting in the same effect. When making
+electronic music, we only have an input wave and need to generate these
+different timbres by ourselves. ZynAddSubFX therefore simply plays the sound,
+pitch modulated by an LFO, and adds this to the original sound. This explains
+the diagram below: The multiple pitches are generated by a delayed version of
+the input. This version is being pitched by an LFO. More detailled, this pitch
+is generated by varying the reading speed of the delayed sound; the variation
+amount is controlled by an LFO.</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="./gen/chorus.png" alt="./gen/chorus.png" width="700" title="The chorus effect. z^(-n.m) describes the delay.">
+</span></p></div>
+<div class="paragraph"><p>TODO: Add LFO pointing to delay?</p></div>
+<div class="paragraph"><p>Related effects to Chorus are Flangers. Flangers can be described as Chorus
+with very short LFO delay and little LFO depth. You can imagine a flanger as two
+copies of a sound playing at almost the same time. This leeds to interference,
+which can be clearly heared. It is popular to apply flangers to guitars, giving
+them more "character".</p></div>
+</div>
+<div class="sect3">
+<h4 id="_usage_2">7.3.3. Usage</h4>
+<div class="ulist"><ul>
+<li>
+<p>
+First, crossover is applied.
+</p>
+</li>
+<li>
+<p>
+The following 5 knobs (<strong>Freq</strong>, <strong>Rnd</strong>, <strong>LFO Type</strong>, <strong>St.df</strong>, <strong>Depth</strong>) control
+the LFO for the pitch. If the depth is set to zero, the pitch will not be
+changed at all.
+</p>
+</li>
+<li>
+<p>
+<strong>Delay</strong> is the time that the delayed sound is delayed "on average". Note that
+the delay also depends on the current pitch.
+</p>
+</li>
+<li>
+<p>
+After the correct element of the sound buffer is found using the LFO, the
+<strong>Fb</strong> knob lets you set how loud it shall be played. This is mostly redundant to
+the <strong>D/W</strong> knob, but we have not applied panning and substraction yet.
+</p>
+</li>
+<li>
+<p>
+Next, the singal can be negated. If the <strong>Substract</strong> Checkbox is activated,
+the amplitude is multiplied by -1.
+</p>
+</li>
+<li>
+<p>
+Finally, <strong>Pan</strong> lets you apply panning.
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_distortion">7.4. Distortion</h3>
+<div class="sect3">
+<h4 id="_introduction_5">7.4.1. Introduction</h4>
+<div class="paragraph"><p>Distortion means, in general, altering a signal. Natural instruments
+usually produce sine like waves. A wave is transformed in an unnatural way when
+distortion is used. The most distorted waves are usually pulse waves. It is
+typical for distortion to add overtones to a sound. Distortion often increases
+the power and the <a href="http://en.wikipedia.org/wiki/Loudness">loudness</a> of a signal,
+while the db level is not increased. This is an important topic in the
+<a href="http://en.wikipedia.org/wiki/Loudness_war">Loudness War</a>.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">As distortion increases loudness, distorted music can cause ear damage
+at lower volume levels. Thus, you might want to use it a bit careful.</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>Distortion can happen in many situations when working with audio. Often, this is
+not wanted. In classical music, for example, distortion does not occur
+naturally. However, distortion can also be a wanted effect. It is typical for
+Rock guitars, but also present in electronic music, mostly in Dubstep and
+DrumNBass.</p></div>
+<div class="paragraph"><p>The basic components of distortion are mainly</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+a preamplifier
+</p>
+</li>
+<li>
+<p>
+the waveshaping function
+</p>
+</li>
+<li>
+<p>
+filters
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Preamplification changes the volume before the wave is shaped, and is indeed the
+amount of distortion. For example, if you clip a signal, the louder the input
+gets, the more distortion you will get. This can have different meanings for
+different types of distortions, as described below.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>The filters are practical. A reason for using them afterwards is that distortion
+can lead to waves with undesired high frequency parts. Those can be filtered out
+using the LPF. A reason for using filters before applying is to achieve
+multiband distortion. ZynAddSubFX has no "real" multiband distortion by now,
+however.</p></div>
+</div></div>
+</div>
+<div class="sect3">
+<h4 id="_types_of_distortion">7.4.2. Types of Distortion</h4>
+<div class="paragraph"><p>This topic is completely discussed in
+<a href="#adsynth::oscilllator::types_of_waveshaping">the Oscillator Section</a>. Note
+that you can use the
+Oscillator editor in order to find out what your distortion effect does. Also
+note that while the Oscillator editor&#8217;s distortion is limited to some
+oscillators you can produce in the Oscillator editor, the distortion effect can
+be used on every wave that you can generate with ZynAddSubFX.</p></div>
+</div>
+<div class="sect3">
+<h4 id="_function_2">7.4.3. Function</h4>
+<div class="paragraph"><p>We explain the functionality in a diagram and list the components below.</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="./gen/distort.png" alt="./gen/distort.png" width="700" title="The components of a distortion function.">
+</span></p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Negation is the first thing to happen. If the <strong>Neg</strong> Checkbox is activated, the
+amplitude is multiplied by -1.
+</p>
+</li>
+<li>
+<p>
+Panning is applied. Note, however, that you have to activate the
+Stereo Checkbox, labeled <strong>St</strong>, before.
+</p>
+</li>
+<li>
+<p>
+Pre amplification is done next. The amount can be changed using the
+<strong>Drive</strong> nob. Indeed, this is the amount of distortion. For example, if you clip
+a signal, the louder the input gets, the more distortion you will get. This can
+have different meanings for different types of distortion, as described above.
+</p>
+</li>
+<li>
+<p>
+<strong>HPF</strong> and <strong>LPF</strong> are filters with 2 poles. Whether they are used before or
+after the waveshape, depends on the checkbox labeled <strong>PF</strong>.
+</p>
+</li>
+<li>
+<p>
+The next step is the wave shape. This defines how the wave is
+actually modified. The <strong>Type</strong> ComboBox lets you define how. We will discuss some
+types below.
+</p>
+</li>
+<li>
+<p>
+After the wave shape, we scale the level again. This is called
+output amplification. You can change the value using the <strong>Level</strong> knob.
+</p>
+</li>
+<li>
+<p>
+Crossover is the last step. This is controlled by the knob <strong>LR Mix</strong> and
+means that afterwards, a percentage of the left side is applied to the right
+side, and, synchronously, the other way round. It is a kind of interpolation
+between left and right. If you set the LR Mix to 0.0, you will always have a
+stereo output.
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_dynamic_filter">7.5. Dynamic Filter</h3>
+<div class="sect3">
+<h4 id="_introduction_6">7.5.1. Introduction</h4>
+<div class="paragraph"><p>A dynamic filter is, as the name says, a filter which changes its parameters
+dynamically, dependent on the input and current time. In ZynAddSubFX,
+frequency is the only variable parameter. It can be used as an "envelope
+following filter" (sometimes referenced "Auto Wah" or simply "envelope filter").</p></div>
+</div>
+<div class="sect3">
+<h4 id="_function_3">7.5.2. Function</h4>
+<div class="paragraph"><p>Though this filter might look a bit complicated, it is actually easy. We divide
+the parameters into two classes:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>Filter Parameters</strong> are the ones you get when you click on <strong>Filter</strong>. They
+give the filter its basic settings.
+</p>
+</li>
+<li>
+<p>
+<strong>Effect Parameters</strong> are the other ones that control how the filter changes.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>The filter basically works like this: The input signal is passed through a
+filter which dynamically changes its frequency. The frequency is an additive of:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+the filter&#8217;s base frequency
+</p>
+</li>
+<li>
+<p>
+an LFO from the effect parameters
+</p>
+</li>
+<li>
+<p>
+the "amplitude" of the input wave
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p><span class="image">
+<img src="./gen/dynamic.png" alt="./gen/dynamic.png" width="700" title="The components of a dynamical filter">
+</span></p></div>
+<div class="paragraph"><p>The amplitude of the input wave is not the current amplitude, but the so called
+<a href="https://en.wikipedia.org/wiki/Root_mean_square">"Root Mean Square (RMS)"</a> value.
+This means that we build a mean on the current amplitude and the past values.
+How much the new amplitude takes influence is determined by the <strong>Amplitude
+Smoothness</strong> (see below).</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>RMS value plays an important role in the term loudness. A fully distorted
+signal can sound 20 db louder due to its higher RMS value. This filter takes
+this into account, depending on the smoothness.</p></div>
+</div></div>
+</div>
+<div class="sect3">
+<h4 id="_usage_3">7.5.3. Usage</h4>
+<div class="ulist"><ul>
+<li>
+<p>
+The 4 knobs in the middle (<strong>Freq</strong>, <strong>Rnd</strong>, <strong>LFO Type</strong>, <strong>St.df</strong>) control the
+LFO.
+</p>
+</li>
+<li>
+<p>
+Two knobs let you control the way how the RMS value of the amplitudes is
+measured:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>A.M</strong> sets the Amplitude Smoothness (this is described above). The higher
+you set this value, the more slow will the filter react.
+</p>
+</li>
+<li>
+<p>
+<strong>A.Inv.</strong>, if being set, negates the (absolute) RMS value. This will lower
+the filter frequency instead of increasing it. Note that this will not have
+much effect if the effects input is not very loud.
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+The following controls define the mix of the LFO and the amplitude.
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>A.S</strong> sets the Amplitude Sensing (i.e. how much influence the amplitude
+shall have).
+</p>
+</li>
+<li>
+<p>
+<strong>LfoD</strong> sets the LFO depth.
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+The filter button lets you choose the filter type.
+</p>
+</li>
+<li>
+<p>
+After the input signal has passed through the filter, <strong>Pan</strong> can apply
+panning.
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_echo">7.6. Echo</h3>
+<div class="sect3">
+<h4 id="_introduction_7">7.6.1. Introduction</h4>
+<div class="paragraph"><p>The echo effect, also known as
+<a href="http://en.wikipedia.org/wiki/Delay_%28audio_effect%29">delay effect</a>, simulates
+the natural reflection of a sound. The listener can hear the sound multiple
+times, usually decreasing in volume. Echos can be useful to fill empty parts of
+your songs with.</p></div>
+</div>
+<div class="sect3">
+<h4 id="_function_4">7.6.2. Function</h4>
+<div class="paragraph"><p>In ZynAddSubFX, the echo is basically implemented as the addition of the
+current sound and a delayed version of it. The delay is implemented as in the
+picture below. First, we add the delayed signal to the effect input. Then,
+they pass an LP1. This shall simulate the effect of dampening, which means that
+low and especially high frequencies get lost earlier over distance than middle
+frequencies do. Next, the sound is delayed, and then it will be output and added
+to the input.</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="./gen/echo.png" alt="./gen/echo.png" width="700" title="The echo includes a fb line, labeled as z^-n, and a delay.">
+</span></p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>The exact formula in the source code for the dampening effect is as follows:</p></div>
+<div class="paragraph"><p>$Y(t) := (1-d) \cdot X(t) + d \cdot Y(t-1)$,</p></div>
+<div class="paragraph"><p>where t be the time index for the input
+buffer, d be the dampening amount and X,Y be the input,
+respective the output of the dampening. This solves to</p></div>
+<div class="paragraph"><p>$Y(z) = Z(Y(t)) = (1-d) \cdot X(z) + d \cdot Y(z) \cdot z^{-1}$</p></div>
+<div class="paragraph"><p>$\Leftrightarrow H(z) := \frac{Y(z)}{X(z)} = \frac{1-d}{1 -
+d \cdot z^{-1}}$</p></div>
+<div class="paragraph"><p>which is used in $Y(z) = H(z) \cdot X(z)$. So $H(z)$ is
+indeed a filter, and by looking at it, we see that it is an LP1. Note that
+infinite looping for d=1 is impossible.</p></div>
+</div></div>
+</div>
+<div class="sect3">
+<h4 id="_description">7.6.3. Description</h4>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>Pan</strong> lets you apply panning of the input.
+</p>
+</li>
+<li>
+<p>
+<strong>Delay</strong> sets the time for one delay.
+</p>
+</li>
+<li>
+<p>
+<strong>LRdl.</strong> means Left-Right-Delay. If it is set to the middle, then both sides
+are delayed equally. If not, then the left echo comes earlier and the right
+echo comes (the same amount) later than the average echo; or the other way
+round. Set the knob to 0 to hear on the right first.
+</p>
+</li>
+<li>
+<p>
+<strong>LRc.</strong> applies crossover.
+</p>
+</li>
+<li>
+<p>
+Feedback describes how much of the delay is added back to the input. Set
+<strong>Fb.</strong> to the maximum to hear an infinite echo, or to the minimum to just
+hear a single repeat.
+</p>
+</li>
+<li>
+<p>
+The <strong>Damp</strong> value lets the LP1 reject higher frequencies earlier if
+increased.
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_reverb">7.7. Reverb</h3>
+<div class="sect3">
+<h4 id="_introduction_8">7.7.1. Introduction</h4>
+<div class="paragraph"><p>A <a href="http://en.wikipedia.org/wiki/Reverberation">Reverberation</a> actually expresses
+the effect of many echoes being played at the same time. This can happen in an
+enclosed room, where the sound can be reflected in different angles. Also, in
+nature, thunders approximate reverbs, because the sound is reflected in many
+different ways, arriving at the listener at different times.</p></div>
+<div class="paragraph"><p>In music, reverbs are popular in many ways. Reverbs with large room size can be
+used to emulate sounds like in live concerts. This is useful for voices, pads,
+and hand claps. A small room size can simulate the sound board of string
+instruments, like guitars or pianos.</p></div>
+</div>
+<div class="sect3">
+<h4 id="_function_5">7.7.2. Function</h4>
+<div class="paragraph"><p>As mentioned, a reverb consists of permanent echo. The reverb in ZynAddSubFX is
+more complex than the echo. After the delaying, comb filters and then allpass
+filters are being applied. These make the resulting sound more realistic. The
+parameters for these filters depend on the roomsize. For details, consider the
+information about <a href="https://ccrma.stanford.edu/~jos/pasp/Freeverb.html">Freeverb</a>.</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="./gen/reverb.png" alt="width=700">
+</span></p></div>
+</div>
+<div class="sect3">
+<h4 id="_description_2">7.7.3. Description</h4>
+<div class="ulist"><ul>
+<li>
+<p>
+The <strong>Type</strong> ComboBox lets you select a reverb type:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>Freeverb</strong> is a preset. It was proposed by Jezar at Dreampoint.
+</p>
+</li>
+<li>
+<p>
+<strong>Bandwidth</strong> has the same parameters for the comb and allpass filters, but it
+applies a unison before the LP/HP. The unison&#8217;s bandwidth can be set using <strong>bw</strong>.
+</p>
+</li>
+<li>
+<p>
+Random chooses a random layout for comb and allpass each time the type or
+the roomsize is being changed.
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+The roomsize (<strong>R.S.</strong>) defines parameters only for the comb and allpass
+filters.
+</p>
+</li>
+<li>
+<p>
+<strong>Time</strong> controls how long the whole reverb shall take, including how slow the
+volume is decreased.
+</p>
+</li>
+<li>
+<p>
+The initial delay (<strong>I.del</strong>) is the time which the sounds need at least to
+return to the user. The initial delay feedback (<strong>I.delfb</strong>) says how much of the
+delayed sound is added to the input.
+</p>
+</li>
+<li>
+<p>
+Low pass filter (<strong>LPF</strong>) and high pass filter (<strong>HPF</strong>) can be applied before
+the comb filters.
+</p>
+</li>
+<li>
+<p>
+The dampening control (<strong>Damp</strong>) currently only allows to damp low frequencies.
+Its parameters are being used by the comb and allpass filters.
+</p>
+</li>
+<li>
+<p>
+<strong>Pan</strong> lets you apply panning. This is the last thing to happen.
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_phaser">7.8. Phaser</h3>
+<div class="sect3">
+<h4 id="_introduction_9">7.8.1. Introduction</h4>
+<div class="paragraph"><p>The <a href="http://en.wikipedia.org/wiki/Phaser_%28effect%29">Phaser</a> is a special
+dynamic filter. The result is a sweeping
+sound, which is
+often used on instruments with a large frequency band, like guitars or strings.
+This makes it typical for genres like rock or funk, where it is often modulated
+with a pedal, but also for giving strings a warm, relaxing character.</p></div>
+</div>
+<div class="sect3">
+<h4 id="_function_6">7.8.2. Function</h4>
+<div class="paragraph"><p>The audio signal is split into two paths. One path remains unchanged. The other
+one is sent to a delay line. The delay time (the so called <strong>phase</strong>) is made
+dependent on the frequency. Therefore, an all-pass filter is applied to the
+signal, which <strong>preserves</strong> the amplitude, but determines the delay time. In the
+end, both paths are added.</p></div>
+<div class="paragraph"><p>The following picture describes how this works on white noise. Light blue
+signalises that the frequency is not present at the current time, and dark blue
+signalises the opposite. The dark blue peaks appear if the delay time is very
+short, because then, the second path almost equals the first one, which results
+in duplication of the signal. If the delay line is very long, then it is --- in
+the case of white noise --- totally at random whether the delayed signal
+currently duplicates the unchanged path, or whether it cancels it out to zero.
+This random effect results in white noise between the clear blue structures.</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="./images/phaser-spectrogram.jpg" alt="./images/phaser-spectrogram.jpg" width="700" title="Spectrogram of an 8-stage phaser         modulated by a sine LFO applied to white noise.">
+</span></p></div>
+</div>
+<div class="sect3">
+<h4 id="_phaser_types">7.8.3. Phaser Types</h4>
+<div class="paragraph"><p>ZynAddSubFX offers different types of phasers:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Analog and "normal" phasers. Analog phasers are more complicated. They sound
+punchier, while normal phasers sound more fluently. However, analog filters
+usually need more filter stages to reach a characteristic sound.
+</p>
+</li>
+<li>
+<p>
+Sine and triangle filters. Note that an analog triangle filter with many poles
+is a barber pole filter and can be used to generate
+<a href="http://en.wikipedia.org/wiki/Shepard_tone">Shepard Tones</a>,
+i.e. tones that seem to increase or decrease with time, but do not really.
+</p>
+</li>
+<li>
+<p>
+The LFO function can be squared. This converts the triangle wave into a hyper
+sine wave. The sine squared is simply a faster sine wave.
+</p>
+</li>
+<li>
+<p>
+TODO: Barber is deactivated, since PLFOtype is only 0 or 1?
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect3">
+<h4 id="_description_3">7.8.4. Description</h4>
+<div class="paragraph"><p>For the normal phaser, first, the LFO is generated:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+There are 4 controls (<strong>Freq</strong>,<strong>Rnd</strong>,<strong>LFO tpye</strong>,<strong>St.df</strong>) that define the
+LFO.
+</p>
+</li>
+<li>
+<p>
+<strong>Phase</strong> and <strong>Depth</strong> are applied afterwards in the usual way (TODO: I don&#8217;t
+understand the code here for the normal phase&#8230;). For the analog phaser,
+<strong>Phase</strong> is not implemented, yet.
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+If <strong>hyp</strong> is being set, then the LFO function is being squared.
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+<div class="paragraph"><p>Next, the input is being used.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>Analog</strong> decides whether the phaser is analog or "normal".
+</p>
+</li>
+<li>
+<p>
+First, <strong>Pan</strong> applies panning to the original input in every loop.
+</p>
+</li>
+<li>
+<p>
+Next, barber pole phasing is being applied (Analog only).
+</p>
+</li>
+<li>
+<p>
+<strong>Fb</strong> applies feedback. The last sound buffer element is (after
+phasing) multiplied by this value and then added to the current one. For normal
+filter, the value is added before, for analog after the first phasing stage.
+</p>
+</li>
+<li>
+<p>
+Now, <strong>Stages</strong> phasing stages are being applied. <strong>dist</strong> sets the distortion
+for when applying the phasing stages. This has only effect for analog phasers.
+</p>
+</li>
+<li>
+<p>
+The feedback is taken now.
+</p>
+</li>
+<li>
+<p>
+In the end, <strong>Substract</strong> inverts the signal, multiplying it by -1.
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_alienwah">7.9. Alienwah</h3>
+<div class="sect3">
+<h4 id="_introduction_10">7.9.1. Introduction</h4>
+<div class="paragraph"><p>The AlienWah effect is a special, dynamic
+<a href="http://en.wikipedia.org/wiki/Formant">formant</a> filter (TODO: is this true?).
+Paul Nasca named it AlienWah because it sounded "a bit like wahwah, but more
+strange". The result of the filter is a sound varying between the
+vocals "Ahhhhh" (or "Uhhhhh") and "Eeeeee".</p></div>
+</div>
+<div class="sect3">
+<h4 id="_function_7">7.9.2. Function</h4>
+<div class="paragraph"><p>The way that the filter moves between the two vocals is mainly
+described by an LFO. A bit easified, Paul Nasca has stated the formula (for
+$i^2=-1; R&lt;1$) as</p></div>
+<div class="paragraph"><p>$fb=R*(\cos(\alpha)+i*\sin(\alpha))$</p></div>
+<div class="paragraph"><p>$y_n=y_{n-delay}*R*(\cos(\alpha)+i*\sin(\alpha))+x_n*(1-R)$.</p></div>
+<div class="paragraph"><p>The input $x_n$ has the real part of the samples from the wavefile
+and the imaginary part is zero. The output of this effect is the real part of
+$y_n$. $\alpha$ is the phase.</p></div>
+</div>
+<div class="sect3">
+<h4 id="_description_4">7.9.3. Description</h4>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>Pan</strong>
+</p>
+</li>
+<li>
+<p>
+The following 5 controls (<strong>Freq</strong>,<strong>Rnd</strong>,<strong>LFO tpye</strong>,<strong>St.df</strong>, <strong>Dpth</strong>) define the
+LFO.
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>Fb</strong>
+</p>
+</li>
+<li>
+<p>
+<strong>Delay</strong> If this value is low, the sound is turned more into a
+"wah-wah"-effect.
+</p>
+</li>
+<li>
+<p>
+<strong>Phase</strong> See $\alpha$ in the above formula. This lets you set
+where the vocal is between "Ahhhhh" and "Eeeeee".
+</p>
+</li>
+<li>
+<p>
+<strong>L/R</strong> applies crossover in the end of every stage. This is currently not
+implemented for the Analog Phaser.
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_persistence">8. Persistence</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>As with most applications ZynAddSubFX allows for one to ave your work and reload
+it.</p></div>
+<div class="sect2">
+<h3 id="_saving_it_all">8.1. Saving it all</h3>
+<div class="paragraph"><p>One of the simplest ways to save your work is to save the entire session.
+This can be done through the File menu and will result in the creation of an
+.xmz file.
+Once created, this file will hold the settings for all settings within that
+session, such as microtonal tunings, all patches, system effects, insertion
+effects, etc&#8230;</p></div>
+</div>
+<div class="sect2">
+<h3 id="_saving_parts">8.2. Saving Parts</h3>
+<div class="paragraph"><p>In many cases saving everything is not what is desired.
+Saving a patch later on is one such example.</p></div>
+<div class="sect3">
+<h4 id="_patches">8.2.1. Patches</h4>
+<div class="paragraph"><p>In order to save a patch, one can either save it from the instruments menu or
+through the bank window.</p></div>
+<div class="paragraph"><p>With the instrument menu, one can just save the file to any given location with
+the .xiz extension.</p></div>
+<div class="paragraph"><p>With the banks menu, one can assign a patch to a given slot with a bank.
+This instrument will remain here for future use until it is deleted.
+To see the physical location of the .xiz file, one should check the
+File&#8594;Settings&#8594;Bank_Root_Dirs window to see the paths for banks.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">You need to have write permissions to add instruments to the bank.</td>
+</tr></table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_presets">8.2.2. Presets</h4>
+<div class="paragraph"><p>Have a favorite setting for an envelope, a difficult to reproduce oscillator?
+Then presets are for you.
+Presets allow for one to save the settings for any of the components which
+support copy/paste operations.
+This is done with preset files (.xpz), which get stored in the folders indicated
+by File&#8594;Settings&#8594;Preset_Root_Dirs.</p></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_summary">8.3. Summary</h3>
+<div class="literalblock">
+<div class="title">Extension Summary</div>
+<div class="content monospaced">
+<pre>xmz Everything
+xiz Instrument
+xsz Scale Settings
+xpz Presets</pre>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_appendex_a_midi_defaults">9. Appendex A: MIDI Defaults</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="title">Default MIDI Connections</div>
+<div class="content monospaced">
+<pre>001 - Modulation Wheel
+007 - Volume
+010 - Pan
+011 - Expression
+064 - Sustain
+065 - Portamento Enable
+071 - Filter Q
+074 - Filter Cutoff
+075 - Bandwidth(*)
+076 - Modulation Amplitude(*)
+077 - Resonance Center Frequency(*)
+078 - Resonance Bandwidth(*)
+120 - All Sounds Off
+121 - Reset All Controllers
+123 - All Notes Off</pre>
+</div></div>
+<div class="paragraph"><p>The entries with <span class="monospaced">(*)</span> are not within the General Midi specification</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_appendix_b_building_zynaddsubfx">10. Appendix B: Building ZynAddSubFX</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_introduction_to_cmake">10.1. Introduction to CMake</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Note: This section is mostly copied from the OpenSceneGraph wiki, at:
+<a href="http://www.openscenegraph.org/projects/osg/wiki/Build/CMake">http://www.openscenegraph.org/projects/osg/wiki/Build/CMake</a></p></div>
+</div></div>
+<div class="paragraph"><p>ZynAddSubFX uses CMake as its unified build system. CMake
+is able to read simple build scripts from the source tree and create
+from this a platform-specific build system. This build system can be in
+the form of VisualStudio project files, Unix Makefiles or XCode project
+files. CMake is able to automatically locate external dependencies, and
+allows you to toggle on/off module compilation and configure various
+build options.</p></div>
+<div class="paragraph"><p>The use of a unified build system has allowed to avoid build breakages
+that were common in the previous build method of maintaining three
+separate build targets for VisualStudio, Unix "make" and XCode. It also
+reduces the maintenance burden for core developers and contributors.
+Taken together usage of CMake should result in better consistency and
+more stable builds across all platforms for end users and a greater
+productivity in development of new versions. Hopefully with greater
+consistency of builds across platforms it will be easier for developers
+to use the development version of ZynAddSubFX and help contribute
+to its testing and refinement, leading to a high-quality code base.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_quick_start_guide">10.2. Quick start guide</h3>
+<div class="paragraph"><p>For the impatient ones, here is a quick guide on how to immediately
+build ZynAddSubFX from source.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Note: This assumes that you already have a copy of the source.</p></div>
+</div></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>#enter the source directory
+cd zynaddsubfx
+
+#make a directory for an out-of-source build
+mkdir build
+cd build
+
+#generate a cmake build project here from the cmake root, which is
+#found in the directory below the current one
+cmake ..
+
+#OPTIONAL: Adjust compile variables in the Cache file:
+ccmake .
+
+#And finally, build as usual using make
+make</pre>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_appendix_c_getting_zynaddsubfx">11. Appendix C: Getting ZynAddSubFX</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Usually there are several methods to obtain a copy of ZynAddSubFX.</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+SourceForge
+</dt>
+<dd>
+<p>
+    <a href="http://sourceforge.net/projects/zynaddsubfx/files/">http://sourceforge.net/projects/zynaddsubfx/files/</a>
+</p>
+</dd>
+<dt class="hdlist1">
+Distribuition
+</dt>
+<dd>
+<p>
+    apt/yum/others
+</p>
+</dd>
+<dt class="hdlist1">
+Git
+</dt>
+<dd>
+<p>
+    git clone git://git.code.sf.net/p/zynaddsubfx/code zynaddsubfx
+</p>
+</dd>
+</dl></div>
+<div class="sect2">
+<h3 id="_introduction_to_git">11.1. Introduction to Git</h3>
+<div class="paragraph"><p>For those who want to live on the bleeding edge or who want to assist with
+making sure that the next release has fewer bugs, you will want to get aquanted
+with git.
+Git is used to manage the source code for this project and can be used to
+quickly and easily get an up-to-date copy of the source code.</p></div>
+<div class="sect3">
+<h4 id="_getting_the_source_code">11.1.1. Getting the Source Code</h4>
+<div class="paragraph"><p>In order to get a copy of the ZynAddSubFX source code, all that needs to be done is:</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>git clone git://git.code.sf.net/p/zynaddsubfx/code zynaddsubfx
+
+cd zynaddsubfx
+
+#Download additional resources
+git submodule init
+git submodule update</pre>
+</div></div>
+<div class="paragraph"><p>You should now be in the directory of the source code.</p></div>
+<div class="paragraph"><p>For simple steps on building, please see Appendix B of the manual.</p></div>
+</div>
+<div class="sect3">
+<h4 id="_checking_out_a_branch">11.1.2. Checking out a branch</h4>
+<div class="paragraph"><p>Lets say that development has extended into the creation of a new feature that
+you want to preview.
+For the sake of this guide, lets assume that the name of the branch that the
+feature is on is foo.</p></div>
+<div class="listingblock">
+<div class="content monospaced">
+<pre>#checkout the foo branch from sourceforge
+git checkout --track -b foo origin/foo
+
+#lets checkout the primary branch again
+git checkout master
+
+#hop back to the other branch
+git checkout foo</pre>
+</div></div>
+<div class="paragraph"><p>Now one should be able to change branches and go into the build directory (as
+described in Appendix B) and recompile ZynAddSubFX.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">When using branches other than the master be aware that stability may
+      suffer</td>
+</tr></table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2014-04-26 20:58:58 CEST
+</div>
+</div>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72903778-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+</body>
+</html>

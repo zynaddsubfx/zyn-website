@@ -1,0 +1,923 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+
+  
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+  
+  <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+
+  
+  <meta name="GENERATOR" content="Mozilla/4.79 [en] (X11; U; Linux 2.4.7-10 i686) [Netscape]">
+
+  
+  <title>ZynAddSubFX</title>
+</head>
+
+
+<body alink="#ee0000" bgcolor="#ffffff" link="#0000ee" text="#000000" vlink="#551a8b">
+
+<center>
+<h1><img src="images/logo.jpg" nosave="" height="147" width="756"></h1>
+
+<br>
+
+</center>
+
+<p><u><font size="+1">Introduction</font></u>
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>ZynAddSubFX</b>
+is a opensource software synthesizer capable of making a countless
+number
+of instruments, from some common heared from expensive hardware to
+interesting
+sounds that you'll boost to an amazing universe of sounds.
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The
+project
+started in March 2002, and I had written it because I wish to make a
+synthesizer
+that produces very beautiful sounds, but which is freely available to
+anybody
+who needs it.
+</p>
+
+</center>
+
+<p><font size="+1"><a href="#t01">Features of ZynAddSubFX</a></font>
+<br>
+
+<font size="+1"><a href="#t02">Screenshots</a></font>
+<br>
+
+<font size="+1"><a href="#t03">Audio demos</a></font>
+<br>
+
+<font size="+1"><a href="#t04">News</a></font>
+<br>
+
+<font size="+1"><a href="#t05">Requirements</a></font>
+<br>
+
+<font size="+1"><a href="#t06">Copyright and License</a></font>
+<br>
+
+<b><font size="+1"><a href="#t07">Download</a></font></b>
+<br>
+
+&nbsp; <font size="+1"><a href="#mailinglist">Support</a></font>
+<br>
+
+<font size="+1"><a href="#t08">Compilation &amp; Running</a></font>
+<br>
+
+<font size="+1"><a href="#t09">Documentation</a></font>
+<br>
+
+<font size="+1"><a href="#t10">Bugs</a></font>
+<br>
+
+<font size="+1"><a href="#t11">ToDo list</a></font>
+<br>
+
+<font size="+1"><a href="#t12">How to contribute</a></font>
+<br>
+
+<font size="+1"><a href="#credits">Credits</a></font>
+<br>
+
+<font size="+1"><a href="#t13">About me</a></font>
+<br>
+
+&nbsp;
+</p>
+
+<p><a name="t01"></a><u><font size="+1">Features of ZynAddSubFX:</font></u>
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>realtime</b>
+synthesizer
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>polyphonic</b><i>
+(allows
+playing more than one note at once)</i>, <b>mutlitimbral </b><i>(allows
+playing more than one instrument at once)</i> synth
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>Microtonal</b>
+capabilities
+with any scale, any number of notes per octave (well... the no. of
+notes
+per octave must be less than 128) and keymapping
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - 3 synthesiser engines:
+1) first (called "<b>ADsynth"</b> or "<b>ADnote"</b>) is a complex
+engine
+which makes sounds by adding a number of voices. Each one has filters,
+envelopes, LFOs, morphing, modulation (Ring Modulation, Phase
+Modulation...
+the modulators can have any shape), resonance, etc. Each voice includes
+a very powerful waveform generator with up to 128 sine/nonsine
+harmonics.
+You can use Fourier synthesis or if you don't like it you can
+waveshaping/filtering
+of functions. This engine includes antialiasing.
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+2) second (called "<b>SUBsynth"</b> or "<b>SUBnote"</b>) is a simpler
+engine
+who allows to make sounds by subtraction of harmonics of sounds from
+white
+noise <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3) third (called "<b>PADsynth"</b> or "<b>PADnote"</b>) is engine that
+makes very beautifull pads and other instruments. <br>
+
+</p>
+
+&lt;&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Instruments can be
+orgainzed
+in kits, which alows you to make drum kits or layered(mixed)
+instruments;
+this makes possible to use more than one instrument for a single part.
+It is possible to choose what items from the kit should be processed by
+the Part's effects.
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - <b>Effects</b>: Reverb,
+Echo, Chorus/Flange, Phaser,AlienWah (it's a kind of vocal morpher),
+Distorsion(Waveshaping), EQ, DynamicFilter<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - The effects can behave
+as <b>System Effects</b> or as <b>Insertion Effects</b>; this allows
+to
+use many effects at the same time. You can put any insertion effect on
+any part(or more insertion effects to same parts, if you like so) or
+you
+can put the insertion effect to Master output (very usefull if you use
+the EQ effect). Also, you can have instrument's effect (that is saved
+with
+the instrument).
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Filters up to <b>60dB/octave</b>
+(or more..); filters can be <b>analogic</b> (LPF,HPF, BPF,etc.),&nbsp;
+<b>formant</b>(advanced formant filters) and state variable (SVF)
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Envelopes can have ADSR
+(or ASR, etc..) modes or can be free modes (with any shape)
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Many settings has a "<b>randomness</b>"
+option, which you can make instruments that every time produces a
+subtle
+different sound; this produces a very pleasent effect (like analogue
+synths
+or natural instruments that can't produces exactly same sound twice).
+Because
+of this, even if it is digital synthesis, it sounds "warm". Listen the
+ogg vorbis demos from this page to hear this effect.
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - the specifications can
+be easily chaged, so (for example) if you want to change the number of
+voices or parts to a higher value or to allow a higher number of
+effects
+at the same time, there is necessary to chage only a single value from
+the source file (<b>globals.h</b>) and to recompile the program
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Intuitive and easy to
+use <b>User Interface</b> with Clipboard and many objects has user
+presets<br>
+
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </b>-<b> Midi </b>support
+(supports many controllers) and (if you want) <b>JACK</b> support
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - the program has <b>Virtual
+Keyboard</b> which let you to use it even if you don't have a real midi
+keyboard <br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - the graphical user
+interface can be completely disabled if the user need so<br>
+
+&lt;&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - it is a <b>free</b>
+program,
+licensed under <b>version 2</b> of the <b>GNU General Public License<br>
+
+</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - there are over 300
+high quality instruments included into the package<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - many other features....
+It is is impossible to describe all this program's features in just a
+page
+<br>
+
+&nbsp;
+
+<p><a name="t02"></a><u><font size="+1">Screenshots</font></u>
+<br>
+
+<a href="images/screenshot01.png"><img src="images/screenshot01_small.jpg" alt="1" nosave="" border="1" height="190" width="158"></a><a href="images/screenshot02.png"><img src="images/screenshot02_small.jpg" alt="2" nosave="" border="1" height="190" width="250"></a><a href="images/screenshot03.png"><img src="images/screenshot03_small.jpg" alt="3" nosave="" border="1" height="190" width="253"></a><a href="images/screenshot04.png"><img src="images/screenshot04_small.jpg" alt="3" nosave="" border="1" height="190" width="236"></a><br>
+
+&nbsp;
+</p>
+
+<p><a name="t03"></a><u><font size="+1">Audio demos (<a href="http://www.vorbis.com">OGGvorbis</a>):</font></u>
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+All these demos are recorded directly from the ZynAddSubFX without
+audio
+processing with another program (well, exeption cutting/ OGG Vorbis
+compressing).
+<br>
+
+<font size="+1">&nbsp;&nbsp;&nbsp; </font><b><a href="demo01.ogg">Demo01.ogg(190k)</a><a href="demo02.ogg">Demo02.ogg(150k)</a></b>&nbsp;
+<b><a href="demo03.ogg">Demo03.ogg(105k)</a><a href="demo04.ogg">Demo04.ogg(190k)</a></b>&nbsp;
+<b><a href="demo05.ogg">Demo05.ogg(170k)</a><a href="demo06.ogg">Demo06.ogg(50k)</a></b>&nbsp;
+<a href="demo07.ogg">Demo07.ogg(80k)</a><b><a href="demo08.ogg">Demo08.ogg(65k)</a></b>
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp; <a href="demo_src.tar.bz2">Source code some
+demos(7k)</a>
+</p>
+
+<p><a name="t04"></a><u><font size="+1">News:</font></u><br>
+
+</p>
+
+<pre><br>   <span style="font-weight: bold;">16 Oct 2005</span><br>	- Added the full description of the <a href="http://zynaddsubfx.sourceforge.net/doc/PADsynth/PADsynth.htm">PADsynth algorithm</a><br> <span style="font-weight: bold;">  2.2.1</span><br>        - made to work with mxml-2.2 (will NOT work on older versions)<br>        - it is possible to remove completely the graphical user interface (e.g. it can run without X). For this you need to modify the DISABLE_GUI option from the Makefile.inc<br>        - added a commandline -L which load a instrument (.xiz) - now it only loads to part 0 (you can use this option with -l to load a master file and after this the option -L to replace the part)<br><br>   <span style="font-weight: bold; text-decoration: underline;">Apr 2005</span><br>	- participated to <a href="http://lac.zkm.de/">LAC2005</a> as a speaker. Many pictures are <a href="http://zynaddsubfx.sourceforge.net/doc/">here</a> (as 50 MB zip archive of 200+ pictures)<br>          Thanks to ZKM and Frank Neumann.<br>	<br>   <span style="font-weight: bold;">2.2.0<br></span>	- the VST version of ZynAddSubFX is removed from the instalation until it will be more stable (hope soon :) )<br>        - now, the instrument banks contains over 300 high quality instruments<br>        - added "Apply" a button from OscilGen window for PADsynth<br>        - added another parameter to ADsynth that controls the amount of all detunes of voices<br>        - adaptive harmonics postprocess<br>        - improved the VU-meter and added a RMS plot<br>        - Dvorak support for Virtual Keyboard<br>        - many bugs fixed and code cleanups<br><br><span style="font-weight: bold;">   22 Mar 2005</span><br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; - Thanks to Ben Powers, there is a ZynAddSubFX port for MacOS X at <a href="http://bennyp.no-ip.org/zyn_mac/index.html">http://bennyp.no-ip.org/zyn_mac/index.html</a></pre>
+
+<pre>   <span style="font-weight: bold;">2.1.1</span><br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; - Corected a bug that prevented the changing the current part<br>   <span style="font-weight: bold;">2.1.0</span><br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; - Added a installer for windows (thanks to NSIS installer ( http://nsis.sourceforge.net/ ) ). Both VST and standalone vesions are contained in the same installer.<br>	- Added a new user interface for beginners. You can switch the current user interface with that anytime do you want.&lt;&gt;<br>	- All parts, effects, etc. are counted from '1' and not from '0' <br>        - Added the posibility to compile the OSS and JACK support in the same binary (look in the Makefile.inc)&lt;&gt;<br>	- VST host should be able to save all zynaddsubfx parameters into their setups (this is untested)<span style="font-family: monospace;"><br>        </span>- Bugfixes and other  <br></pre>
+
+<pre><span style="font-weight: bold;"><span style="font-weight: bold;"></span></span><span style="font-weight: bold;"><span style="font-weight: bold;"><span style="font-weight: bold;">   31 Aug 2004 <br></span></span></span>	- ZynAddSubFX has an official forum at <a href="http://www.kvr-vst.com/forum/viewforum.php?f=47">http://www.kvr-vst.com/forum/viewforum.php?f=47</a><span style="font-weight: bold;"><span style="font-weight: bold;"><span style="font-weight: bold;"><br></span></span></span><span style="font-weight: bold;"><span style="font-weight: bold;">   2.0.0 <br></span></span>	- VST version works (there are some issues/bugs but it works)<br>        - Added a advanced Clipboard and Preset module - now is possible to add user preset LFOs,Envelopes, Effects, Oscillators, Resonances, Filters, etc.<br>        - Completely removed the *.MAS_ZYN formats (masters, instruments,etc) support; use 2.0.0pre1 and 2.0.0pre2 to convert<br>        - Corrected a error to pitch bend on VST plugin (thanks to Krzysztof Korpiela)<br>        - Impoved the PADsynth module<br>        - Because the PADsynth module takes a time to load, the instrument that contains such modules are shown in different colors<br>        - Bugfixes<br>        - Other<br><br><span style="font-weight: bold;">   04 Aug 2004 <br></span>	- ZynAddSubFX is available as VST plugin (alpha stage)<span style="font-weight: bold;"><br>   02 Aug 2004 </span><br>	- ZynAddSubFX got 5 stars (of 5) on <a href="http://www.softpedia.com">SoftPedia</a> and <tt>SoftPedia Pick Award.</tt> <br>        <a href="http://www.softpedia.com/public/cat/11/1/6/11-1-6-15.shtml"><img style="border: 0px solid ; width: 100px; height: 100px;" alt="SoftPedia Pick Award" src="images/softpedia_award.gif"></a><br>(click on image to see more)<br><br>   <span style="font-weight: bold;">2.0.0_pre2<br></span>	- Win32 port<br>	- It works with mxml2.0 library<br>	- Bugfixes and small improvements<br><br><span style="font-weight: bold;"></span><span style="font-weight: bold;"><span style="font-weight: bold;">   2.0.0_pre1</span><br></span>	- Added a new powerful synth engine which is called PADsynth, you can make very beautifull pads and even some strange sounds<br>	- Now is used the XML format for all zynaddsubfx parameters(.XMZ for master parameters, .XIZ for instrument parameters and .XSZ for scale parameters).You can import older parameters. All parameters files are compressed with gzip algorithm.<br>	- Some parameters has changed and you might ecounter different sounds that you saved in the older versions of zynaddsubfx<br>	- The instrument banks are no longer single files, but directories that contains instrument .XIZ files (you can organize them even with a file manager). Also, you can use more than 1 banks easily.<br>	- Added a new effect called DynamicFilter that allows you to do WahWah,AutoWah, VocalMorpher and other effects<br>	- Speedups<br>	- Started to write a small sequencer that allows to load and play a midi file from zynaddsubfx (unfinished)<br>	- ZynAddSubFX is available from CVS, too. Please look at the sourceforge project page to get more information ( http://sourceforge.net/projects/zynaddsubfx )<br>	- The waveform generator (OscilGen) has many new parameters :) also if you press the "Shift" key, you can draw the hamonics amplitude/phases<br>	- Many user interface improvements<br>	- You can load a file at the start of the program with "-l" command-line parameter and you can run zynaddsubfx w/o user interface with "-U"<br>	- It is possible to dump all MIDI notes into a text file<br>	- The instruments can contain comments and copyright information in order to encourage sharing of them<br>	- FFT3W library is supported<br>	- More "randomness" options<br>	- Other impovements<br>	- Many, many bugfixes<br>	- Added the full changelog (since I started to write zynaddsubfx), most is in Romanian <br>	- Other things</pre>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>1.4.3</b> - added state variable
+filters and other types of analog filters
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- small UI improvements
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- bugfixes
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>1.4.2</b> - added full-featured,
+advanced formant filters
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- added mixer panel which lets you to see/change most important part
+settings,
+and shows a vu-meters for each part
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- you can choose to process the instrument's kit items only with one
+Part
+effect (eg. you can make a instrument kit that contains a reverberated
+piano and flanged strings)
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- enabled to launch more instances in Jack
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- when is launched first time, it searches for <i>default.bnk_zyn</i>
+file
+into <i>/usr/share/zynaddsubfx</i> and <i>/usr/local/share/zynaddsubfx</i>
+directories (useful for binary packages for Linux distributions)
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- bugfixes
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>1.4.1</b> - added single mode to
+the instrument kit who alows only one item to be played same time
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- added "Spectrum Adjust" to the ADsynth oscillator
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- added "drum mode" to the instrument, where all midi keys are mapped
+to
+12tET
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- added a parameter to the "440Hz" which make the freq to varies a bit
+according to the key pressed (very usefull to toms and other drums)
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- (for OSS audio out) if it is launched with root privileges, the synth
+will gain realtime scheduling priority
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- bugfixes
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>1.4.0 </b>- added instrument's own
+effect (effects that are loaded/saved with the instrument)
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- FreeMode Envelopes: all Envelopes can have any shape (not only ADSR)
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- Added instrument kits: It is possible to use more than one
+instruments
+into one part (used for layered synths or drum kits)
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- Amplitude envelopes can be linear or logarithmic
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- added interpolation on the Resonance user interface
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- user interface improvements and cleanups of it's code
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- initiated a mailing list to allow users to share patches for
+ZynAddSubFX.
+Please share your ZynAddSubFX patches and look at <a href="http://lists.sourceforge.net/mailman/listinfo/zynaddsubfx-user">http://lists.sourceforge.net/mailman/listinfo/zynaddsubfx-user</a>
+for more information about the mailing list.
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>1.2.1</b> - improved filter
+interpolation
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- bugfixes: wav header is written correctly,NRPN works correctly
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- added master fine detune (-64..63 cents) and protection of the
+fundamental
+frequency agains damping (resonance)
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- it is possible to swap effects(change the order) or copy them
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- started to port it to <b>VST</b> (not functional, yet)
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>1.2.0&nbsp;</b>&nbsp; - <b>ZynAddSubFX
+is ported to Windows </b>;-)
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- added internal Virtual Keyboard
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- added Configuration window
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- added frequency tracking to filter
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- improved the OscilGen (harmonic filter, RMS normalisation, etc..)
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- improved the recorder (uses the WAV file format and it starts only
+when
+a key is pressed)
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- added filter interpolation if the frequency is changed very fast (it
+removes some annoying clicks)
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- other improovements, bugfixes, speedups and cleanups of the code
+<br>
+
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.0.9&nbsp;</b> - added keylimit
+to parts (first note priority)
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- you can use multiple filter stages in order to make very steep filter
+rolloffs (eg. 48 dB/octave)
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- ADsynth - added noise mode and you can make fixed frequencies; added
+the "Punch" parameter
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- added an external program "Controller" which enables you to use the
+mouse
+for MIDI controllers
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- other improvements and bugfixes
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>1.0.8</b> - added mono mode and
+portamento
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- added the EQ effect
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- the output of the system effects can be sent to other system effects
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- minor bugfixes and improovements
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>1.0.7</b> - some settings (like
+samplerate)
+are set on runtime (by command line)
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- added distorsion effect
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- added controllers (over than a dozen) and NRPNs (with NRPNs you can
+change
+all effects parameters by MIDI)
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- bugs removed and other improovements
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>1.0.6</b> - Added <b><a href="http://jackit.sourceforge.net">JACK</a></b>
+support
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- Minor improvements and bugfixes
+<br>
+
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.0.5&nbsp; </b>-The bug that
+crashed
+ZynAddSubFX if you change some effect parameters, it is really removed
+(I forgot to update the file before upload)
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- Other bugfixes and code clean-ups
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- Added a Global Filter to SubSynth
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- Added keyresponse limits to Part
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- Added presets to Effects
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- The fade is smaller on high frequecy content and larger on low
+frequecies;
+so you'll don't hear starting clicks on basses and audible fadeins on
+higher
+pitched sounds
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- Added tunnings to Reverb: you can choose Random of Freeverb. Freeverb
+is written by Jezar at Dreampoint; I used the tunings from it.
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>1.0.4 </b>- Impooved the microtonal
+settings (added key mapping to scale degree, the Master Keyshift and
+Part
+Keyshift keeps the intervals)
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- It is possible to load
+<a href="http://www.xs4all.nl/%7Ehuygensf/scala">Scala</a>
+(<b>scl</b> and
+<b>kbm</b>) files
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- It is possible to compile/use ZynAddSubFX without ALSA (see the
+readme.txt)
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- The real detune (cents) is shown
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- The interface looks better, and you have to move the mouse up/down
+(instead
+a circular movement) to change most of parameters
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- Minor bugs removed
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>1.0.3 </b>- small bugfixes: "Bypass
+Global Filter" from ADnoteUI dissapears sometimes ; removed the low
+amplitude
+noise produced by the reverb; if you "acconect" zynaddsubfx with
+aseqview
+no note was processed a long time
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- added Notch Filter
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- added the option to randomize the ressonance function
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- added VU-Meter
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- Change the Insertion effect modes behaves (it sounds a bit louder)
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- Added to the project an external program called Spliter that splits
+the
+keyboard and alows you to play two instruments same time. You can use
+this
+program with ZynAddSubFX or any other synthesizer.
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>1.0.2-1</b> - bug found and removed:
+sometimes when Master/Instrument is saved, the synth crashed
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>1.0.2</b> - added instrument banks.
+This makes possible to chage instruments easy.
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- the Band Pass Filter's output amplitude was increased
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- some fixes to FFTwrapper. This removes the compilation errors related
+to drfftw.h (please see the docs from to the FFTwrapper.h if there
+still
+are compile errors
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>1.0.1</b> - removed a bug that
+crashed
+ZynAddSubFX if you disable a part while notes are playing on that part
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- added Resonance to&nbsp; harmonics (ADsynth). This makes possible to
+make very realistic sounds, and it use small CPU power.
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- added Band Pass Filters
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>1.0.0 </b>- first release (25 Sep.
+2002)
+</p>
+
+<p><a name="t05"></a><u><font size="+1">Requirements:</font></u>
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- a fast computer (depend on what you do with the synth)
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- <b>Linux</b> (tested with RedHat 7.2, 7.3) or <b>Windows</b>
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- <a href="http://www.fltk.org">FLTK</a> 1.x.x (tested with fltk
+1.1.0,
+1.1.2 and others)
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- <a href="http://www.fftw.org">FFTW</a> 2.x.x (tested with fftw
+2.0.5,
+2.1.3 and others) - necesary for Fast Fourier computations <br>
+
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; - zlib and
+mxml library<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- (recomanded but not required) a <b>MIDI keyboard</b>
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- for <b>LINUX:</b>
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- <a href="http://www.alsa-project.org">ALSA</a> 0.9.x (with OSS
+emulation
+if you don't use JACK) or OSS, for midi in
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- (not required, but recomanded) <a href="http://jackit.sourceforge.net">JACK
+Audio Connection Kit</a>
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- (not really required) <a href="http://www.portaudio.com">PortAudio</a>
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-for <b>Windows</b>
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+- if you compile yourself, you need <a href="http://www.portaudio.com">PortAudio</a>;
+MinGW and Msys from <a href="http://www.mingw.org">here</a>. Also, you
+need the <a href="http://sources.redhat.com/pthreads-win32">pthreads
+(GC)
+for win32</a>.
+</p>
+
+<p><a name="t06"></a><u><font size="+1">Copyright and License:</font></u>
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>ZynAddSubFX</b>
+is <b>Copyright (c) 2002-2004 Nasca Octavian Paul</b> and may be
+freely
+distribuited under version 2 of the GNU General Public License (GNU
+GPL).
+The program is licensed <b>only under version 2 of the GNU GPL and <u>not
+under any other version of GNU GPL</u></b>. This program comes <b>WITH
+NO WARRANTY OF ANY KIND</b>.
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; All these
+pages including images, diagrams and sounds are <b>Copyright (c)
+2002-2004
+Nasca Octavian Paul</b> and may be freely distributed under GNU Free
+Documentation
+License (GFDL).
+</p>
+
+<a name="t07"></a><u><font size="+1">Download:</font></u>
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+For <b>VST version (or DX/ASIO,etc)</b> please see more about the Windows Native Port beta from here.<br>
+
+<b><a href="http://www.kvraudio.com/forum/viewtopic.php?t=209933">http://www.kvraudio.com/forum/viewtopic.php?t=209933</a></b>
+<br>
+
+<br>
+<br>
+
+
+If you want other versions, you can download the program from the project page at sourceforge <b><a href="http://sourceforge.net/projects/zynaddsubfx">http://sourceforge.net/projects/zynaddsubfx</a></b>
+<br>
+
+&nbsp;From the download page you can download the documentation tarball
+(the complete contents of all theese pages including ogg vorbis
+samples,
+etc.) and the <b>source code</b> of ZynAddSubFX. The Windows binaries
+are
+available from same page. <b>Please publish your instrumets/settings
+of
+ZynAddSubFX and Midi files that sounds good with it on the mailing list.</b>
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp; There are available Linux binaries at <a href="http://www-ccrma.stanford.edu/planetccrma/software/soundapps.html">Planet
+CCRMA</a> or at <a href="http://rpmfind.net">RPMfind</a>.<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp; Also, there is a MacOSX port available at <a href="http://bennyp.no-ip.org/zyn_mac/index.html">http://bennyp.no-ip.org/zyn_mac/index.html</a>,
+thanks to Ben Powers.<br>
+
+<br>
+
+<a name="mailinglist"></a><u><font size="+1">Support:</font></u> <br>
+
+<p>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; ZynAddSubFX has
+the official support at <a href="http://www.kvr-vst.com/forum/viewforum.php?f=47">http://www.kvr-vst.com/forum/viewforum.php?f=47</a><br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Also, if
+you want support by mail,
+ZynAddSubFX has a mailing list for it's users. Here you can share your
+ZynAddSubFX patches and midi files for ZynAddSubFX made by you. You can
+subscribe to it or find out more abuot it on <a href="http://lists.sourceforge.net/mailman/listinfo/zynaddsubfx-user">http://lists.sourceforge.net/mailman/listinfo/zynaddsubfx-user</a>
+<br>
+
+</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The
+recomanded location for finding support is the <a href="http://www.kvr-vst.com/forum/viewforum.php?f=47">kvr-vst</a>
+site.<br>
+
+&nbsp;
+</p>
+
+<p><a name="t08"></a><u><font size="+1">Compilation &amp; Running:</font></u>
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+If you don't know how to compile, you can download the Windows binaries
+or the Linux binaries. Look on the "Download" section from this page.
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+First of all, you have to change the Makefile.inc, to choose some
+settings
+(like OS, AudioOut, etc.)
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Run "make" in the source directory. Hope all goes right. Right now,
+there
+is no "make install".
+<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+After compilation run the "zynaddsubfx" file from the source directory.
+If you want to run zynaddsubfx without clicks, run with root
+priorities(this
+is not necesary when running with jack). If you use ALSA, don't forget
+to connect the midi output device (or program) with ZynAddSubFX (you
+can
+use "acconect" or "alsa-patch-bay" to do this).
+<br>
+
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Read "README.txt" and "compile.win32" from the source directory for
+more
+information.</b>
+</p>
+
+<p><a name="t09"></a><u><font size="+1">Documentation:</font></u>
+<br>
+
+&nbsp;You can browse the documentation or download all for off-line
+browsing (see the "download" section):</p>
+
+<blockquote><big style="font-weight: bold; color: rgb(255, 102, 102);"><big><span style="font-family: monospace;">ZYNADDSUBFX DOCUMENTAION IS OUTDATED.
+I WILL WRITE THE DOCS FOR 2.0.0 AS SOON I CAN. Please ask any questions
+to <a href="http://www.kvr-vst.com/forum/viewforum.php?f=47">http://www.kvr-vst.com/forum/viewforum.php?f=47</a></span></big></big><br>
+
+  <br>
+
+&nbsp;<big style="font-weight: bold; color: rgb(255, 102, 102);"><big><span style="font-family: monospace;">Also, the new incomplete documentation
+will be available at:<br>
+
+  <a href="http://zynaddsubfx.sourceforge.net/doc">http://zynaddsubfx.sourceforge.net/doc</a><br>
+
+  <br>
+
+  <br>
+
+  </span></big></big><a href="doc_0.html">Introduction/Basics</a> <br>
+
+  <a href="doc_1.html">ZynAddSubFX components/structure</a> <br>
+
+  <a href="doc_2.html">ZynAddSubFX user interface</a> <br>
+
+  <a href="doc_3.html">Controllers</a></blockquote>
+
+<a name="t10"></a><u><font size="+1">Bugs:</font></u>&nbsp;<br>
+
+&nbsp;&nbsp;&nbsp; 1) Sometimes when working with banks it crash -
+don't know why - I tested even with valgrind and I couldn't find out
+where is the problem (a double delete??)<br>
+
+&nbsp;&nbsp;&nbsp; 2) If the same directory is selected twice on bank
+roots or preset dir., the same files are shown twice and bad things can
+happen - I must solve this by comparing the directories (they can me
+relative directories and absolute dirs.)<br>
+
+<p><a name="t11"></a><u><font size="+1">ToDo list:</font></u>
+</p>
+
+<p>&nbsp;&nbsp;&nbsp; <br>
+
+&nbsp;
+</p>
+
+<p><a name="t12"></a><u><font size="+1">How to contribute:</font></u>
+<br>
+
+&nbsp;&nbsp;&nbsp; Please send me instruments/master settings to make
+a collection of instruments for putting on the program webpages.If you
+are programmer, you can contribute some code. If you can donate me some
+money, please do so; this way I can spend more time on ZynAddSubFX in
+the
+future. Please notice that you <b>don't have any obligation</b> to pay
+me for using this program (even for commercial purpuoses) on conditions
+of General Public License.
+</p>
+
+<p><a name="credits"></a><u><font size="+2">Credits</font></u>
+<br>
+
+&nbsp;&nbsp;&nbsp; 1) Most of the analog filters are implementations
+of the formulas written by Robert Bristow-Johnson . You can get the
+formulas
+in the "Cookbook formulae for audio EQ biquad filter coefficents" from
+<a href="http://www.harmony-central.com/Computer/Programming/Audio-EQ-Cookbook.txt">www.harmony-central.com/Computer/Programming/Audio-EQ-Cookbook.txt</a>
+<br>
+
+&nbsp;&nbsp;&nbsp; 2) The Freeverb was written and published in public
+domain by Jezar at Dreampoint. I used the tunnings of Freeverb into my
+Reverb effect.
+</p>
+
+<p><a name="t13"></a><u><font size="+1">About me and other programs
+that
+I wrote:</font></u>
+<br>
+
+&nbsp;&nbsp;&nbsp; I am a 24 (Apr. 2005) years boy from Romania who
+is interested in computers, music, etc. I graduated&nbsp; the studies
+at
+Mathematics-Computer science university from my town, Tg. Mures.
+<br>
+
+&nbsp;&nbsp;&nbsp; I start to program in 1992. About that year I
+started
+to be interested in music. The problem was that the keyboard that I
+wanted
+was much too expesive for me. This made me start studing how I can use
+the computer as synthesizer.&nbsp; So, I had written my first
+synthesizer.
+I won the third prize for it at programming national contest for it.
+After
+that, I have written a new synth "Paul's Sound's Designer", and put it
+on the net at <a href="http://www.harmony-central.com/Software/Dos/">www.harmony-central.com</a>
+. The sounds made by it were very good; many ideas from it I used in
+ZynAddSubFX
+as ADsynth.&nbsp; After that I started to write another synth based on
+filtering harmonics from white noise, but I didn't finished it. Anyway
+the ideas from it I called SUBsynth and I implemented in ZynAddSubFX.
+All
+these programs were written for DOS, because the computer I had was an
+486.
+<br>
+
+&nbsp;&nbsp;&nbsp; In March 2002 I started to write ZynAddSubFX. I
+hope that this program will help many people to make music.
+</p>
+
+<p>e_mail:&nbsp; <b><u>zynaddsubfx AT yahoo D0T com</u></b>
+<br>
+
+&nbsp;
+<br>
+
+&nbsp;
+<a href="http://sourceforge.net"> <img src="http://sourceforge.net/sflogo.php?group_id=62934&amp;type=5" alt="SourceForge Logo" border="0" height="62" width="210"></a>&nbsp;&nbsp;&nbsp;
+<a href="http://petition.eurolinux.org"><img src="http://aful.org/images/patent_square.jpg" border="0"></a></p>
+
+</body>
+</html>

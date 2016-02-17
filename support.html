@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta http-equiv="content-type" content=
+    "text/html; charset=us-ascii">
+    <link type="text/css" href="main.css" rel="stylesheet">
+    <title>ZynAddSubFX</title>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-72903778-1', 'auto');
+  ga('send', 'pageview');
+
+
+
+  var trackSupportLink = function(type) {
+    ga('send', 'event', type, 'click', '0', {
+        'transport': 'beacon',
+        'hitCallback': function(){document.location = url;}
+        });
+        return false;
+
+  }
+</script>
+  </head>
+
+  <body><center><div align="left" id="content">
+    <center>
+      <table id="header">
+        <tr><td>
+            <img src="images/logo.jpg" height="147" width=
+            "756" alt="ZynAddSubFX"></td></tr>
+        <tr><td id="nav">
+            <a href="/">About</a> |
+            <a href="/news.html">News</a> |
+            <a href="/download.html">Download</a> |
+            <a href="/support.html">Support</a> |
+            <a href="/contribute.html">How to contribute</a> |
+            <a href="/development.html">Developer Resources</a> |
+	    <a href="http://sourceforge.net/projects/zynaddsubfx/">Project page</a> |
+            <a href="/credits.html">Credits</a></td></tr>
+      </table>
+    </center>
+
+  <!--<p><h2>Requirements:</h2>
+  <ul><li>a fast computer (depend on what you do with the synth)</li>
+  <li><b>Linux</b> or <b>BSD</b> (<a href="http://fundamental-code.com/CDash/index.php?project=ZynAddSubFX">tested nightly</a> with FreeBSD and Slackware) or
+  <b>Windows (2.2.1 and prior only)</b></li>
+  <li><a href="http://www.fltk.org">FLTK</a> 1.x.x (tested with fltk
+  1.1.0, 1.1.2 and others)</li>
+  <li><a href="http://www.fftw.org">FFTW</a> 3.x.x - necessary for Fast Fourier
+  computations</li>
+  <li>zlib and <a href="www.minixml.org">mxml</a> library</li>
+  <li>(recommended but not required) a <b>MIDI keyboard</b></li>
+  <li>for <b>LINUX:</b>
+  <ul><li><a href="http://www.alsa-project.org">ALSA</a> 0.9.x (with OSS
+  emulation if you don't use JACK) or OSS, for midi in</li>
+  <li>(not required, but recommended) <a href=
+  "http://jackit.sourceforge.net">JACK Audio Connection Kit</a></li>
+  <li>(not really required) <a href=
+  "http://www.portaudio.com">PortAudio</a></li></ul></li>
+  <li>for <b>Windows</b>
+  <ul><li>if you compile yourself, you need <a href=
+  "http://www.portaudio.com">PortAudio</a>; MinGW and Msys from
+  <a href="http://www.mingw.org">here</a>. Also, you need the
+  <a href="http://sources.redhat.com/pthreads-win32">pthreads (GC)
+  for win32</a>.</li></ul></li></ul>-->
+
+  
+  <h2>Support:</h2>
+
+  <p>Official Support can be found via both the <a onclick="trackSupportLink('support-zynaddsubfx-user')" href="http://lists.sourceforge.net/mailman/listinfo/zynaddsubfx-user">
+  zynaddsubfx-user mailing list</a> and the <a onclick="trackSupportLink('support-kvr')" href= "http://www.kvraudio.com/forum/viewforum.php?f=47">kvr sub-forum</a>.
+  <p>
+  If you run into a bug, please report it to the <a onclick="trackSupportLink('support-bug')" href="http://sourceforge.net/tracker/?group_id=62934&amp;atid=502312">sourceforge bug tracker</a>.
+  </p>
+
+
+
+  <!--
+  <p>Also, if you want support by mail, ZynAddSubFX has a mailing list
+  for it's users. Here you can share your ZynAddSubFX patches and
+  midi files for ZynAddSubFX made by you. You can subscribe to it
+  or find out more about it on <a href=
+  "http://lists.sourceforge.net/mailman/listinfo/zynaddsubfx-user">http://lists.sourceforge.net/mailman/listinfo/zynaddsubfx-user</a><br>
+  </p>
+
+  <p>
+  The recommended location for finding support is the <a href=
+  "http://www.kvraudio.com/forum/viewforum.php?f=47">kvraudio</a>
+  site.</p>-->
+
+  <h2>Documentation:</h2>
+  <p>Documentation for ZynAddSubFX is a little scattered at the moment, but here's what
+  documentation there currently is:</p>
+  <!-- Never, Never use Docbook, it is just a horrible mess of
+  tags and no content-->
+  <p>The current asciidoc based docs can be seen <a href="/Doc">here</a> [<a href="/Doc/zynaddsubfx_IT.html">IT</a>].
+  <p>You can browse the documentation old documentation below:</p>
+
+  <!--
+    <big style=
+    "font-weight: bold; color: rgb(255, 102, 102);"><big><span style="font-family: monospace;">
+    ZynAddSubFX documentation is outdated.  the docs are being 
+    written for 2.x.x. Please ask any questions to <a href=
+    "http://www.kvraudio.com/forum/viewforum.php?f=47">http://www.kvraudio.com/forum/viewforum.php?f=47</a></span></big></big><br>-->
+
+<ul>
+    <li><a onclick="trackSupportLink('support-old-doc')" href= "http://zynaddsubfx.sourceforge.net/doc">Misc Old Documentation</a><br></li>
+
+    <li><a onclick="trackSupportLink('support-old-doc0')" href= "doc_0.html">Introduction/Basics</a></li>
+    <li><a onclick="trackSupportLink('support-old-doc1')" href="doc_1.html">ZynAddSubFX components/structure</a></li>
+    <li><a onclick="trackSupportLink('support-old-doc2')" href="doc_2.html">ZynAddSubFX user interface</a></li>
+    <li><a onclick="trackSupportLink('support-old-doc3')" href="doc_3.html">Controllers</a></li>
+    </ul>
+  
+
+  </div></center>
+</body>
+</html>

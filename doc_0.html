@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <meta name="GENERATOR"
+ content="Mozilla/4.78 [en] (X11; U; Linux 2.4.7-10 i686) [Netscape]">
+</head>
+<body text="#000000" bgcolor="#ffffff" link="#0000ee" vlink="#551a8b"
+ alink="#ff0000">
+<b><u><font size="+2"><a href="index.html">Index page</a></font></u></b>
+<center><b><u><font size="+2">Basics</font></u></b>
+<br>
+<font color="#66ffff">(draft)</font></center>
+
+<p>&nbsp;&nbsp;&nbsp; This page describes the basic principles and has
+suggestions
+about how to make instruments that sound like they must have been made with professional equipment. This applies to <b>ZynAddSubFX</b>
+or to any synthesizer (even if you wrote it yourself&nbsp; with a few
+lines
+of code). All the ideas from <b>ZynAddSubFX</b> come from the principles outlined below.
+<br>
+&nbsp;
+</p>
+<p><u><font size="+1">1) The Bandwidth of each harmonic</font></u>
+</p>
+<p>&nbsp;&nbsp;&nbsp; I am not referring to samplerate, I am talking
+about
+the frequency "spread" of each harmonic. This is the most important
+principle
+of making instruments that sound good. Unfortunately there is very little
+documentation about it (I have seen it very briefly described in an old
+book, I searched on the net about this, but I didn't find anymore - maybe
+you'll help me?).
+</p>
+<p>&nbsp;&nbsp;&nbsp; Often it is believed that the pitched sounds(like
+piano,organ,choir,etc.) for a single note have a frequency, it's actually
+harmonics
+and nothing more. Many people try to synthesize a sound using an exact
+frequency+harmonics and observe that the result sounds too
+"artificial".
+They might try to modify the harmonic content, add a vibratto, tremollo,
+but
+even that doesn't sounds "warm" enough. The reason is that the natural
+sounds don't produce an exact periodic; their sounds are
+quasi-periodic.
+Please notice that not all quasi-periodic sounds are "warm" or
+pleasant.
+</p>
+<p><u>The difference between a periodic wave and a quasi-periodic wave</u>
+</p>
+<p>&nbsp;&nbsp;&nbsp; This is a graphical representation of a note with
+exact frequency (bandwidth of each harmonic is too narrow; the sound is
+periodic). Below this is the spectrum.
+<br>
+<img src="images/img01a.jpg" nosave="" height="80" width="522"><br>
+<img src="images/img01b.jpg" nosave="" height="112" width="271"><br>
+&nbsp;
+<br>
+&nbsp;
+</p>
+<p>This is a graph of a quasiperiodic sound, below is the spectrum (the
+bandwidths are exaggerated).
+<br>
+<img src="images/img02a.jpg" nosave="" height="117" width="507"><br>
+<img src="images/img02b.jpg" nosave="" height="141" width="264"></p>
+<p>Click <a href="example01.ogg">here to listen</a> to a sample of
+periodic wave folowed by a quasi-periodic one.
+<br>
+&nbsp;&nbsp;&nbsp; A very important thing about the bandwidth is that
+it has to be increased if you'll increase the harmonic's frequency.
+<br>
+If the fundamental frequency is 440 Hz and the bandwidth is 10
+Hz (that means that the frequencies are spread from 435 to 445 Hz),
+the
+bandwith of the second harmonics (880Hz) must be 20 Hz. A simple formula to
+compute the bandwidth of each harmonic if you know the bandwidth of the
+fundamental frequency is <font size="+1">BWn=n*bw1&nbsp;</font>
+;&nbsp; n
+is the order of the harmonic, bw1 is the bandwidth of fundamental
+frequency
+and BWn is the bandwidth of the n'th harmonic. If you do not increase
+the bandwith according the frequency,&nbsp; the resulting instrument
+will (usually) sound too 'artificial' or 'ugly'.
+<br>
+&nbsp;&nbsp;&nbsp; There are at least three methods of making good sounds
+with the above considerations:
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a) by adding slightly
+detuned
+sounds (in ZynAddSubFX&nbsp; it is called ADsynth). The idea is not
+new:
+it has been used for thousands of years in choirs and ensembles. That's why
+the choirs sounds so beautiful.
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b) by generating white
+noise,
+substrating all harmonics with band-pass filters and adding the results
+(in ZynAddSubFX it is called SUBsynth)<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; c) by "drawing" the above graph
+that represents the frequency amplitudes on a large array, put random
+phases and do a single IFFT for the whole sample<br>
+</p>
+<p><u><font size="+1">2) The randomness of the sound</font></u>
+<br>
+&nbsp;&nbsp;&nbsp; The main reason why the digital synthesis sound
+too "cold" is because the same recorded sample is played over and over
+on each keypress. There is no difference between a note played the first
+time
+and second time. Exceptions may be the filtering and some effects, but
+these are not enough. In natural or analogue instruments this doesn't
+happen
+because it is impossible to reproduce exactely the same condidtions for
+each note. To make a warm instrument you have to make sure that it sounds
+slightly different each time. In ZynAddSubFX you can do this:
+<br>
+&nbsp;&nbsp;&nbsp; a) In ADsynth, set the "Randomness" function from
+Oscillator Editor to a value different than 0 or change the LFO's start
+phase to the leftmost value
+<br>
+&nbsp;&nbsp;&nbsp; b) In SUBsynth, all notes already has randomness
+because the starting sound is white noise<br>
+</p>
+<p>&nbsp;&nbsp;&nbsp; c) In PADSynth, I start the sample from random
+positions on each keystroke<br>
+</p>
+<p><u><font size="+1"><br>
+3) Decrease the amplitude of higher harmonics on low
+velocity notes</font></u>
+<br>
+&nbsp;&nbsp;&nbsp; All natural notes have this property, because on
+low velocity notes there is not enough energy to spread to higher
+harmonics.
+On artificial synthesis you can do this by using a lowpass filter that
+lowers the cutoff frequency on notes with low velocities or, if you use
+FM, by lowering the modulator index.
+</p>
+<p><u><font size="+1">4) The spectrum should be almost the same
+according
+to the frequencies and not to harmonics</font></u>
+<br>
+&nbsp;&nbsp;&nbsp; This means that, for example, the higher the
+pitch is, the smaller the number of harmonics it will contain. This happens in a
+natural instrument because of the resonance.
+<br>
+In this case there are many instruments that don't obey this, but
+sound quite good (example: synth organ).
+<br>
+If you record the C-2 note from a piano and you play it at a very
+high speed (8 times), the result will not sound like the C-5 key from the
+piano. The pitch is C-5, but the timbre is very different. This is
+because
+the harmonic content is preserved (I mean the n-th harmonic will have
+the
+same amplitude in both cases) and not the&nbsp; spectrum (eg. the
+amplitudes
+of the harmonics around 1000 Hz are too different from one case to
+another).
+<br>
+&nbsp;&nbsp;&nbsp; In artificial synthesis you can use filters to add
+resonance or FM synthesis that varies the index according to the
+frequency.
+<br>
+In ZynAddSubFX you can add the resonance:
+<br>
+&nbsp;&nbsp;&nbsp; a) In ADsynth, use the Resonance, a high harmonics
+sound content and filters or FM.
+<br>
+&nbsp;&nbsp;&nbsp; b) In SUBsynth,&nbsp; you can add some harmonics
+and use the Global Filter
+<br>
+&nbsp;
+<br>
+&nbsp;
+</p>
+</body>
+</html>

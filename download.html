@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+  <head>
+    <meta http-equiv="content-type" content=
+    "text/html; charset=us-ascii">
+    <link type="text/css" href="main.css" rel="stylesheet"> 
+    <title>ZynAddSubFX</title>
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-72903778-1', 'auto');
+  ga('send', 'pageview');
+
+  /**
+  * Function that tracks a click on an outbound link in Google Analytics.
+  * This function takes a valid URL string as an argument, and uses that URL string
+  * as the event label. Setting the transport method to 'beacon' lets the hit be sent
+  * using 'navigator.sendBeacon' in browser that support it.
+  */
+  var trackOutboundLink = function(url) {
+    ga('send', 'event', 'outbound', 'click', url, {
+        'transport': 'beacon',
+        'hitCallback': function(){document.location = url;}
+        });
+        return false;
+
+  }
+  var trackDownloadLink = function(type, version) {
+    ga('send', 'event', type, 'click', version, {
+        'transport': 'beacon',
+        'hitCallback': function(){document.location = url;}
+        });
+        return false;
+
+  }
+
+  </script>
+  </head>
+
+  <body><center><div align="left" id="content">
+    <center>
+      <table id="header">
+        <tr><td>
+            <img src="images/logo.jpg" height="147" width=
+            "756" alt="ZynAddSubFX"></td></tr>
+        <tr><td id="nav">
+            <a href="/">About</a> |
+            <a href="/news.html">News</a> |
+            <a href="/download.html">Download</a> |
+            <a href="/support.html">Support</a> |
+            <a href="/contribute.html">How to contribute</a> |
+            <a href="/development.html">Developer Resources</a> |
+	    <a href="http://sourceforge.net/projects/zynaddsubfx/">Project page</a> |
+            <a href="/credits.html">Credits</a></td></tr>
+      </table>
+    </center>
+
+  <h2>Download:</h2>
+  <p>
+  <!--Yeah linking to non-direct stuff is aweful, but it's needed to make the sf.net stats work...-->
+  <b>Linux/Source:</b>      <a href="http://sourceforge.net/projects/zynaddsubfx/files/zynaddsubfx/2.5.3/zynaddsubfx-2.5.3.tar.bz2/download"
+  onclick="trackDownloadLink('downloadLinux', '2.5.3')"
+  > 2.5.3 Source Code</a></p>
+
+  <p>
+  <b>OSX:</b>        <a href="http://sourceforge.net/projects/zynaddsubfx/files/zynaddsubfx/2.5.3/ZynAddSubFx-2.5.3.dmg/download"
+  onclick="trackDownloadLink('downloadOSX', '2.5.3')"
+>2.5.3 DMG</a></p>
+
+  <p><b>Windows:</b> <a href="http://sourceforge.net/projects/zynaddsubfx/files/zynaddsubfx/2.2.0/Setup_ZynAddSubFX-2.2.0.exe/download"
+  onclick="trackDownloadLink('downloadWindows', '2.2.0')">2.2.0 Installer</a></p>
+
+  <p>For more recent windows development see the windows <a href="http://www.kvraudio.com/forum/viewtopic.php?t=268277"
+  onclick="trackOutboundLink('http://www.kvraudio.com/forum/viewtopic.php?t=268277')">VST fork</a></p>
+
+  <p>Older releases can be found <a href="https://sourceforge.net/projects/zynaddsubfx/files/"
+  onclick="trackOutboundLink('https://sourceforge.net/projects/zynaddsubfx/files/')">here</a></p>
+
+  <!--
+  <h2>Copyright and License:</h2>
+  <p><b>ZynAddSubFX</b> is <b>Copyright (c) 2002-2009 Nasca Octavian
+  Paul</b> and <b>Copyright (c) 2016 Mark McCurry</b> and may be freely distributed under version 2 of the
+  GNU General Public License (GNU GPL). The program is licensed
+  only under version 2 of the GNU GPL and <u>not under any other
+  version of GNU GPL</u>. This program comes WITH NO
+  WARRANTY OF ANY KIND.</p>
+  <p>All these pages including images, diagrams and sounds are
+  <b>Copyright (c) 2002-2009 Nasca Octavian Paul</b> and <b>Copyright (c) 2016 Mark McCurry</b> and may be
+  freely distributed under GNU Free Documentation License
+  (GFDL).</p>
+  <br> -->
+
+  </div></center>
+</body>
+</html>

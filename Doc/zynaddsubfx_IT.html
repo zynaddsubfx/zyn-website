@@ -1,0 +1,1829 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.7" />
+<title>Zynaddsubfx</title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+tt {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+.monospaced {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install();
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+<h1>Zynaddsubfx</h1>
+<span id="author">Paul Nasca and Mark McCurry, translated by Ilario Glasgo</span><br />
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_come_iniziare">Come iniziare</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>ZynAddSubFX è un sintetizzatore software piuttosto complesso, con un gran numero
+di controlli. Perciò l&#8217;uso di ZynAddSubFX non è sempre ovvio.</p></div>
+<div class="paragraph"><p>Molte applicazioni sotto Linux trasportano il MIDI con AlSA e trasmettono l&#8217;audio
+con JACK. ZynAddSubFX può essere lanciato con questa configurazione eseguendo:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>zynaddsubfx -I alsa -O jack -a</tt></pre>
+</div></div>
+<div class="paragraph"><p>Questo imposta ALSA come driver input e JACK come driver audio, che dovrebbe
+tentare di connettersi automaticamente alla tua scheda audio, per via del flag -a.
+Se questa è la prima volta che lanci ZynAddSubFX, vedrai una schermata che ti lascia
+scegliere tra l&#8217;interfaccia per principianti e quella avanzata. Attualmente
+l&#8217;interfaccia <em>beginner</em> è deprecata, quindi è raccomandato usare l&#8217;interfaccia
+<em>advanced</em>.</p></div>
+<div class="paragraph"><p>Ora dovresti essere in grado di vedere la finestra principale di ZynAddSubFX, dalla
+quale puoi impostare patch, effetti e altre configurazioni generali, ma la cosa più
+importante è che fornisce i collegamenti tra le patch. ZynAddSubFX è uno strumento
+potente con una serie di patch di base, ma la vera forza sta dietro all&#8217;abilità di
+creare delle patch personali.</p></div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/uimain.png" alt="./images/uimain.png" />
+</div>
+<div class="title">Figure 1. Main Window</div>
+</div>
+<div class="paragraph"><p>Per un utilizzo base, potrai usare il pulsante alla destra dell&#8217;etichetta <em>enabled</em>.
+Questo pulsante consentirà di selezionare lo strumento desiderato dai banchi
+disponibili in ZynAddSubFX. Per suonare note in ZynAddSubFX puoi usare la tastiera
+virtuale integrata (accessibile dal pulsante <em>vK</em>) oppure puoi connettere la tua
+tastiera al sistema e usare <strong>aconnect</strong> per connetterla in ZynAddSubFX (supponendo
+che si stia usando ALSA).</p></div>
+<div class="paragraph"><p>Questa finestra principale consente l&#8217;accesso a molte features più avanzate.
+Di cui alcune sono:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+System Effects
+</p>
+</li>
+<li>
+<p>
+Insertion Effects
+</p>
+</li>
+<li>
+<p>
+Recording
+</p>
+</li>
+<li>
+<p>
+Part Settings (strumento impostazioni del livello)
+</p>
+</li>
+<li>
+<p>
+Master Settings
+</p>
+</li>
+<li>
+<p>
+Microtonal Settings
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Ad esempio, per utilizzare la funzione di registrazione deve essere selezionato un
+file wave dal menù di registrazione, poi può essere avviata con il pulsante <em>record</em>
+e stoppata con il pulsante <em>stop</em>. Questo è un modo semplice e veloce di registrare
+alcuni samples da ZynAddSubFX, anche se ci sono strumenti con caratteristiche più
+complete disponibili tramite gli strumenti di registrazione di JACK.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">Dopo aver premuto <em>record</em>, il file wave non partirà la registrazione fino a
+quando un nuovo tasto non sarà premuto da una sorgente MIDI esterna o dalla virtual
+keyboard. Le proprietà dei <em>System Effects</em> e degli <em>Insertion Effects</em> sono
+accessibili e disponibili così come le proprietà di ogni strumento.</td>
+</tr></table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_filters">Filters</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>ZynAddSubFX offre diversi tipi di filtri, che possono essere usati per modellare
+lo spettro di un segnale. I parametri primari che influenzano le caratteristiche
+del filtro sono <em>cutoff</em>, <em>resonance</em>, <em>filter stages</em> e il tipo di filtro <em>(filter type)</em>.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>Cutoff (frequenza di taglio)</strong>: Questo valore determina quale frequenza segna
+                                  il punto di cambiamento per il filtro.
+                                  In un filtro <em>low-pass</em> (passa-bassi) questo
+                                  valore segna il punto da cui le frequenze alte
+                                  verranno attenuate.
+</p>
+</li>
+<li>
+<p>
+<strong>Resonance</strong>: La Resonance di un filtro determina l&#8217;enfatizzazione del filtro
+               sulla frequenza di taglio. In ZynAddSubFX è rappresentata dal
+               fattore <em>Q</em>, che è definito come la frequenza di taglio diviso
+               la larghezza di banda <em>(bandwidth)</em>. In altre parole un più alto
+               valore di Q causa un picco molto più stretto e risonante.
+</p>
+</li>
+<li>
+<p>
+<strong>Stages</strong>: Il numero di fasi di filtrazione in un dato filtro descrive quanto
+            bruscamente è in grado di applicare cambiamenti nella risposta in
+            frequenza.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>I filtri analogici di base <em>(analog)</em> che ZynAddSubFX offre sono mostrati di
+seguito, con la frequenza centrale segnata con una linea rossa. I filtri a stato
+variabile <em>(state variable)</em> dovrebbero essere molto simili.</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/filter0.png" alt="images/filter0.png" />
+</span></p></div>
+<div class="paragraph"><p>Come detto in precedenza, il valore Q di un filtro influenza quanto concentrata è
+l&#8217;energia del segnale nella frequenza di taglio; il risultato di differenti valori
+di Q sono mostrati sotto.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">Per molti suoni analogici classici, alti valori di Q sono ussati sugli
+<em>sweeping filters</em>. Un semplice low-pass filter con Q alto modulato da un forte
+<em>envelope</em> solitamente è sufficiente per avere un buon suono.</td>
+</tr></table>
+</div>
+<div class="paragraph"><p><span class="image">
+<img src="images/filter1.png" alt="images/filter1.png" />
+</span></p></div>
+<div class="paragraph"><p>Infine, l&#8217;effetto dell&#8217;ordine del filtro può essere visto sotto. Questo è
+approssimativamente il numero di fasi del filtro <em>(filter stages)</em>. Per patches
+più complesse è importante capire che la nitidezza in più nel filtro non è gratuita,
+in quanto richiede molti più calcoli in corso di esecuzione; questo fenomeno
+è più facilmente visibile nel <em>subsynth</em>, dove è facile avere bisogno di centinaia
+di <em>filter stages</em> per produrre una certa nota.</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/filter2.png" alt="images/filter2.png" />
+</span></p></div>
+<div class="sect2">
+<h3 id="_user_interface">User Interface</h3>
+<div class="paragraph"><p><span class="image">
+<img src="images/uifilter.png" alt="images/uifilter.png" />
+</span></p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>C.freq</strong>: Cutoff frequency
+</p>
+</li>
+<li>
+<p>
+<strong>Q</strong>: Level of resonance for the filter
+</p>
+</li>
+<li>
+<p>
+<strong>V.SnsA.</strong>: Velocity sensing amount for filter cutoff
+</p>
+</li>
+<li>
+<p>
+<strong>V.Sns.</strong>: Velocity sensing function
+</p>
+</li>
+<li>
+<p>
+<strong>freq.tr</strong>: Frequency tracking amount. When this parameter is positive, higher
+             note frequencies shift the filter&#8217;s cutoff frequency higher.
+</p>
+</li>
+<li>
+<p>
+<strong>gain</strong>: Additional gain/attenuation for filter
+</p>
+</li>
+<li>
+<p>
+<strong>St</strong>: Filter stages
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lfo">LFO</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_introduzione">Introduzione</h3>
+<div class="paragraph"><p>"LFO" significa Low Frequency Oscillator. Questi oscillatori non sono usati per
+fare suoni da soli, ma per cambiare alcuni parametri (come le frequenze, le
+ampiezze o i filtri).</p></div>
+<div class="paragraph"><p>L&#8217;LFO ha alcuni parametri di base:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>Delay</strong>: Questo parametro imposta il tempo tra l&#8217;inizio della nota e l&#8217;inizio
+           dell&#8217;LFO
+</p>
+</li>
+<li>
+<p>
+<strong>Start Phase</strong>: La posizione che avrà l&#8217;LFO alla partenza
+</p>
+</li>
+<li>
+<p>
+<strong>Frequency</strong>: La velocità dell&#8217;LFO (quanto velocemente il parametro è controllato
+               dai cambiamenti dell&#8217;LFO)
+</p>
+</li>
+<li>
+<p>
+<strong>Depth</strong>: L&#8217;ampiezza dell&#8217;LFO (quanto il parametro è controllato dai cambiamenti
+           dell&#8217;LFO)
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/lfo0.png" alt="images/lfo0.png" />
+</span></p></div>
+<div class="paragraph"><p>Un altro importante parametro dell&#8217;LFO è la forma <em>(shape)</em>. Ci sono molti
+tipi di LFO in base alla forma. ZynAddSubFX supporta le seguenti forme:</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/lfo1.png" alt="images/lfo1.png" />
+</span></p></div>
+<div class="paragraph"><p>Un altro parametro è <em>LFO Randomness</em> (casualità dell&#8217;LFO).
+Esso modifica casualmente l&#8217;ampiezza o la frequenza dell&#8217;LFO ed in ZynAddSubFX puoi scegliere quanto, con questo parametro.
+Nelle seguenti immagini sono mostrati alcuni esempi di casualità e come cambia la
+forma d&#8217;onda triangolare dell&#8217;LFO.</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/lfo2.png" alt="images/lfo2.png" />
+</span></p></div>
+<div class="paragraph"><p>Altri parametri sono:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>Continous mode</strong>: Se si utilizza questa modalità, l&#8217;LFO non partirà da "zero"
+ad ogni nuova nota, ma sarà continuo. E' molto utile applicato sui filtri, per
+fare interessanti <em>sweeps</em>.
+</p>
+</li>
+<li>
+<p>
+<strong>Stretch</strong>: Controlla quanto la frequenza dell&#8217;LFO cambia in base alla frequenza
+della nota.
+Si può passare da <em>stretch</em> negativo (la frequenza dell&#8217;LFO diminuisce sulle
+note più alte) a zero (rimane la stessa in tutte le note) a <em>stretch</em> positivo
+(aumenta sulle note più alte).
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_user_interface_2">User Interface</h3>
+<div class="paragraph"><p>In ZynAddSubFX i parametri dell&#8217;LFO sono mostrati così:</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/uilfo.jpg" alt="images/uilfo.jpg" />
+</span></p></div>
+<div class="paragraph"><p>Questi parametri sono:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>Freq</strong>: LFO Frequency
+</p>
+</li>
+<li>
+<p>
+<strong>Depth</strong>: LFO Depth
+</p>
+</li>
+<li>
+<p>
+<strong>Start</strong>: LFO Start Phase -
+Se questo knob è al valore più basso, LFO Start Phase sarà random
+</p>
+</li>
+<li>
+<p>
+<strong>Delay</strong>: LFO Delay
+</p>
+</li>
+<li>
+<p>
+<strong>A.R.</strong>: LFO Amplitude Randomnes
+</p>
+</li>
+<li>
+<p>
+<strong>F.R.</strong>: LFO Frequency Randomness
+</p>
+</li>
+<li>
+<p>
+<strong>C.</strong>: LFO Continous Mode
+</p>
+</li>
+<li>
+<p>
+<strong>Str.</strong>: LFO Stretch - Nell&#8217;immagine sopra LFO Stretch è impostato a zero
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_envelopes">Envelopes</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_introduzione_2">Introduzione</h3>
+<div class="paragraph"><p>Gli inviluppi controllano come cambiano nel tempo l&#8217;ampiezza, la frequenza o il
+filtro.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_amplitude_envelopes_inviluppi_di_ampiezza">Amplitude Envelopes (inviluppi di ampiezza)</h3>
+<div class="paragraph"><p>Questi inviluppi controllano l&#8217;ampiezza del suono.
+In ZynAddSubFX, gli inviluppi di ampiezza possono essere lineari o logaritmici.
+Nell&#8217;immagine seguente sono mostrate le differenze tra questi inviluppi.</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/envelope1.png" alt="Alt text" />
+</span></p></div>
+<div class="paragraph"><p>L&#8217;inviluppo di ampiezza è diviso in:
+* <strong>Attack</strong>: Inizia all&#8217;attacco della nota (Note On). Il volume inizia da 0 al
+massimo. In ZynAddSubFX l&#8217;attack è sempre lineare
+* <strong>Decay</strong>: Il volume scende dal valore massimo ad un livello chiamato "Sustain level"
+* <strong>Sustain</strong>: Il volume rimane costante fino a quando il tasto non viene
+rilasciato (Note Off). Dopo questo, avviene l&#8217;ultima fase.
+* <strong>Release</strong>: Il volume scende a zero.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_frequency_envelopes">Frequency Envelopes</h3>
+<div class="paragraph"><p>Questi inviluppi controllano la frequenza (o, più esattamente, il <em>pitch</em>)
+degli oscillatori.
+La seguente figura disegna le fasi di questi inviluppi.</p></div>
+<div class="imageblock">
+<div class="content">
+<img src="images/envelope2.png" alt="Alt text" />
+</div>
+</div>
+<div class="paragraph"><p>La linea puntinata rappresenta il pitch reale del suono senza inviluppo.</p></div>
+<div class="paragraph"><p>Gli inviluppi di frequenza sono divisi in 3 fasi:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>Attack</strong>: Inizia all&#8217;attacco della nota (Note On). La frequenza inizia da un
+certo valore e "scivola" alla reale frequenza della nota.
+</p>
+</li>
+<li>
+<p>
+<strong>Sustain</strong>: La frequenza è la stessa per tutto il periodo di Sustain
+</p>
+</li>
+<li>
+<p>
+<strong>Release</strong>: Questa fase inizia con il Note Off e scala la frequenza della nota
+ad un certo valore
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_filter_envelopes">Filter Envelopes</h3>
+<div class="paragraph"><p>Questi inviluppi controllano la frequenza di cutoff dei filtri e sono divisi in:</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/envelope3.png" alt="Alt Text" />
+</span></p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>Attack</strong>: Inizia all&#8217;inizio della nota (Note On). La frequenza di cutoff inizia
+ad un certo valore e scala ad un altro
+</p>
+</li>
+<li>
+<p>
+<strong>Decay</strong>: La frequenza di cutoff continua a scivolare verso il valore reale della
+frequenza di cutoff del filtro (linea puntinata)
+</p>
+</li>
+<li>
+<p>
+<strong>Sustain</strong>: La frequenza di cutoff è la stessa per tutto il periodo di
+Sustain (linea puntinata)
+</p>
+</li>
+<li>
+<p>
+<strong>Release</strong>: Questa fase inizia con il Note Off e scala la frequenza di cutoff della
+nota ad un certo valore
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_freemode_envelopes">Freemode Envelopes</h3>
+<div class="paragraph"><p>Per tutti gli inviluppi c'è una modalità che consente all&#8217;utente di impostare un numero
+arbitrario di fasi e punti di controllo. Questa modalità è chiamata <em>Freemode</em>.</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/envelope4.png" alt="Alt Text" />
+</span></p></div>
+<div class="paragraph"><p>L&#8217;unica fase che rimane sempre definita è il Sustain, dove gli inviluppi si bloccano
+fino ad un evento Note Off.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_user_interface_3">User Interface</h3>
+<div class="paragraph"><p>Tutti i tipi di inviluppi hanno alcuni controlli comuni:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>E</strong>: Mostra una finestra che può far vedere la vera forma dell&#8217;inviluppo o convertirlo
+in <em>Freemode</em> per editarlo
+</p>
+</li>
+<li>
+<p>
+<strong>Stretch</strong>: Come l&#8217;inviluppo è allungato in base alla nota.
+Sulle note più alte gli inviluppi sono più corti delle note più basse.
+Nel valore più a sinistra lo <em>stretch</em> è zero.
+Il valore più a destra indica un allungamento del 200%; ciò significa che l&#8217;inviluppo
+è allungato circa 4 volte/ottava.
+</p>
+</li>
+<li>
+<p>
+<strong>frcR</strong>: Release forzato. Se questa opzione è settata su On, il rilascio andrà al
+valore finale anche se la fase di Sustain non è stata completata.
+Di solito questo parametro è settato.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>I parametri degli Amplitude Evelopes in ZynAddSubFX sono:</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/uienvelope3.jpg" alt="Alt Text" />
+</span></p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>A.dt</strong>: Durata Attack
+</p>
+</li>
+<li>
+<p>
+<strong>D.dt</strong>: Durata Decay
+</p>
+</li>
+<li>
+<p>
+<strong>S.Val</strong>: Valore di Sustain
+</p>
+</li>
+<li>
+<p>
+<strong>R.dt</strong>: Release time
+</p>
+</li>
+<li>
+<p>
+<strong>L</strong>: Se questa opzione è settata l&#8217;inviluppo è lineare, altrimenti sarà logaritmico.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Per i Frequency Envelopes l&#8217;interfaccia ha i seguenti parametri:</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/uienvelope2.jpg" alt="Alt Text" />
+</span></p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>A.val</strong>: Valore di Attack
+</p>
+</li>
+<li>
+<p>
+<strong>A.dt</strong>: Durata Attack
+</p>
+</li>
+<li>
+<p>
+<strong>R.dt</strong>: Release time
+</p>
+</li>
+<li>
+<p>
+<strong>R.val</strong>: Valore di Release
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>I Filter Evelopes hanno i parametri:</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/uienvelope1.jpg" alt="Alt Text" />
+</span></p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>A.val</strong>: Valore di Attack
+</p>
+</li>
+<li>
+<p>
+<strong>A.dt</strong>: Durata di Attack
+</p>
+</li>
+<li>
+<p>
+<strong>D.val</strong>: Valore di Decay
+</p>
+</li>
+<li>
+<p>
+<strong>D.dt</strong>: Decay time
+</p>
+</li>
+<li>
+<p>
+<strong>R.dt</strong>: Release time
+</p>
+</li>
+<li>
+<p>
+<strong>R.val</strong>: Valore di Release
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>I Freemode Envelopes hanno una finestra separata per impostare parametri e controlli:</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/uienvelope0.jpg" alt="images/uienvelope0.jpg" />
+</span></p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>Control points (punti di controllo)</strong>: Puoi muovere i punti usando il mouse.
+In basso a destra nella finestra viene mostrata la durata totale dell&#8217;inviluppo.
+Se si clicka su un control point verrà visualizzata la durata della fase in cui
+è quel punto.
+</p>
+</li>
+<li>
+<p>
+<strong>Freemode</strong>: Questo pulsante attiva o disattiva la modalità <em>Freemode</em>
+</p>
+</li>
+<li>
+<p>
+<strong>Add Point</strong>: Aggiunge un punto dopo il punto correntemente selezionato.
+Puoi selezionare un punto clickandoci su.
+</p>
+</li>
+<li>
+<p>
+<strong>Delete point</strong>: Rimuove il punto dall&#8217;inviluppo.
+</p>
+</li>
+<li>
+<p>
+<strong>Sust.</strong>: Imposta il punto di Sustain. E' mostrato usando la linea gialla.
+</p>
+</li>
+<li>
+<p>
+<strong>Str.</strong>: Envelope stretch
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_adsynth">AdSynth</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>AdSynth, principalmente un motore di sintesi additiva, è uno dei tre principali
+motori di sintesi disponibili in ZynAddSubFX.
+Il concetto base di questo motore è la somma di un insieme di voci, ciascuno dei
+quali consiste in oscillatori.</p></div>
+<div class="sect2">
+<h3 id="_high_level_global">High Level (Global)</h3>
+<div class="paragraph"><p>Il livello globale di AdSynth consiste negli elementi mostrati nella figura sotto:</p></div>
+<div class="imageblock">
+<div class="content">
+<img src="gen/ad-note.png" alt="gen/ad-note.png" width="700" />
+</div>
+<div class="title">Figure 2. AdSynth Global Elements</div>
+</div>
+<div class="paragraph"><p>Il livello globale di AdSynth è quasi interamente composto dagli elementi
+precedentemente discussi.
+Comunque appaiono qui alcune nuove features, come: il rilevamento di velocità
+<em>(velocity sensing)</em>, <em>punch</em>, opzioni di detune e relativa bandwidth, resonance.</p></div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ad-global.png" alt="images/ad-global.png" />
+</div>
+<div class="title">Figure 3. AdSynth Global Window</div>
+</div>
+<div class="paragraph"><p>Il rilevamento di velocità è semplicemente una trasformazione esponenziale dalla
+velocità della nota ad alcuni cambiamenti di parametro (!?).
+Il diagramma sotto mostra come il <em>velocity sensing</em> controlla questa traslazione
+in tutto il range di velocity delle note possibili.</p></div>
+<div class="imageblock">
+<div class="content">
+<img src="gen/velf.png" alt="gen/velf.png" width="600" />
+</div>
+<div class="title">Figure 4. Velocity Sensing Chart</div>
+</div>
+<div class="paragraph"><p>Il <em>punch</em> di una nota in AdSynth è un&#8217;amplificazione costante dell&#8217;output
+alla partenza della nota, con una lunghezza determinata dal <em>punch time</em> e <em>stretch</em>
+e l&#8217;ampiezza determinata da <em>punch strength</em> e <em>velocity sensing</em>.
+Il controllo relBw nel riquadro di frequenza è di fatto un moltiplicatore per
+"scordare" <em>(detuning)</em> tutte le voci di una nota.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">TODO Talk about resonance</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>La somma delle voci passa attraverso filtri e amplificazione per produrre il
+suono finale.
+Questro potrebbe far pensare che ad-note è solo un mucchio di post-elaborazione
+minore e che a questo livello molto della generazione del suono è nascosta.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_voices">Voices</h3>
+<div class="paragraph"><p>La voce da accesso ad un configurazione simile dei parametri globali più altre
+cose come il modulatore, l&#8217;oscillatore e features di unison.</p></div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ad-voice.png" alt="images/ad-voice.png" />
+</div>
+<div class="title">Figure 5. AdSynth Voice Window</div>
+</div>
+<div class="sect3">
+<h4 id="_modulation">Modulation</h4>
+<div class="paragraph"><p>Tra le opzioni di modulazione si può selezionare:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Morph
+</p>
+</li>
+<li>
+<p>
+Ring Modulation
+</p>
+</li>
+<li>
+<p>
+Phase Modulation
+</p>
+</li>
+<li>
+<p>
+Frequency Modulation
+</p>
+</li>
+<li>
+<p>
+Disabled
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect3">
+<h4 id="_unison">Unison</h4>
+<div class="paragraph"><p>Unison è utile nel creare il suono tipo chorus di più oscillatori simultanei.</p></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_oscillator">Oscillator</h3>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">TODO show waveforms, talk about distortions somewhere, etc</td>
+</tr></table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/uioscil.png" alt="images/uioscil.png" />
+</div>
+<div class="title">Figure 6. Oscillator Window</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_controller">Controller</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="./images/uicontroller.png" alt="./images/uicontroller.png" />
+</div>
+</div>
+<div class="sect2">
+<h3 id="_general">General</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>ModWh</strong>: Modulation Wheel depth (profondità della Modulation Wheel)
+</p>
+</li>
+<li>
+<p>
+<strong>Exp MWh</strong>: Exponential Modulation Wheel (cambia la scala di mudulazione in
+             esponenziale)
+</p>
+</li>
+<li>
+<p>
+<strong>BwDpth</strong>: Bandwidth Depth (profondità della Bandwidth)
+</p>
+</li>
+<li>
+<p>
+<strong>Exp BW</strong>: Exponential Bandwidth (cambia la scala di Bandwidth in esponenziale)
+</p>
+</li>
+<li>
+<p>
+<strong>PanDpth</strong>: Panning Depth (profondità del pan)
+</p>
+</li>
+<li>
+<p>
+<strong>FltQ</strong>: Filter Q (resonance) depth
+</p>
+</li>
+<li>
+<p>
+<strong>FltCut</strong> Filter Cutoff frequency depth (profondità della frequenza di taglio)
+</p>
+</li>
+<li>
+<p>
+<strong>Expr</strong>: Attiva/disattiva Expression
+</p>
+</li>
+<li>
+<p>
+<strong>Vol</strong>: Attiva/disattiva la ricezione di Volume controller
+</p>
+</li>
+<li>
+<p>
+<strong>FMamp</strong>: Attiva/disattiva la ricezione di Modulation Amplitude controller (76)
+</p>
+</li>
+<li>
+<p>
+<strong>Sustain</strong>: Attiva/disattiva sustain pedal
+</p>
+</li>
+<li>
+<p>
+<strong>PWheelB.Rng (cents)</strong>: Pitch Wheel Bend Range (cents; 100 cents = 1 semitono)
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_portamento">Portamento</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>Rcv.</strong>: Controlla se la parte riceve il Portamento - On/Off (65)
+</p>
+</li>
+<li>
+<p>
+<strong>time</strong>: La durata del Portamento
+</p>
+</li>
+<li>
+<p>
+<strong>thresh</strong>: La soglia <em>(Threshold)</em> del Portamento.
+Rappresenta il minimo o il massimo numero di semitoni (o centesimi di semitono)
+richiesti per lo start del Portamento.
+La differenza è calcolata tra l&#8217;ultima nota e la corrente.
+</p>
+</li>
+<li>
+<p>
+<strong>th.type</strong>: Il tipo di Threshold
+Se selezionato significa che il Portamento si attiva quando la differenza
+delle frequenze è al di sopra della soglia ("thresh"); non selezionato si attiva
+quando è al di sotto della soglia.
+</p>
+</li>
+</ul></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">La Threshold si riferisce alle frequenze e non alle note MIDI
+         (si potrebbe tenere in considerazione se si usano scale microtonali).</td>
+</tr></table>
+</div>
+<div class="sect3">
+<h4 id="_proportional_portamento">Proportional Portamento</h4>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>Propt.</strong>: Se il Portamento è proporzionale al rapporto <em>(Ratio)</em> delle frequenze
+</p>
+</li>
+<li>
+<p>
+<strong>Prp. Rate</strong>: Ratio necessaria per raddoppiare il tempo del Portamento
+</p>
+</li>
+<li>
+<p>
+<strong>Prp. Dpth</strong>
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_resonance">Resonance</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>CFdpth</strong>: Controlla la profondità del centro della Resonance
+</p>
+</li>
+<li>
+<p>
+<strong>BWdpth</strong>: Controlla la profondità della larghezza di banda (Bandwidth) della
+Resonance
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_persistence">Persistence</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Come la gran parte delle applicazioni ZynAddSubFX consente di salvare il tuo
+lavoro e ricaricarlo.</p></div>
+<div class="sect2">
+<h3 id="_salvare_tutto">Salvare tutto</h3>
+<div class="paragraph"><p>Uno dei modi più semplici di salvare il tuo lavoro è quello di salvare l&#8217;intera
+sessione. Questo può essere fatto dal menu File e il risultato sarà la creazione
+di un .xmz file.
+Una volta creato, questo file conterrà le tutte le impostazioni della sessione,
+come le accordature microtonali, tutte le patch, tutti i tipi di effetti, ecc&#8230;</p></div>
+</div>
+<div class="sect2">
+<h3 id="_salvare_delle_parti">Salvare delle parti</h3>
+<div class="paragraph"><p>In alcuni casi salvare tutto non è quello che si desidera.
+Di seguito c'è un esempio di salvataggio di una patch.</p></div>
+<div class="sect3">
+<h4 id="_patches">Patches</h4>
+<div class="paragraph"><p>Per salvare una patch, si può salvare dal menu strumenti o dalla bank window.</p></div>
+<div class="paragraph"><p>Con il menu strumenti si può solo salvare il file in una dato percorso con
+l&#8217;estensione .xiz.</p></div>
+<div class="paragraph"><p>Con il menu dei banchi si può assegnare una patch ad un certo slot con un banco.
+Questo strumento rimarrà qui per un futuro uso fin quando non viene cancellato.
+Per vedere la posizione fisica del file .xiz si può controllare la finestra in
+File&#8594;Settings&#8594;Bank_Root_Dirs, per vedere i percorsi dei banchi.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">Devi avere i permessi di scrittura per aggiungere uno strumento al banco.</td>
+</tr></table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_presets">Presets</h4>
+<div class="paragraph"><p>Avete un&#8217;impostazione favorita per un inviluppo o un oscillatore difficile da
+rifare? Allora i preset fanno al caso vostro.
+I preset consentono di salvare le impostazioni per ogni componente che supporta
+operazioni di copia/incolla.
+Questo viene fatto con i prest file (.xpz), che sono memorizzati nelle cartelle
+indicate da File&#8594;Settings&#8594;Preset_Root_Dirs.</p></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_riepilogo">Riepilogo</h3>
+<div class="literalblock">
+<div class="title">Riepilogo delle estensioni</div>
+<div class="content">
+<pre><tt>xmz Everything
+xiz Instrument
+xsz Scale Settings
+xpz Presets</tt></pre>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_appendice_a_default_midi">Appendice A: Default MIDI</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="title">Connessioni MIDI di Default</div>
+<div class="content">
+<pre><tt>001 - Modulation Wheel
+007 - Volume
+010 - Pan
+011 - Expression
+064 - Sustain
+065 - Portamento Enable
+071 - Filter Q
+074 - Filter Cutoff
+075 - Bandwidth(*)
+076 - Modulation Amplitude(*)
+077 - Resonance Center Frequency(*)
+078 - Resonance Bandwidth(*)
+120 - All Sounds Off
+121 - Reset All Controllers
+123 - All Notes Off</tt></pre>
+</div></div>
+<div class="paragraph"><p>Le voci con <em>(*)</em> non rientrano nelle specifiche General Midi.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_appendice_b_compilare_zynaddsubfx">Appendice B: Compilare ZynAddSubFX</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_introduzione_a_cmake">Introduzione a CMake</h3>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Note: Questa sezione è in gran parte copiata dal wiki di OpenSceneGraph:
+<a href="http://www.openscenegraph.org/projects/osg/wiki/Build/CMake">http://www.openscenegraph.org/projects/osg/wiki/Build/CMake</a></p></div>
+</div></div>
+<div class="paragraph"><p>ZynAddSubFX usa CMake come suo sistema di compilazione unificato. CMake
+è capace di leggere semplici build script dall&#8217;albero dei sorgenti e
+creare da questo un sistema di compilazione specifico per la piattaforma.
+Questo sistema di compilazione può avere la forma di VisualStudio project
+files, Unix Makefiles o XCode project files. CMake è capace di individuare
+automaticamente le dipendeze esterne e consente di attivare/disattivare
+la compilazione del modulo e di configurare varie opzioni di compilazione.</p></div>
+<div class="paragraph"><p>L&#8217;uso di un sistema di compilazione unificato consente di evitare rotture
+di compilazione che erano presenti nel precedente metodo di compilazione,
+ovvero quello di mantenere tre obiettivi di compilazione separati per
+VisualStudio, Unix "make" and XCode. Si riduce anche l&#8217;onere della
+manutenzione per gli sviluppatori base e collaboratori.
+Nell&#8217;insieme, l&#8217;uso di CMake dovrebbe portare come risultato una migliore
+coerenza e build più stabili su ogni piattaforma per gli utenti finali e
+una maggiore produttività nello sviluppo di nuove versioni.
+Speriamo che con una maggior coerenza di builds tra piattaforme renderà
+più facile per gli sviluppatori utilizzare la <em>development version</em> di
+ZynAddSubFX e aiutare a contribuire ai testing e alle migliorie,
+portando ad un codice di più alta qualità.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_quick_start_guide">Quick start guide</h3>
+<div class="paragraph"><p>Per i più impazienti, qui c'è una guida veloce su come compilare
+immediatamente ZynAddSubFX da sorgenti.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph"><p>Note: Ciò presuppone che tu abbia già una copia dei sorgenti.</p></div>
+</div></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>#enter the source directory
+cd zynaddsubfx
+
+#make a directory for an out-of-source build
+mkdir build
+cd build
+
+#generate a cmake build project here from the cmake root, which is
+#found in the directory below the current one
+cmake ..
+
+#OPTIONAL: Adjust compile variables in the Cache file:
+ccmake .
+
+#And finally, build as usual using make
+make</tt></pre>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_appendix_c_ottenere_zynaddsubfx">Appendix C: Ottenere ZynAddSubFX</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Normalmente ci sono diversi modi per ottenere una copia di ZynAddSubFX.</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+SourceForge
+</dt>
+<dd>
+<p>
+    <a href="http://sourceforge.net/projects/zynaddsubfx/files/">http://sourceforge.net/projects/zynaddsubfx/files/</a>
+</p>
+</dd>
+<dt class="hdlist1">
+Distribuition
+</dt>
+<dd>
+<p>
+    apt/yum/others
+</p>
+</dd>
+<dt class="hdlist1">
+Git
+</dt>
+<dd>
+<p>
+    git clone git://git.code.sf.net/p/zynaddsubfx/code zynaddsubfx
+</p>
+</dd>
+</dl></div>
+<div class="sect2">
+<h3 id="_introduzione_a_git">Introduzione a Git</h3>
+<div class="paragraph"><p>Per coloro che vogliono vivere "on the bleeding edge" o chi vuole essere certo che
+la prossima release abbia meno bug, si può avere il codice con git.
+Git è usato per gestire il codice sorgente di questo progetto ed è utile per
+ottenere velocemente e facilmente una copia "up-to-date" del codice sorgente.</p></div>
+<div class="sect3">
+<h4 id="_ottenere_il_codice_sorgente">Ottenere il codice sorgente</h4>
+<div class="paragraph"><p>Per avere una copia dei sorgenti di ZynAddSubFX tutto il necessario da fare è:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>git clone git://git.code.sf.net/p/zynaddsubfx/code zynaddsubfx
+
+cd zynaddsubfx
+
+#Download additional resources
+git submodule init
+git submodule update</tt></pre>
+</div></div>
+<div class="paragraph"><p>Ora dovresti essere nella directory del codice sorgente.</p></div>
+<div class="paragraph"><p>Per compilare facilmente si guardi l&#8217;Appendice B del manuale.</p></div>
+</div>
+<div class="sect3">
+<h4 id="_dare_un_8217_occhiata_ai_branch">Dare un&#8217;occhiata ai branch</h4>
+<div class="paragraph"><p>Diciamo che lo sviluppo si è esteso ad una creazione di una feature che si vuole
+vedere in anteprima.
+Per il bene di questa guida, supponiamo che il nome del branch della feature che
+verrà è <em>foo</em>.</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>#checkout the foo branch from sourceforge
+git checkout --track -b foo origin/foo
+
+#lets checkout the primary branch again
+git checkout master
+
+#hop back to the other branch
+git checkout foo</tt></pre>
+</div></div>
+<div class="paragraph"><p>Ora si dovrebbe essere in grado di cambiare branches e andare nella build-directory
+(come descritto in Appendice B) e ricompilare ZynAddSubFX.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">Quando si usano i branches può venir meno un po' di stabilità.</td>
+</tr></table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2013-04-01 12:35:03 EDT
+</div>
+</div>
+</body>
+</html>
