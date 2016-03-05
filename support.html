@@ -2,10 +2,11 @@
 
 <html>
   <head>
-    <meta http-equiv="content-type" content=
-    "text/html; charset=us-ascii">
+    <meta http-equiv="content-type" content= "text/html; charset=utf-8">
     <link type="text/css" href="main.css" rel="stylesheet">
-    <title>ZynAddSubFX</title>
+    <title>Support For ZynAddSubFX</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="lighter.css">
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -28,23 +29,26 @@
 </script>
   </head>
 
-  <body><center><div align="left" id="content">
-    <center>
-      <table id="header">
-        <tr><td>
-            <img src="images/logo.jpg" height="147" width=
-            "756" alt="ZynAddSubFX"></td></tr>
-        <tr><td id="nav">
-            <a href="/">About</a> |
-            <a href="/news.html">News</a> |
-            <a href="/download.html">Download</a> |
-            <a href="/support.html">Support</a> |
-            <a href="/contribute.html">How to contribute</a> |
-            <a href="/development.html">Developer Resources</a> |
-	    <a href="http://sourceforge.net/projects/zynaddsubfx/">Project page</a> |
-            <a href="/credits.html">Credits</a></td></tr>
-      </table>
-    </center>
+  <body>
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand nav-link" href="About.html"></a>
+        </div> <!-- /.navbar-header -->
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="index.html">About</a></li>
+            <li><a href="download.html">Download</a></li>
+            <li class="active"><a href="support.html">Support</a></li>
+            <li><a href="roadmap.html">Roadmap</a></li>
+            <li><a href="contribute.html">Contribute</a></li>
+          </ul>
+        </div> <!-- /.navbar-collapse -->
+      </div> <!-- /.container -->
+    </nav> <!-- /.navbar -->
+  
+  <center><div align="left" id="content">
 
   <!--<p><h2>Requirements:</h2>
   <ul><li>a fast computer (depend on what you do with the synth)</li>
@@ -76,23 +80,10 @@
   <p>Official Support can be found via both the <a onclick="trackSupportLink('support-zynaddsubfx-user')" href="http://lists.sourceforge.net/mailman/listinfo/zynaddsubfx-user">
   zynaddsubfx-user mailing list</a> and the <a onclick="trackSupportLink('support-kvr')" href= "http://www.kvraudio.com/forum/viewforum.php?f=47">kvr sub-forum</a>.
   <p>
-  If you run into a bug, please report it to the <a onclick="trackSupportLink('support-bug')" href="http://sourceforge.net/tracker/?group_id=62934&amp;atid=502312">sourceforge bug tracker</a>.
+  If you run into a bug, please report it to the
+  <a onclick="trackSupportLink('support-bug')" href="https://sourceforge.net/p/zynaddsubfx/bugs/">sourceforge bug tracker</a>.
   </p>
 
-
-
-  <!--
-  <p>Also, if you want support by mail, ZynAddSubFX has a mailing list
-  for it's users. Here you can share your ZynAddSubFX patches and
-  midi files for ZynAddSubFX made by you. You can subscribe to it
-  or find out more about it on <a href=
-  "http://lists.sourceforge.net/mailman/listinfo/zynaddsubfx-user">http://lists.sourceforge.net/mailman/listinfo/zynaddsubfx-user</a><br>
-  </p>
-
-  <p>
-  The recommended location for finding support is the <a href=
-  "http://www.kvraudio.com/forum/viewforum.php?f=47">kvraudio</a>
-  site.</p>-->
 
   <h2>Documentation:</h2>
   <p>Documentation for ZynAddSubFX is a little scattered at the moment, but here's what
@@ -101,13 +92,6 @@
   tags and no content-->
   <p>The current asciidoc based docs can be seen <a href="/Doc">here</a> [<a href="/Doc/zynaddsubfx_IT.html">IT</a>].
   <p>You can browse the documentation old documentation below:</p>
-
-  <!--
-    <big style=
-    "font-weight: bold; color: rgb(255, 102, 102);"><big><span style="font-family: monospace;">
-    ZynAddSubFX documentation is outdated.  the docs are being 
-    written for 2.x.x. Please ask any questions to <a href=
-    "http://www.kvraudio.com/forum/viewforum.php?f=47">http://www.kvraudio.com/forum/viewforum.php?f=47</a></span></big></big><br>-->
 
 <ul>
     <li><a onclick="trackSupportLink('support-old-doc')" href= "http://zynaddsubfx.sourceforge.net/doc">Misc Old Documentation</a><br></li>
