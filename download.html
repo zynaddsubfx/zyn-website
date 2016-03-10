@@ -36,7 +36,14 @@
         'hitCallback': function(){document.location = url;}
         });
         return false;
-
+  }
+  
+    var trackSignup = function() {
+    ga('send', 'event', 'signup', 'click', '3.0.0', {
+        'transport': 'beacon',
+        'hitCallback': function(){document.location = url;}
+        });
+        return false;
   }
 
   </script>
@@ -83,11 +90,11 @@
   </p>
 
   <p>Official Windows support will be returning for the 3.0.0 update. Please see
-  the <a href="roadmap.html">roadmap</a> for some brief information and <a
-      href="http://eepurl.com/bS2Z0P">sign up</a> for ongoing updates.</p>
+  the <a href="roadmap.html">roadmap</a> for some brief information and
+  <a onclick="trackSignup()" href="http://eepurl.com/bS2Z0P">sign up</a> for ongoing updates.</p>
 
   <p>Older releases can be found <a href="https://sourceforge.net/projects/zynaddsubfx/files/"
   onclick="trackOutboundLink('https://sourceforge.net/projects/zynaddsubfx/files/')">here</a></p>
-  </div></center>
+  </div></center></div>
 </body>
 </html>

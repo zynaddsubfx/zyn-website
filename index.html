@@ -15,6 +15,23 @@
     <script type="text/javascript"
             src="https://cdn.jsdelivr.net/jquery.slick/1.5.9/slick.min.js">
     </script>
+    <script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72903778-1', 'auto');
+ga('send', 'pageview');
+
+    var trackSignup = function() {
+    ga('send', 'event', 'signup', 'click', '3.0.0', {
+        'transport': 'beacon',
+        'hitCallback': function(){document.location = url;}
+        });
+        return false;
+  }
+    </script>
 
   </head>
 
@@ -54,7 +71,7 @@
           heard from expensive hardware to interesting sounds that you'll
           boost to an amazing universe of sounds. This cross-platform project is
           under active development and for information on the next major update
-          (3.0.0) please <a href="http://eepurl.com/bS2Z0P">sign up</a> for more
+          (3.0.0) please <a onclick="trackSignup()" href="http://eepurl.com/bS2Z0P">sign up</a> for more
           information</p>
 
           <h2>Overview of Features:</h2>
@@ -145,16 +162,6 @@ infinite: true,
 speed: 500,
 cssEase: 'linear'
 });
-
-
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
- (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
- m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
- })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-72903778-1', 'auto');
-ga('send', 'pageview');
-
   </script>
   </body>
   </html>
