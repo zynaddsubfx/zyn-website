@@ -7,6 +7,21 @@
     <title>Contributing To ZynAddSubFX</title>
     <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="lighter.css">
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-72903778-1', 'auto');
+ga('send', 'pageview');
+
+  var trackContrib = function(action) {
+    ga('send', 'event', action);
+        return false;
+  }
+</script>
+
   </head>
   <body>
     <nav class="navbar navbar-default" role="navigation">
@@ -30,10 +45,10 @@
   <center><div align="left" id="content">
   <h2>Code</h2>
   <p>Like most open source projects the zyn team loves to see interested developers help out.
-  If you're interested in helping out coding we recommend checking out the issue trackers for 
-  <a href="https://sourceforge.net/p/zynaddsubfx/bugs/">bugs</a>,
-  <a href="https://sourceforge.net/p/zynaddsubfx/feature-requests/">features</a>, and
-  <a href="https://sourceforge.net/p/zynaddsubfx/patches/">patches</a>.
+  If you're interested in helping out coding we recommend checking out the issue trackers for
+  <a onclick="trackContrib('contrib-bugs')" href="https://sourceforge.net/p/zynaddsubfx/bugs/">bugs</a>,
+  <a onclick="trackContrib('contrib-features')" href="https://sourceforge.net/p/zynaddsubfx/feature-requests/">features</a>, and
+  <a onclick="trackContrib('contrib-patches')" href="https://sourceforge.net/p/zynaddsubfx/patches/">patches</a>.
   There you should be able to find some issues marked 'beginner'.
   These issues should involve relatively few different source files and ideally
   it should be possible to finish them in a single sitting.
@@ -41,11 +56,11 @@
   or via a git pull request.</p>
   <h2>Instruments</h2>
   <p>People are always looking for new instruments to experiment with.
-  For a one-off instrument <a href="https://musical-artifacts.com/">musical
+  For a one-off instrument <a onclick="trackContrib('contrib-ma')" href="https://musical-artifacts.com/">musical
       artifacts</a> hosts individual instruments for a variety of open source
   synths and effects. For larger collections of patches they can be shared via
   the
-  <a href= "http://lists.sourceforge.net/mailman/listinfo/zynaddsubfx-user">mailing list</a>.
+  <a onclick="trackContrib('contrib-ml')" href= "http://lists.sourceforge.net/mailman/listinfo/zynaddsubfx-user">mailing list</a>.
   </p>
 
   <h2>Documentation</h2>
@@ -63,33 +78,33 @@
   <p>
   Any donations are appreciated and they're currently accepted by two
   developers.
-  The project was started in March 2002 by <a href="http://www.paulnasca.com">Nasca Octavian Paul</a>.
+  The project was started in March 2002 by <a onclick="trackContrib('outbound-pn')" href="http://www.paulnasca.com">Nasca Octavian Paul</a>.
   He began to write ZynAddSubFX in order to create a synthesizer
   which could produce beautiful sounds, while being freely available to
   anybody who needs it.
-  Since 2009, ZynAddSubFX has been lead by <a href="http://fundamental-code.com">Mark McCurry</a>.
+  Since 2009, ZynAddSubFX has been lead by <a onclick="trackContrib('outbound-fc')" href="http://fundamental-code.com">Mark McCurry</a>.
   In these few years some major architectural changes have been brought about
   which will culminate in the 3.0.0 UI rewrite release.</p>
   <center>
   <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-    <p>Mark McCurry (active maintainer): 
+    <p>Mark McCurry (active maintainer):
     <input type="hidden" name="cmd" value="_s-xclick">
     <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
     ">
-    <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+    <input  onclick="trackContrib('donate-mc')" type="image" src="https://www.paypal.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
     <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
     </p>
     </form>
   </center>
 
-    <p> 
+    <p>
 <center>
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
     <p>
     Paul Nasca (maintainer 2002-2009):
     <input type="hidden" name="cmd" value="_s-xclick">
     <input type="hidden" name="hosted_button_id" value="HP7WYNVEXBP24">
-    <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+    <input onclick="trackContrib('donate-pn')" type="image" src="https://www.paypal.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
     <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
     </p>
 </form>
@@ -97,16 +112,5 @@
 </p>
 
   </div></center>
-  <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-72903778-1', 'auto');
-ga('send', 'pageview');
-
-</script>
-
 </body>
 </html>
