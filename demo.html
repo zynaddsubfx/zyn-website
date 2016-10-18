@@ -55,14 +55,14 @@ ga('send', 'pageview');
 
   <h3>Windows users:</h3>
   To obtain a copy of the demo simply grab a copy from 
-  <a href="http://fundamental-code.com/zyn-fusion/w64-package.tar.bz2">here</a>.
+  <a href="http://fundamental-code.com/zyn-fusion/w64-package-17-10-2016.tar.bz2">here</a>.
   After extracting it with a tool like 7zip you can run the standalone via
   zynaddsubfx.exe or you can point your plugin host at the directory and use the
   included VST version.
 
   <h3>Linux users:</h3>
   To obtain a copy of the demo simply grab a copy from
-  <a href="http://fundamental-code.com/zyn-fusion/zyn-fusion-3.0.0pre.tar.bz2">here</a>.
+  <a href="http://fundamental-code.com/zyn-fusion/zyn-fusion-3.0.0-17-10-2016.tar.bz2">here</a>.
   There are some minor search path complications here, but it should be possible
   to run the included 'zynaddsubfx' executable which should launch the UI
   process 'zyn-fusion'.
@@ -81,6 +81,48 @@ ga('send', 'pageview');
   <h3>Reporting Issues:</h3>
   If you encounter any issues, please report them on the
   <a href="https://github.com/zynaddsubfx/zyn-fusion-issues/issues">issue tracker</a>
+
+  <h3>FAQ:</h3>
+  <h4>How much is the 3.0.0 version to cost?</h4>
+  The initial price is going to be $59 USD. Anyone who has contributed directly
+  to the mainline zyn code over the years (i.e. in the AUTHORS.txt file or in
+  git history) can get a free copy if they're interested.
+
+  <h4>Wait cost money? Isn't ZynAddSubFX Free Software?</h4>
+  ZynAddSubFX is and will continue to be GPLv2+ software with the source code
+  available at no cost.
+  The UI component of Zyn-Fusion currently is closed source and binaries cost
+  money. This model is being used to help fund the months of full time
+  development needed for the UI rewrite. This closed source model is
+  <b>temporary</b> and the UI will eventually be open source as well (likely a
+  mix of MIT and GPL code).
+
+  <p>
+  If you have a copy of the zynaddsubfx source and want to produce the same
+  binaries that are distributed then simply set 'GuiModule' to 'zest' in cmake's
+  options.
+
+  <h4>Where's the link for OSX?</h4>
+  Due to a limited number of testers the OSX build is missing the initial 3.0.0
+  window. I'd recommend joining the 3.0.0 mailing list to hear about when that
+  version is available (the current estimate is late this year (2016)).
+
+  <h4>What about Windows XP (or generally 32bit windows) support?</h4>
+  At the moment the toolchain to build windows binaries is based off mingw64 and
+  it's only configured to produce 64 bit binaries. I'm not sure if later
+  releases of Zyn will target 32bit windows or not, it largely depends upon
+  demand.
+
+  <h4>What toolkit is this written in?</h4>
+  Zyn-Fusion is written in mruby-zest, a custom toolkit just used by zyn.
+
+  <h4>Who Designed the UI?</h4>
+  The UI was based off several seriously excellent designs made by
+  <a href="http://budislavtvp.deviantart.com/">Budislav Stepanov</a>.
+
+  <h4>Who Coded the UI?</h4>
+  That would be me, Mark McCurry aka. fundamental, the current ZynAddSubFX
+  maintainer.
 
   </div></center>
 </body>
