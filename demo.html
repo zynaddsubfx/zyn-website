@@ -33,6 +33,7 @@ ga('send', 'pageview');
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="/">About</a></li>
+            <li class="active"><a href="zyn-fusion.html">Zyn-Fusion</a></li>
             <li><a href="download.html">Download</a></li>
             <li><a href="support.html">Support</a></li>
             <li><a href="roadmap.html">Roadmap</a></li>
@@ -54,7 +55,7 @@ ga('send', 'pageview');
   after running for 10 minutes.
 
   <h3>Windows users:</h3>
-  To obtain a copy of the demo simply grab a copy from 
+  To obtain a copy of the demo simply grab a copy from
   <a href="http://fundamental-code.com/zyn-fusion/w64-package-17-10-2016.tar.bz2">here</a>.
   After extracting it with a tool like 7zip you can run the standalone via
   zynaddsubfx.exe or you can point your plugin host at the directory and use the
@@ -62,21 +63,11 @@ ga('send', 'pageview');
 
   <h3>Linux users:</h3>
   To obtain a copy of the demo simply grab a copy from
-  <a href="http://fundamental-code.com/zyn-fusion/zyn-fusion-3.0.0-17-10-2016.tar.bz2">here</a>.
-  There are some minor search path complications here, but it should be possible
-  to run the included 'zynaddsubfx' executable which should launch the UI
-  process 'zyn-fusion'.
-  If you wish to use the VST or LV2 version it's recommended that you install
-  the folder to /opt/zyn-fusion and add symbolic links for the filesystem
-  install.
-  This process should be automated for the final non-demo build, but for now
-  those symbolic links would be:
-  <ul>
-      <li> /opt/zyn-fusion/banks =&gt; /usr/local/share/zynaddsubfx/banks
-      <li>/opt/zyn-fusion/ZynAddSubFX.lv2 =&gt; /usr/local/lib/lv2/ZynAddSubFX.lv2
-      <li>/opt/zyn-fusion/ZynAddSubFX.lv2presets =&gt; /usr/local/lib/lv2/ZynAddSubFX.lv2presets
-      <li>/opt/zyn-fusion/ZynAddSubFX.so =&gt; /usr/local/lib/vst/ZynAddSubFX.so
-  </ul>
+  <a href="http://fundamental-code.com/zyn-fusion/zyn-fusion-3.0.0-12-11-2016.tar.bz2">here</a>.
+  Extract the tarball and as root run the installation shell script
+  'install-linux.sh'.
+  You can then run the installed 'zynaddsubfx' to access the standalone.
+  LV2 and VST versions are also installed by the installer.
 
   <h3>Reporting Issues:</h3>
   If you encounter any issues, please report them on the
@@ -102,6 +93,10 @@ ga('send', 'pageview');
   binaries that are distributed then simply set 'GuiModule' to 'zest' in cmake's
   options.
 
+  <h4>What about updates?</h4>
+  Purchasing a copy of Zyn 3.0.0 will provide access to binaries for the whole
+  3.0.x series. This will include bugfixes and minor features.
+
   <h4>Where's the link for OSX?</h4>
   Due to a limited number of testers the OSX build is missing the initial 3.0.0
   window. I'd recommend joining the 3.0.0 mailing list to hear about when that
@@ -123,6 +118,9 @@ ga('send', 'pageview');
   <h4>Who Coded the UI?</h4>
   That would be me, Mark McCurry aka. fundamental, the current ZynAddSubFX
   maintainer.
+
+  <h4>When is it available?</h4>
+  November 17th 2016
 
   </div></center>
 </body>
