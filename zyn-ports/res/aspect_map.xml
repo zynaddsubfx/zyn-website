@@ -1,0 +1,4 @@
+<root>
+<aspect_map direction="in" mount_at="/*" uri="http://example.com/fake/" doc_origin="http://example.com/fake/url.xml" xpath=""/>
+<aspect_map direction="out" mount_at="/*" uri="http://example.com/fake/" doc_origin="http://example.com/fake/url.xml" xpath=""/>
+</root>

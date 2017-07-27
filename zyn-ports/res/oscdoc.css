@@ -1,0 +1,191 @@
+h1 
+{ 
+	font-size: 20pt; 
+	color:Navy; 
+}
+
+h2 
+{ 
+	font-size: 16pt; 
+	color:Navy; 
+}
+
+h3 
+{ 
+	font: 12pt monospace;
+	font-weight: bold;
+	color:black; 
+	padding-left: 30px;
+}
+
+h4 
+{ 
+	font: 12pt monospace;
+	font-weight: bold;
+	font-size: 12pt; 
+	color:black; 
+	padding-left: 60px;
+}
+
+h5 
+{ 
+	font: 12pt monospace;
+	font-weight: bold;
+	font-size: 12pt; 
+	color:black; 
+	padding-left: 90px;
+}
+body 
+{ 
+	background-color: #FFF; 
+	font: Helvetica, Arial;
+	color: #000; 
+	margin:0; 
+	padding:0; 
+	height:100%;
+}
+
+ul 
+{
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+}
+
+ul li 
+{
+	padding-left: 30px;
+}
+
+ul li.double 
+{
+	padding-left: 60px;
+}
+
+div.inputDiv
+{
+	float: left;
+	top: 0px;
+	left; 0px;
+	width: 100%;
+	border: Navy 1px dotted;
+	margin: 0px;
+	padding: 0px;
+	background-color: #eff;
+}
+
+div.listDiv
+{
+	float: left;
+	width: 100%;
+	border: Navy 1px dotted;
+	margin: 0px;
+	padding: 0px;
+	font: 11pt monospace;
+	background-color: #eff;
+	overflow-x: hidden;
+	white-space: nowrap;
+}
+
+div.outputDiv
+{
+	float: left;
+	width: 100%;
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-bottom: 10px;
+	padding: 0px;
+	background-image: url('draft.png');
+	background-repeat: no-repeat;
+}
+
+div.legendDiv
+{
+	float: left;
+	width: 100%;
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-bottom: 10px;
+	padding: 0px;
+	font-size: 11pt;
+	background-image: url('draft.png');
+	background-repeat: no-repeat;
+}
+
+div.xmlDiv 
+{
+	margin-left: 60px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+div.ascii 
+{
+	background-color: #efffee;
+	font-family: monospace
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.focused
+{
+/*	font-weight: bold;*/
+	background: #aa1111;
+	color: #fff!important;
+	outline: 0;
+}
+
+.hidden_content
+{
+	display: none;
+}
+
+#input0,#input1
+{
+	font-size: 1.4em;
+	font-weight: bold;
+	color: #000;
+}
+
+input 
+{
+	font: Helvetica, Arial;
+}
+
+table.tstyle
+{
+	margin-left: 90px;
+	border-width: 0 0 1px 1px;
+	border-spacing: 0;
+	border-collapse: collapse;
+	border-style: solid;
+}
+ 
+.tstyle td, .tstyle th
+{
+	white-space: nowrap;
+	margin: 0;
+	padding: 4px;
+	border-width: 1px 1px 0 0;
+	border-style: solid;
+}
+
+span.symbol
+{
+	font: 1.2em monospace;
+	font-weight: bold;
+/*	background: #ffe;
+	color: #143;
+*/
+}
+
+span.value
+{
+	font: 1.2em monospace;
+	font-weight: bold;
+	background: #ffe;
+	color: #143;
+}
+
+
