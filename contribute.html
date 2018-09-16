@@ -7,6 +7,35 @@
     <title>Contributing To ZynAddSubFX</title>
     <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="lighter.css">
+<style>
+h2 { clear:both; }
+hr { clear:both; }
+h4 { text-decoration: underline; }
+.soft {color:#01ae9c; }
+.semi {color:#f3ad06; }
+.hard {color:red;     }
+.softi {
+    width: 240px;
+    float:left;
+    background:#98dbd4;
+    padding:20px;
+    background-clip: content-box;
+}
+.semii {
+    width:240px;
+    float:left;
+    background:#f3cf79;
+    padding:20px;
+    background-clip: content-box;
+}
+.hardi {
+    width:240px;
+    float:left;
+    background:#ffc6b1;
+    padding:20px;
+    background-clip: content-box;
+}
+</style>
   <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -46,28 +75,65 @@ ga('send', 'pageview');
   <center><div align="left" id="content">
           Are you interested in contributing to the ZynAddSubFX project?
           There are a variety of ways that you can assist the project and many
-          different skills that can be learned while contributing.
+          different skills that can be learned while contributing. You can lend
+          a hand with <span class=soft>non-technical community
+              interaction roles</span>,
+          <span class=semi>semi-technical roles involving knowledge of synthesis
+              and/or basic programming techniques</span>, or
+              <span class=hard>advanced programming implementation
+                  challenges/DSP design improvement roles</span>.
+              The roles listed here are ordered coarsely by complexity, but don't
+              let that deter you from trying out something which you want to
+              learn, everyone has to start somewhere.
+          <hr/><hr/>
 
-  <h2 style="clear:both">Documentation</h2>
-  <img src="nouns/noun_documentation_884660.png"
-       alt="documentation by shashank singh from the Noun Project"
-       width=220px
-  style="float:left"/>
-  <p>Open source documentation doesn't always cover the topics you're looking
-  for quite in enough depth or breath and zyn's is no exception. Features are
-  constantly getting added and the interface is currently undergoing a major
-  overhaul. As such there are plenty of gaps which need filling.
-  Currently most of the documentation has been migrated to an asciidoc based
-  version stored in the /doc folder of the git version. If you're interested in
-  helping this information become more complete please just add some information
-  to these files and submit the changes either via the patch tracker or via a
-  pull request.</p>
+  <h2 class=soft>Community Engagement</h2>
+  <img src="nouns/noun_Community_168639.png"
+       alt=""
+       class=softi />
 
-  <h2 style="clear:both">Bug Reporting and Managment</h2>
+  <p>
+  Open source isn't just about throwing software out in the open, but it's about
+  the collaboration of multiple individuals to create something that would be
+  difficult to build with just one individual.  Community outreach efforts
+  help introduce new contributors and new users.
+  If you're interested in trying to get new individuals interested in
+  contributing and making things run more smoothly for existing contributors,
+  then it would be great to have some assistance.
+  For example, creating pages like the one you're reading can be used to gain
+  new interest or writing summaries about new features.</p>
+
+  <h4>How to get started</h4>
+  <p>
+  There's no one right approach to how to build a community, so the first step
+  should be a discussion.
+  I'd recommend proposing an idea via IRC (##zynaddsubfx on freenode) or the community
+  <a onclick="trackContrib('contrib-ml')" href= "http://lists.sourceforge.net/mailman/listinfo/zynaddsubfx-user">mailing list</a>
+  to get the dialog started.
+  </p>
+
+  <h2 class=soft>Multi-Platform Testing</h2>
+  <img src="nouns/noun_testing_1914762.png"
+       alt="testing by QualityIcons from the Noun Project"
+       class=softi />
+
+  <p>
+  ZynAddSubFX (and Zyn-Fusion) run on Linux, OSX, Window, and BSD with platforms
+  ranging between x86, x86_64, ARM, etc. So, there's a lot of different places
+  where bugs can creep in.
+  It's difficult to keep track of where errors can occur, when they have been
+  introduced, and when they have been fixed.
+  If you're interested in helping test a particular platform regularly, then
+  please chime in to help make Zyn more stable, performant, and fun to use on your
+  platform of choice.
+  If you are familiar with debugging tools on your platform, that's a plus, but
+  not strictly required.
+  </p>
+
+  <h2 class=soft>Bug Reporting and Managment</h2>
   <img src="nouns/noun_Bug_564413.png"
        alt="Bug by Hea Poh Lin from the Noun Project"
-       width=220px
-  style="float:left"/>
+       class=softi />
 
   <p>ZynAddSubFX has a large community across multiple websites. As such it can
   be tricky to keep track of all bugs, feature requests, and support requests.
@@ -75,18 +141,56 @@ ga('send', 'pageview');
   issues it would be appreciated.
   No technical experience needed.</p>
 
-  <h4 style="text-decoration: underline">How to get started</h4>
+  <h4>How to get started</h4>
   <p>
   If you're interested in helping to report bugs, tag them, respond to inquires,
   and organize them so other contributors can efficiently navigate them, please
   inquire on the IRC channel for zyn (##zynaddsubfx on freenode).
   </p>
+  <hr/><hr/>
+  <h2 class=semi>Documentation</h2>
+  <img src="nouns/noun_documentation_884660.png"
+       alt="documentation by shashank singh from the Noun Project"
+       class=semii />
+  <p>Open source documentation doesn't always cover the topics you're looking
+  for quite in enough depth or breath and Zyn is no exception. Features are
+  constantly getting added and the interface has recently undergone a major
+  overhaul. As such there are plenty of gaps which need filling.
+  While Zyn does have a spread of existing documentation, new efforts are being
+  focused on a new user focused manual available at <a
+  href=https://github.com/zynaddsubfx/user-manual>https://github.com/zynaddsubfx/user-manual</a>
+  .
+  </p>
 
-  <h2 style="clear:both">User Interface Programming and Refinement</h2>
-  <img src="nouns/noun_synth_203861.png"
+  <p>
+  The goal is to provide users with something that goes beyond what the features
+  are in Zyn and to talk about how to use them to solve practical sound design
+  challenges.
+  The overall architecting of this work is being lead by unfa, but there is a
+  huge amount of work involved in going from the provided outline to a full and
+  easy to follow guide through ZynAddSubFX.</p>
+  <h4>How to get started?</h4>
+  <p>I'd recommend reading through the current outline on github and seeing what
+  gaps exist. Old documentation can be ported over fairly simply as long as it
+  fits the new flow though the document, so both beginner technical writers as
+  well as advanced zyn users should feel comfortable taking steps to make the
+  manual a more complete guide. </p>
+
+  <!--
+  <h2 class=soft>Translations</h2>
+  <img src="nouns/noun_Language_1485724.png"
        alt=""
        width=220px
        style="float:left"/>
+  <p>While the infrastructure in Zyn-Fusion is still just beginning to support
+  translations to different languages, it is a target of the application.
+  Translations can help make synthesis more approachable and help in these
+  efforts would be appreciated.</p>-->
+
+  <h2 class=semi>User Interface Programming and Refinement</h2>
+  <img src="nouns/noun_synth_203861.png"
+       alt=""
+       class=semii />
 
   <p>
   Looking to leave a visual mark on the synth?
@@ -99,7 +203,7 @@ ga('send', 'pageview');
   it should not be too difficult to pick up.
   </p>
 
-  <h4 style="text-decoration: underline">How to get started</h4>
+  <h4>How to get started</h4>
   <p>
 
   To start out, the MRuby-Zest user interface improvements is based off the
@@ -108,47 +212,25 @@ ga('send', 'pageview');
   deviates from the original design and you can find issues on the user
   interface on <a href="https://github.com/zynaddsubfx/zyn-fusion-issues/">the
       github issue tracker</a>.
-  For more hands on guidance don't feel afraid to join the IRC channel, use the
-  mailing list, or start discussions on relevant issue threads.
-  </p>
-
-  <h2 style="clear:both">Community Engagement</h2>
-  <img src="nouns/noun_Community_168639.png"
-       alt=""
-       width=220px
-  style="float:left"/>
-  <p>
-  Open source isn't just about throwing software out in the open, but it's about
-  the collaboration of multiple individuals to create something that would be
-  difficult to build with just one individual.  Community outreach efforts
-  help introduce new contributors and new users.
-  If you're interested in trying to get new individuals interested in
-  contributing and making things run more smoothly for existing contributors,
-  then it would be great to have some assistance.
-  For example, creating pages like the one you're reading can be used to gain
-  new interest or writing summaries about new features.</p>
-
-  <h4 style="text-decoration: underline">How to get started</h4>
-  <p>
-  There's no one right approach to how to build a community, so the first step
-  should be a discussion.
-  I'd recommend proposing an idea via IRC or the community mailing list to get
-  the dialog started.
+  For more hands on guidance don't feel afraid to join the IRC
+  channel(##zynaddsubfx on freenode) , use the
+  <a onclick="trackContrib('contrib-ml')" href= "http://lists.sourceforge.net/mailman/listinfo/zynaddsubfx-user">mailing list</a>
+  , or start discussions on relevant issue threads.
   </p>
 
 
-  <h2 style="clear:both">General Programming</h2>
+
+  <h2 class=semi>General Programming</h2>
   <img src="nouns/noun_programming_1677970.png"
        alt=""
-       width=220px
-       style="float:left"/>
+       class=semii />
   <p style="float:none">
   Like most open source projects the Zyn team loves to see interested developers help out.
   Within ZynAddSubFX you'll see a mixture of C, C++, and Ruby (for the UI).
   For many tasks you'll only need basic knowledge of any one language to get
   started.
   </p>
-  <h4 style="text-decoration: underline">How to get started</h4>
+  <h4>How to get started</h4>
   <p>
   If you're interested in helping out coding we recommend checking out the issue trackers for
   <a onclick="trackContrib('contrib-bugs')" href="https://sourceforge.net/p/zynaddsubfx/bugs/">bugs</a>,
@@ -163,15 +245,31 @@ ga('send', 'pageview');
 
   <p>
   If you're trying to figure out more details, please feel free to hop onto the
-  mailing list or into the community IRC channel to talk with other
+  <a onclick="trackContrib('contrib-ml')" href= "http://lists.sourceforge.net/mailman/listinfo/zynaddsubfx-user">mailing list</a>
+  or into the community IRC channel (##zynaddsubfx on freenode) to talk with other
   contributors.
   </p>
 
-  <h2 style="clear:both">Digital Signal Processing</h2>
+  <h2 class=semi>Instrument Design and Refinement</h2>
+  <img src="nouns/noun_Keyboard_933062.png"
+       alt="Keyboard by Olivier Guillard from the Noun Project"
+       class=semii />
+
+  <p>People are always looking for new instruments to experiment with.
+  For a one-off instrument <a onclick="trackContrib('contrib-ma')" href="https://musical-artifacts.com/">musical
+      artifacts</a> hosts individual instruments for a variety of open source
+  synths and effects. For larger collections of patches they can be shared via
+  the
+  <a onclick="trackContrib('contrib-ml')" href= "http://lists.sourceforge.net/mailman/listinfo/zynaddsubfx-user">mailing list</a>.
+  </p>
+
+
+  <hr/><hr/>
+
+  <h2 class=hard>Digital Signal Processing</h2>
   <img src="nouns/noun_Fourier%20transformation_221517.png"
        alt="Fourier transformation by Aenne Brielmann from the Noun Project"
-       width=220px
-       style="float:left"/>
+       class=hardi />
 
   <p>
   Are you interested in the math behind the music?
@@ -184,7 +282,7 @@ ga('send', 'pageview');
   this front should be a fun exercise.
   </p>
 
-  <h4 style="text-decoration: underline">How to get started</h4>
+  <h4>How to get started</h4>
   <p>
   Ideally to approach DSP level problems you should have some basic level of
   familiarity with C++, a prototyping language (Python/Julia/MATLAB/R), and some
@@ -192,52 +290,47 @@ ga('send', 'pageview');
   when getting started.
   If you have a particular idea in mind, then check the feature trackers to see
   if there is prior work on your particular idea.
-  Otherwise, try joining the mailing list and IRC channel and get the
-  conversation started.
+  Otherwise, try joining the
+  <a onclick="trackContrib('contrib-ml')" href= "http://lists.sourceforge.net/mailman/listinfo/zynaddsubfx-user">mailing list</a>
+  and IRC channel (##zynaddsubfx on freenode) and get the conversation started.
   </p>
 
-  <h2 style="clear:both">Multi-Platform Testing</h2>
-  <img src="nouns/noun_testing_1914762.png"
-       alt="testing by QualityIcons from the Noun Project"
-       width=220px
-  style="float:left"/>
+  <h2 class=hard>Realtime System Level Programming</h2>
+  <img src="nouns/noun_programming_1677970.png"
+       alt=""
+       class=hardi />
 
   <p>
-  ZynAddSubFX (and Zyn-Fusion) run on Linux, OSX, Window, and BSD with platforms
-  ranging between x86, x86_64, ARM, etc. So, there's a lot of different places
-  where bugs can creep in.
-  It's difficult to keep track of where errors can occur, when they have been
-  introduced, and when they have been fixed.
-  If you're interested in helping test a particular platform regularly, then
-  please chime in to help make Zyn more stable, performant, and fun to use on your
-  platform of choice.</p>
+  Do you want to understand how audio can be produced in a multi-threaded
+  low latency context reliably?
+  Do you want to write optimized mathematical routines, lock-free threading
+  communication mechanisms, draw out diagrams walking through asynchronous
+  program execution, or write embedded code?</p>
 
-  <h2 style="clear:both">Translations</h2>
-  <img src="nouns/noun_Language_1485724.png"
-       alt=""
-       width=220px
-       style="float:left"/>
-  <p>While the infrastructure in Zyn-Fusion is still just beginning to support
-  translations to different languages, it is a target of the application.
-  Translations can help make synthesis more approachable and help in these
-  efforts would be appreciated.</p>
-
-  <h2 style="clear:both">Instruments</h2>
-  <img src="nouns/noun_Keyboard_933062.png"
-       alt="Keyboard by Olivier Guillard from the Noun Project"
-       width=220px
-  style="float:left"/>
-
-  <p>People are always looking for new instruments to experiment with.
-  For a one-off instrument <a onclick="trackContrib('contrib-ma')" href="https://musical-artifacts.com/">musical
-      artifacts</a> hosts individual instruments for a variety of open source
-  synths and effects. For larger collections of patches they can be shared via
-  the
-  <a onclick="trackContrib('contrib-ml')" href= "http://lists.sourceforge.net/mailman/listinfo/zynaddsubfx-user">mailing list</a>.
+  <p>Well, within low latency audio processing tools, you'll see some of all of
+  these concepts.
+  Creating reliable low-latency, high throughput code which is easy for users
+  to control is <b>hard</b>.
+  It involves a lot of pencil and paper work to establish designs and a fair
+  amount of programming time to implement the designs in ways that they're hard
+  to mistakenly break.
   </p>
 
+  <h4>How to get started</h4>
+  <p>
+  Ideally if you want to get into this level you'll have a strong grasp of low
+  level machine implementation details, such as cache behavior, x86 memory
+  reordering, lock free primitives, the general C/C++ memory model, JACK,
+  assembly, and programming constraints on small embedded devices.
+  If you want to be involved in this role it's a natural extension of general
+  programming.
+  To get started there will need to be some direct discussion between yourself
+  an other long term developers.
+  </p>
 
-  <h2 style="clear:both">Donations</h2>
+  <hr><hr>
+
+  <h2>Donations</h2>
   <p>
   Any donations are appreciated and they're currently accepted by two
   developers.
@@ -247,7 +340,7 @@ ga('send', 'pageview');
   anybody who needs it.
   Since 2009, ZynAddSubFX has been lead by <a onclick="trackContrib('outbound-fc')" href="http://fundamental-code.com">Mark McCurry</a>.
   In these few years some major architectural changes have been brought about
-  which will culminate in the 3.0.0 UI rewrite release.</p>
+  which culminated in the 3.0.0 UI rewrite release.</p>
   <center>
   <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
     <p>Mark McCurry (active maintainer):
