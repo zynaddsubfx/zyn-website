@@ -62,7 +62,7 @@
     <li>Implemented UI for Oscilloscope in PAD synthesis</li>
 </ul>
 
-<img src="images/gsoc2019.png" alt="Oscilloscope view"/ style="max-width: 100%;height: auto;">
+<img src="images/gsoc2019.png" alt="Oscilloscope view" style="max-width: 100%;height: auto;">
 <p>Screenshot of the oscilloscope view</p>
 
 <h3>Commit link:</h3>
@@ -87,6 +87,48 @@
     <li>Further UI improvement based on user feed back</li>
     <li>Implement a spectrum</li>
 </ul>
+
+
+<h3>More Detailed Description:</h3>
+
+<h4>Why we want oscilloscope view in ZynAddSubFX?</h4>
+
+<p>ZynAddSubFX has three synthesis engine, ADsynth, Subsynth and PADsynth.
+<br><br>
+Here each synthesis engine is describe briefly:
+
+<ul>
+  <li>Adsynth engine: Combine number voices into a single voice</li>
+  <li>SubSynth engine: generating white noise and subtracting harmonics from it</li>
+  <li>PadSynth engine: generating wavetables</li>
+</ul>
+
+<img src="images/diagram2.png" alt="synth diagram" style="max-width: 100%;height: auto;">
+
+Without the oscilloscope, all the processes involved in synthesis sound are black box process to users.
+With newly implemented oscilloscope feature, you can now look at the waveform at different synthesis stage and see what happen when a voice is mixed as in ADsynth or a harmonics is filtered in SubSynth.
+
+</p>
+
+<br>
+
+<h4>The Triggering system of oscilloscope view in ZynAddSubFX:</h4>
+
+<p>
+  <br>
+  The purpose of the triggering system is to stabilize waveform displayed.
+  <br>
+  This make it more eye pleasing to user compare to really unstable waveform.
+  <br>
+
+  In ZynAddSubFX, the type of triggering system implemented is simple edge.
+  In short, it compare the current input with previous input value. If there is a rising edge i.e. previous value is less than 0 and current value is equal or greater than 0.
+  It will start to capture value.
+</p>
+
+
+
+<br><br>
 
 <p>By Micky.Y.Chan (michiboo)</p>
 
